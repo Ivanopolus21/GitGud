@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added some controllers to the game">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added some characters classes to the game">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/ArcherSkeleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Skeleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Wraith.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +60,9 @@
       <workItem from="1680560339381" duration="510000" />
       <workItem from="1680560864782" duration="1202000" />
       <workItem from="1680563333085" duration="29000" />
-      <workItem from="1680727489079" duration="749000" />
+      <workItem from="1680727489079" duration="1348000" />
+      <workItem from="1680767867576" duration="3885000" />
+      <workItem from="1680790773843" duration="2907000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -87,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680727828899</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added some characters classes to the game">
+      <created>1680728411555</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680728411555</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +120,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="test23" />
     <MESSAGE value="Added some controllers to the game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some controllers to the game" />
+    <MESSAGE value="Added some characters classes to the game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some characters classes to the game" />
   </component>
 </project>
