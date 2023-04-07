@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added the window of the game to be terminated while closed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameWindowView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameWindowView.java" afterDir="false" />
-    </list>
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added the rectangle inside the window just as test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +79,7 @@
       <workItem from="1680767867576" duration="3885000" />
       <workItem from="1680790773843" duration="2907000" />
       <workItem from="1680816608055" duration="23000" />
-      <workItem from="1680872443822" duration="3843000" />
+      <workItem from="1680872443822" duration="4145000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -156,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680874428318</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added the rectangle inside the window just as test">
+      <created>1680877003626</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680877003626</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +182,7 @@
     <MESSAGE value="Added some characters classes to the game" />
     <MESSAGE value="Added some view and item classes to the game" />
     <MESSAGE value="Added the window of the game to be terminated while closed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the window of the game to be terminated while closed" />
+    <MESSAGE value="Added the rectangle inside the window just as test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the rectangle inside the window just as test" />
   </component>
 </project>
