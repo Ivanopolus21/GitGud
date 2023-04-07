@@ -10,5 +10,6 @@ public class GameWindowView {
         jframe.setSize(400, 400);
         jframe.setVisible(true);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //github
     }
 }
