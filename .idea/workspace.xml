@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Fixed color configs">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/player_sprites.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added sprite for the main character, modified inputs, changed the size of the window">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/text.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameWindowView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameWindowView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +94,7 @@
       <workItem from="1680983879469" duration="330000" />
       <workItem from="1681049661990" duration="6134000" />
       <workItem from="1681074777670" duration="1858000" />
-      <workItem from="1681121277694" duration="6969000" />
+      <workItem from="1681121277694" duration="13633000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -202,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681121366361</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added sprite for the main character, modified inputs, changed the size of the window">
+      <created>1681138185238</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681138185238</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +237,7 @@
     <MESSAGE value="Added inputs to the rectangle (maybe for the main character)" />
     <MESSAGE value="Added some color configs" />
     <MESSAGE value="Fixed color configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed color configs" />
+    <MESSAGE value="Added sprite for the main character, modified inputs, changed the size of the window" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added sprite for the main character, modified inputs, changed the size of the window" />
   </component>
 </project>
