@@ -1,7 +1,11 @@
 package yeremiva.gitgud.controller;
 
+import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.view.GamePanel;
 import yeremiva.gitgud.view.GameWindowView;
+
+import java.awt.*;
+
 //GAME
 public class GameController implements Runnable{
     private GameWindowView gameWindowView;
@@ -10,11 +14,20 @@ public class GameController implements Runnable{
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
 
+    private Player player;
+
     public GameController() {
-        gamePanel = new GamePanel();
+        initClasses();
+
+        gamePanel = new GamePanel(this);
         gameWindowView = new GameWindowView(gamePanel);
         gamePanel.requestFocus();
+
         startGameLoop();
+    }
+
+    private void initClasses() {
+        player = new Player(200, 200);
     }
 
     private void startGameLoop() {
@@ -23,7 +36,11 @@ public class GameController implements Runnable{
     }
 
     public void update() {
-        gamePanel.updateGame();
+        player.update();
+    }
+
+    public void render(Graphics g){
+        player.render(g);
     }
 
     @Override
@@ -73,5 +90,9 @@ public class GameController implements Runnable{
                 updates = 0;
             }
         }
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 }
