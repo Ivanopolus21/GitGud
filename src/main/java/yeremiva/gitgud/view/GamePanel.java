@@ -1,5 +1,6 @@
 package yeremiva.gitgud.view;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import yeremiva.gitgud.core.inputs.KeyboardInputs;
 import yeremiva.gitgud.core.inputs.MouseInputs;
 
@@ -10,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static yeremiva.gitgud.core.inputs.Constants.Directions.*;
 import static yeremiva.gitgud.core.inputs.Constants.PlayerConstants.*;
 
 public class GamePanel extends JPanel {
@@ -18,8 +20,10 @@ public class GamePanel extends JPanel {
     private float xDelta = 100, yDelta = 100;
     private BufferedImage img;
     private BufferedImage[][] animations;
-    private int aniTick, aniIndex, aniSpeed = 15;
+    private int aniTick, aniIndex, aniSpeed = 30;
     private int playerAction = IDLE;
+    private int playerDirection = -1;
+    private boolean moving = false;
 
     public GamePanel(){
         mouseInputs = new MouseInputs(this);
@@ -63,19 +67,13 @@ public class GamePanel extends JPanel {
         setPreferredSize(size);
     }
 
-    public void changeXDelta(int value) {
-        this.xDelta += value;
-
+    public void setDirection(int direction){
+        this.playerDirection = direction;
+        moving = true;
     }
 
-    public void changeYDelta(int value) {
-        this.yDelta += value;
-
-    }
-
-    public void setRectPos(int x, int y) {
-        this.xDelta = x;
-        this.yDelta = y;
+    public void setMoving(boolean moving){
+        this.moving = moving;
     }
 
     private void updateAnimationTick() {
@@ -89,12 +87,43 @@ public class GamePanel extends JPanel {
         }
     }
 
-    public void paintComponent(Graphics g){
-        super.paintComponent(g );
+    public void setAnimation(){
 
+        if(moving){
+            playerAction = WALKING;
+        } else {
+            playerAction = IDLE;
+        }
+    }
+
+    public void updatePosition(){
+
+        if (moving){
+            switch(playerDirection){
+                case LEFT:
+                    xDelta -= 5;
+                    break;
+                case UP:
+                    yDelta -= 5;
+                    break;
+                case RIGHT:
+                    xDelta += 5;
+                    break;
+                case DOWN:
+                    yDelta += 5;
+                    break;
+            }
+        }
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
         updateAnimationTick();
 
-        g.drawImage(animations[playerAction][aniIndex], (int)xDelta, (int)yDelta, 64, 64, null);
+        setAnimation();
+        updatePosition();
+
+        g.drawImage(animations[playerAction][aniIndex], (int)xDelta, (int)yDelta, 128, 128, null);
     }
 
 
