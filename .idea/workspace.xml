@@ -4,10 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added sprite animations that I can input manually and switch between them">
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/Constants.java" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added attack animation for the Player on a left mouse button">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_Main_bckgrdlev_build.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_background_obj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_day1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_day2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_day3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_night1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_night2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_night3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SET1_decorative_obj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/outside_sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +109,8 @@
       <workItem from="1680983879469" duration="330000" />
       <workItem from="1681049661990" duration="6134000" />
       <workItem from="1681074777670" duration="1858000" />
-      <workItem from="1681121277694" duration="15744000" />
+      <workItem from="1681121277694" duration="22657000" />
+      <workItem from="1681209139934" duration="11076000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -214,7 +231,56 @@
       <option name="project" value="LOCAL" />
       <updated>1681144755622</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added constants for the player, his direction and animations">
+      <created>1681147087348</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1681147087348</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added an UPS (updates) to the game loop">
+      <created>1681155228505</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1681155228505</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added the Player class and refactored some code">
+      <created>1681168486874</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1681168486874</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added the Player class and refactored some code">
+      <created>1681168497908</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1681168497908</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added greater Player inputs and the player has an opportunity to go diagonally">
+      <created>1681213315792</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1681213315792</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added attack animation for the Player on keyboard &quot;DOWN&quot; arrow">
+      <created>1681214506496</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1681214506496</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added attack animation for the Player on a left mouse button">
+      <created>1681214527330</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1681214527330</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +311,12 @@
     <MESSAGE value="Fixed color configs" />
     <MESSAGE value="Added sprite for the main character, modified inputs, changed the size of the window" />
     <MESSAGE value="Added sprite animations that I can input manually and switch between them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sprite animations that I can input manually and switch between them" />
+    <MESSAGE value="Added constants for the player, his direction and animations" />
+    <MESSAGE value="Added an UPS (updates) to the game loop" />
+    <MESSAGE value="Added the Player class and refactored some code" />
+    <MESSAGE value="Added greater Player inputs and the player has an opportunity to go diagonally" />
+    <MESSAGE value="Added attack animation for the Player on keyboard &quot;DOWN&quot; arrow" />
+    <MESSAGE value="Added attack animation for the Player on a left mouse button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added attack animation for the Player on a left mouse button" />
   </component>
 </project>

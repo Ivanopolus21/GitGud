@@ -1,14 +1,14 @@
 package yeremiva.gitgud.model.characters;
 
+import yeremiva.gitgud.core.settings.LoadSave;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static yeremiva.gitgud.core.inputs.Constants.Directions.*;
-import static yeremiva.gitgud.core.inputs.Constants.Directions.DOWN;
-import static yeremiva.gitgud.core.inputs.Constants.PlayerConstants.*;
+import static yeremiva.gitgud.core.settings.Constants.PlayerConstants.*;
 
 public class Player extends Character{
 
@@ -19,8 +19,8 @@ public class Player extends Character{
     private boolean left, up, right, down;
     private float playerSpeed = 2.0f;
 
-    public Player(float x, float y) {
-        super(x, y);
+    public Player(float x, float y, int width, int height) {
+        super(x, y, width, height);
         loadAnimations();
     }
 
@@ -31,7 +31,7 @@ public class Player extends Character{
     }
 
     public void render(Graphics g){
-        g.drawImage(animations[playerAction][aniIndex], (int)x, (int)y, 128, 128, null);
+        g.drawImage(animations[playerAction][aniIndex], (int)x, (int)y, width, height, null);
     }
 
     private void updateAnimationTick() {
@@ -93,24 +93,12 @@ public class Player extends Character{
 
 
     private void loadAnimations() {
-        InputStream is = getClass().getResourceAsStream("/player_sprites.png");
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 
-        try {
-            BufferedImage img = ImageIO.read(is);
-
-            animations = new BufferedImage[9][8];
-            for (int j = 0; j < animations.length; j++) {
-                for (int i = 0; i < animations[j].length; i++) {
-                    animations[j][i] = img.getSubimage(i * 32, j*32, 32, 32);
-                }
-            }
-        } catch(IOException e) {
-            e.printStackTrace();
-        } finally {
-            try{
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+        animations = new BufferedImage[9][8];
+        for (int j = 0; j < animations.length; j++) {
+            for (int i = 0; i < animations[j].length; i++) {
+                animations[j][i] = img.getSubimage(i * 32, j*32, 32, 32);
             }
         }
     }

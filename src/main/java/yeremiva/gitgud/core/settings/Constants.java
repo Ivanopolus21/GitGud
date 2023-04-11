@@ -1,4 +1,4 @@
-package yeremiva.gitgud.core.inputs;
+package yeremiva.gitgud.core.settings;
 
 public class Constants {
     public static class Directions{
