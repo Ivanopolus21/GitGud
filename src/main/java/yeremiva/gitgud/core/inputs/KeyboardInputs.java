@@ -17,35 +17,40 @@ public class KeyboardInputs implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode()) {
+    public void keyReleased(KeyEvent e) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                gamePanel.getGameController().getPlayer().setDirection(UP);
+                gamePanel.getGameController().getPlayer().setUp(false);
                 break;
             case KeyEvent.VK_A:
-                gamePanel.getGameController().getPlayer().setDirection(LEFT);
+                gamePanel.getGameController().getPlayer().setLeft(false);
                 break;
             case KeyEvent.VK_S:
-                gamePanel.getGameController().getPlayer().setDirection(DOWN);
+                gamePanel.getGameController().getPlayer().setDown(false);
                 break;
             case KeyEvent.VK_D:
-                gamePanel.getGameController().getPlayer().setDirection(RIGHT);
+                gamePanel.getGameController().getPlayer().setRight(false);
                 break;
         }
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-        switch(e.getKeyCode()) {
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
+                gamePanel.getGameController().getPlayer().setUp(true);
+                break;
             case KeyEvent.VK_A:
+                gamePanel.getGameController().getPlayer().setLeft(true);
+                break;
             case KeyEvent.VK_S:
+                gamePanel.getGameController().getPlayer().setDown(true);
+                break;
             case KeyEvent.VK_D:
-                gamePanel.getGameController().getPlayer().setMoving(false);
+                gamePanel.getGameController().getPlayer().setRight(true);
                 break;
         }
     }
