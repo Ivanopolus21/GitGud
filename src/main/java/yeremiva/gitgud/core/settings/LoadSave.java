@@ -12,6 +12,7 @@ public class LoadSave {
 
     public static final String PLAYER_ATLAS = "player_sprites.png";
     public static final String LEVEL_ATLAS = "outside_sprites (1).png";
+//    public static final String LEVEL_ATLAS = "outside_sprites.png";
     public static final String LEVEL_ONE_DATA = "level_one_data.png";
 
     public static BufferedImage GetSpriteAtlas(String atlas){
@@ -39,12 +40,12 @@ public class LoadSave {
             for (int i = 0; i < img.getWidth(); i ++){
                 Color color = new Color(img.getRGB(i, j));
                 int value = color.getRed();
-//                if (value >= 150) {
-//                    value = 0;
-//                }
-                if (value >= 48) {
+                if (value >= 150) {
                     value = 0;
                 }
+//                if (value >= 48) {
+//                    value = 0;
+//                }
                 lvlData[j][i] = value;
             }
         }
