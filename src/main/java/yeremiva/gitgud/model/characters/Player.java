@@ -15,7 +15,7 @@ public class Player extends Character{
     private BufferedImage[][] animations;
     private int aniTick, aniIndex, aniSpeed = 30;
     private int playerAction = IDLE;
-    private boolean moving = false;
+    private boolean moving = false, attacking = false;
     private boolean left, up, right, down;
     private float playerSpeed = 2.0f;
 
@@ -41,17 +41,33 @@ public class Player extends Character{
             aniIndex++;
             if(aniIndex >= GetSpriteAmount(playerAction)){
                 aniIndex = 0;
+                attacking = false;
             }
         }
     }
 
     public void setAnimation(){
+        int startAni = playerAction;
 
         if(moving){
             playerAction = WALKING;
         } else {
             playerAction = IDLE;
         }
+
+        if (attacking){
+            playerAction = ATTACKING;
+
+        }
+
+        if (startAni != playerAction){
+            resetAniTick();
+        }
+    }
+
+    private void resetAniTick(){
+        aniTick = 0;
+        aniIndex = 0;
     }
 
     public void updatePosition(){
@@ -97,6 +113,17 @@ public class Player extends Character{
                 e.printStackTrace();
             }
         }
+    }
+
+    public void resetDirBooleans(){
+        left = false;
+        right = false;
+        up = false;
+        down = false;
+    }
+
+    public void setAttacking(boolean attacking){
+        this.attacking = attacking;
     }
 
     public boolean isLeft() {

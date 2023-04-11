@@ -92,6 +92,10 @@ public class GameController implements Runnable{
         }
     }
 
+    public void  windowFocusLost(){
+        player.resetDirBooleans();
+    }
+
     public Player getPlayer(){
         return player;
     }

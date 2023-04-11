@@ -53,5 +53,9 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.getGameController().getPlayer().setRight(true);
                 break;
         }
+
+        if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            gamePanel.getGameController().getPlayer().setAttacking(true);
+        }
     }
 }
