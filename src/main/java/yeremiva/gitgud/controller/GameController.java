@@ -16,10 +16,10 @@ public class GameController implements Runnable{
     private Player player;
     private LevelController levelController;
     public final static int TILES_DEFAULT_SIZE = 32;
-    public final static float SCALE = 2.5f;
+    public final static float SCALE = 1.5f;
     public final static int TILES_IN_WIDTH = 26;
     public final static int TILES_IN_HEIGHT = 14;
-    public final static int TILES_SIZE = (int)(TILES_DEFAULT_SIZE * SCALE);
+    public final static int TILES_SIZE = (int) (TILES_DEFAULT_SIZE * SCALE);
     public final static int GAME_WIDTH = TILES_SIZE * TILES_IN_WIDTH;
     public final static int GAME_HEIGHT = TILES_SIZE * TILES_IN_HEIGHT;
 
@@ -35,7 +35,7 @@ public class GameController implements Runnable{
 
     private void initClasses() {
         levelController = new LevelController(this);
-        player = new Player(200, 200, (int) (32 * SCALE), (int) (32 * SCALE));
+        player = new Player(200, 200, (int) (48 * SCALE), (int) (48 * SCALE));
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
     }
 
@@ -87,12 +87,6 @@ public class GameController implements Runnable{
                 frames++;
                 deltaF--;
             }
-
-//            if (now - lastFrame >= timePerFrame) {
-//                gamePanel.repaint();
-//                lastFrame = now;
-//                frames++;
-//            }
 
             if(System.currentTimeMillis() - lastCheck >= 1000){
                 lastCheck = System.currentTimeMillis();

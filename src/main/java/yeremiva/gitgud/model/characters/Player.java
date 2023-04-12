@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import static yeremiva.gitgud.core.settings.Constants.PlayerConstants.*;
+import static yeremiva.gitgud.core.settings.HelpMethods.CanMoveHere;
 
 public class Player extends Character{
 
@@ -74,22 +75,28 @@ public class Player extends Character{
     }
 
     public void updatePosition(){
-
         moving = false;
+        if (!left && !right && !up && !down){
+            return;
+        }
+
+        float xSpeed = 0, ySpeed = 0;
 
         if (left && !right) {
-            x -= playerSpeed;
-            moving = true;
+            xSpeed = -playerSpeed;
         } else if (right && !left){
-            x += playerSpeed;
-            moving = true;
+            xSpeed = playerSpeed;
         }
 
         if (up && !down){
-            y -= playerSpeed;
-            moving = true;
+            ySpeed = -playerSpeed;
         } else if (down && !up){
-            y += playerSpeed;
+            ySpeed = playerSpeed;
+        }
+
+        if (CanMoveHere(x + xSpeed, y + ySpeed, width, height, lvlData)) {
+            this.x += xSpeed;
+            this.y += ySpeed;
             moving = true;
         }
     }
@@ -119,22 +126,6 @@ public class Player extends Character{
 
     public void setAttacking(boolean attacking){
         this.attacking = attacking;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public boolean isUp() {
-        return up;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public boolean isDown() {
-        return down;
     }
 
     public void setLeft(boolean left) {
