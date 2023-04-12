@@ -26,12 +26,14 @@ public class Player extends Character{
 
     public void update(){
         updatePosition();
+        updateHitbox();
         updateAnimationTick();
         setAnimation();
     }
 
     public void render(Graphics g){
         g.drawImage(animations[playerAction][aniIndex], (int)x, (int)y, width, height, null);
+        drawHitbox(g);
     }
 
     private void updateAnimationTick() {
