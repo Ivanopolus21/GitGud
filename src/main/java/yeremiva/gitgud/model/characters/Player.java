@@ -1,5 +1,6 @@
 package yeremiva.gitgud.model.characters;
 
+import yeremiva.gitgud.controller.GameController;
 import yeremiva.gitgud.core.settings.LoadSave;
 
 import javax.imageio.ImageIO;
@@ -12,29 +13,33 @@ import static yeremiva.gitgud.core.settings.Constants.PlayerConstants.*;
 import static yeremiva.gitgud.core.settings.HelpMethods.CanMoveHere;
 
 public class Player extends Character{
+    //30 height, 18 width 00 -- 6, 3
+    //43 height, 25 width 00 -- 10, 5
 
     private BufferedImage[][] animations;
     private int aniTick, aniIndex, aniSpeed = 30;
     private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
     private boolean left, up, right, down;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 1.0f;
     private int[][] lvlData;
+    private float xDrawOffset = 10 * GameController.SCALE;
+    private float yDrawOffset = 5 * GameController.SCALE;
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
+        initHitbox(x, y, 25 * GameController.SCALE, 43 * GameController.SCALE);
     }
 
     public void update(){
         updatePosition();
-        updateHitbox();
         updateAnimationTick();
         setAnimation();
     }
 
     public void render(Graphics g){
-        g.drawImage(animations[playerAction][aniIndex], (int)x, (int)y, width, height, null);
+        g.drawImage(animations[playerAction][aniIndex], (int) (hitbox.x - xDrawOffset), (int) (hitbox.y - yDrawOffset), width, height, null);
         drawHitbox(g);
     }
 
@@ -94,9 +99,15 @@ public class Player extends Character{
             ySpeed = playerSpeed;
         }
 
-        if (CanMoveHere(x + xSpeed, y + ySpeed, width, height, lvlData)) {
-            this.x += xSpeed;
-            this.y += ySpeed;
+//        if (CanMoveHere(x + xSpeed, y + ySpeed, width, height, lvlData)) {
+//            this.x += xSpeed;
+//            this.y += ySpeed;
+//            moving = true;
+//        }
+
+        if (CanMoveHere(hitbox.x + xSpeed, hitbox.y + ySpeed, hitbox.width, hitbox.height, lvlData)) {
+            hitbox.x += xSpeed;
+            hitbox.y += ySpeed;
             moving = true;
         }
     }
