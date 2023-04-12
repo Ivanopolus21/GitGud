@@ -51,4 +51,8 @@ public class LevelController {
     public void update() {
 
     }
+
+    public LevelView getCurrentLevel() {
+        return levelOne;
+    }
 }
