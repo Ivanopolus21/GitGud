@@ -39,7 +39,8 @@ public class Player extends Character{
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
-        initHitbox(x, y, 16 * GameController.SCALE, 28 * GameController.SCALE);
+        initHitbox(x, y, 16 * GameController.SCALE, 27 * GameController.SCALE);
+
     }
 
     public void update(){
@@ -50,7 +51,7 @@ public class Player extends Character{
 
     public void render(Graphics g){
         g.drawImage(animations[playerAction][aniIndex], (int) (hitbox.x - xDrawOffset), (int) (hitbox.y - yDrawOffset), width, height, null);
-        drawHitbox(g);
+//        drawHitbox(g);
     }
 
     private void updateAnimationTick() {
@@ -69,9 +70,17 @@ public class Player extends Character{
         int startAni = playerAction;
 
         if(moving){
-            playerAction = WALKING;
+            playerAction = RUNNING;
         } else {
             playerAction = IDLE;
+        }
+
+        if (inAir){
+            if (airSpeed < 0) {
+                playerAction = JUMPING;
+            } else {
+                playerAction = KNEELING;
+            }
         }
 
         if (attacking){
@@ -170,6 +179,9 @@ public class Player extends Character{
 
     public void loadLvlData(int[][] lvlData){
         this.lvlData = lvlData;
+        if (!IsCharacterOnFloor(hitbox, lvlData)) {
+            inAir = true;
+        }
     }
 
     public void resetDirBooleans(){
