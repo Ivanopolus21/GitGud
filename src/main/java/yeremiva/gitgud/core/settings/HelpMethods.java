@@ -2,6 +2,8 @@ package yeremiva.gitgud.core.settings;
 
 import yeremiva.gitgud.controller.GameController;
 
+import java.awt.geom.Rectangle2D;
+
 public class HelpMethods {
 
     public static boolean CanMoveHere(float x, float y, float width, float height, int[][] lvlData) {
@@ -34,7 +36,43 @@ public class HelpMethods {
         if (value >= 48 || value < 0 || value != 11){
             return true;
         }
-
         return false;
+    }
+
+    public static float GetCharacterXPosNextToWall(Rectangle2D.Float hitbox, float xSpeed) {
+        int currentTile = (int) (hitbox.x / GameController.TILES_SIZE);
+        if (xSpeed > 0) {
+            //Right
+            int tileXPosition = currentTile * GameController.TILES_SIZE;
+            int xOffset = (int) (GameController.TILES_SIZE - hitbox.width);
+            return tileXPosition + xOffset - 1;
+        } else {
+            //Left
+            return currentTile * GameController.TILES_SIZE;
+        }
+    }
+
+    public static float GetCharacterYPosUnderRoofOrAboveFloor(Rectangle2D.Float hitbox, float airSpeed){
+        int currentTile = (int) (hitbox.y / GameController.TILES_SIZE);
+        if (airSpeed > 0) {
+            //Falling - touching floor
+            int tileYPos = currentTile * GameController.TILES_SIZE;
+            int yOffset = (int) (GameController.TILES_SIZE - hitbox.height);
+//            int yOffset = (int) ((21 * GameController.SCALE) + 1);
+            return tileYPos + yOffset - 1;
+        } else {
+            //Jumping
+            return currentTile * GameController.TILES_SIZE;
+        }
+    }
+
+    public static boolean IsCharacterOnFloor(Rectangle2D.Float hitbox, int [][] lvlData) {
+        //Check the pixel below bottomleft and bottomright
+        if (!IsSolid(hitbox.x, hitbox.y + hitbox.height + 1, lvlData)) {
+            if (!IsSolid(hitbox.x + hitbox.width, hitbox.y + hitbox.height + 1, lvlData)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

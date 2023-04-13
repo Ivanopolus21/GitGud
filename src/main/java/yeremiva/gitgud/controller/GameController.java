@@ -35,7 +35,7 @@ public class GameController implements Runnable{
 
     private void initClasses() {
         levelController = new LevelController(this);
-        player = new Player(200, 200, (int) (48 * SCALE), (int) (48 * SCALE));
+        player = new Player(200, 200, (int) (32 * SCALE), (int) (32 * SCALE));
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
     }
 
