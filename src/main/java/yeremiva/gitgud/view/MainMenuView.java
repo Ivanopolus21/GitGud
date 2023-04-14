@@ -1,4 +1,4 @@
 package yeremiva.gitgud.view;
 
-public class MainView {
+public class MainMenuView {
 }

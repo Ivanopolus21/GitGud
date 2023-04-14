@@ -1,5 +1,6 @@
 package yeremiva.gitgud.core.inputs;
 
+import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.GamePanel;
 
 import java.awt.event.KeyEvent;
@@ -19,48 +20,27 @@ public class KeyboardInputs implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_W:
-                gamePanel.getGameController().getPlayer().setUp(false);
+        switch (Gamestate.state) {
+
+            case PLAYING:
+                gamePanel.getGameController().getGameProcessController().keyReleased(e);
                 break;
-            case KeyEvent.VK_A:
-                gamePanel.getGameController().getPlayer().setLeft(false);
-                break;
-            case KeyEvent.VK_S:
-                gamePanel.getGameController().getPlayer().setDown(false);
-                break;
-            case KeyEvent.VK_D:
-                gamePanel.getGameController().getPlayer().setRight(false);
-                break;
-            case KeyEvent.VK_SPACE:
-                gamePanel.getGameController().getPlayer().setJump(false);
+            case MENU:
+                gamePanel.getGameController().getMainMenuController().keyReleased(e);
                 break;
         }
-
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_W:
-                gamePanel.getGameController().getPlayer().setUp(true);
-                break;
-            case KeyEvent.VK_A:
-                gamePanel.getGameController().getPlayer().setLeft(true);
-                break;
-            case KeyEvent.VK_S:
-                gamePanel.getGameController().getPlayer().setDown(true);
-                break;
-            case KeyEvent.VK_D:
-                gamePanel.getGameController().getPlayer().setRight(true);
-                break;
-            case KeyEvent.VK_SPACE:
-                gamePanel.getGameController().getPlayer().setJump(true);
-                break;
-        }
+        switch (Gamestate.state) {
 
-        if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            gamePanel.getGameController().getPlayer().setAttacking(true);
+            case PLAYING:
+                gamePanel.getGameController().getGameProcessController().keyPressed(e);
+                break;
+            case MENU:
+                gamePanel.getGameController().getMainMenuController().keyPressed(e);
+                break;
         }
     }
 }

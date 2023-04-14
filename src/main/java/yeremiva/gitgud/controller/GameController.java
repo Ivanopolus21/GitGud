@@ -1,6 +1,7 @@
 package yeremiva.gitgud.controller;
 
-import yeremiva.gitgud.model.characters.Player;
+import yeremiva.gitgud.Game;
+import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.GamePanel;
 import yeremiva.gitgud.view.GameWindowView;
 
@@ -13,10 +14,12 @@ public class GameController implements Runnable{
     private Thread gameThread;
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
-    private Player player;
-    private LevelController levelController;
-    public final static int TILES_DEFAULT_SIZE = 32;
+
+    private GameProcessController gameProcessController;
+    private MainMenuController mainMenuController;
+
     public final static float SCALE = 1.5f;
+    public final static int TILES_DEFAULT_SIZE = 32;
     public final static int TILES_IN_WIDTH = 26;
     public final static int TILES_IN_HEIGHT = 14;
     public final static int TILES_SIZE = (int) (TILES_DEFAULT_SIZE * SCALE);
@@ -34,9 +37,8 @@ public class GameController implements Runnable{
     }
 
     private void initClasses() {
-        levelController = new LevelController(this);
-        player = new Player(200, 200, (int) (32 * SCALE), (int) (32 * SCALE));
-        player.loadLvlData(levelController.getCurrentLevel().getLvlData());
+        mainMenuController = new MainMenuController(this);
+        gameProcessController = new GameProcessController(this);
     }
 
     private void startGameLoop() {
@@ -45,13 +47,25 @@ public class GameController implements Runnable{
     }
 
     public void update() {
-        player.update();
-        levelController.update();
+        switch (Gamestate.state) {
+            case MENU:
+                mainMenuController.update();
+                break;
+            case PLAYING:
+                gameProcessController.update();
+                break;
+        }
     }
 
     public void render(Graphics g){
-        levelController.draw(g);
-        player.render(g);
+        switch (Gamestate.state) {
+            case MENU:
+                mainMenuController.draw(g);
+                break;
+            case PLAYING:
+                gameProcessController.draw(g);
+                break;
+        }
     }
 
     @Override
@@ -97,11 +111,17 @@ public class GameController implements Runnable{
         }
     }
 
-    public void  windowFocusLost(){
-        player.resetDirBooleans();
+    public void windowFocusLost(){
+        if (Gamestate.state == Gamestate.PLAYING) {
+            gameProcessController.getPlayer().resetDirBooleans();
+        }
     }
 
-    public Player getPlayer(){
-        return player;
+    public MainMenuController getMainMenuController(){
+        return mainMenuController;
+    }
+
+    public GameProcessController getGameProcessController(){
+        return gameProcessController;
     }
 }

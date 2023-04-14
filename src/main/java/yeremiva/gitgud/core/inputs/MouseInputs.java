@@ -1,6 +1,7 @@
 package yeremiva.gitgud.core.inputs;
 
 import yeremiva.gitgud.Game;
+import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.GamePanel;
 
 import java.awt.event.MouseEvent;
@@ -22,8 +23,13 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
-            gamePanel.getGameController().getPlayer().setAttacking(true);
+        switch(Gamestate.state) {
+            case PLAYING:
+                gamePanel.getGameController().getGameProcessController().mouseClicked(e);
+                break;
+            case MENU:
+                gamePanel.getGameController().getMainMenuController().mouseClicked(e);
+                break;
         }
     }
 

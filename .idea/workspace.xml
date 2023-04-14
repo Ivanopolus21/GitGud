@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added jump and a gravity to the game">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added jump animation and changed the walking animation to the running (with a bug)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Gamestate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Statemethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -30,20 +40,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ivan/Documents/KAIJI SEMESTER/JavaLin/GitGud&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Ivan/Documents/KAIJI SEMESTER/JavaLin/GitGud",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ivan\Documents\KAIJI SEMESTER\JavaLin\GitGud\src\main\resources" />
@@ -96,7 +107,11 @@
       <workItem from="1681231019301" duration="1837000" />
       <workItem from="1681245211951" duration="2834000" />
       <workItem from="1681300898999" duration="5388000" />
-      <workItem from="1681330130637" duration="13153000" />
+      <workItem from="1681330130637" duration="13701000" />
+      <workItem from="1681376311388" duration="357000" />
+      <workItem from="1681402812551" duration="1088000" />
+      <workItem from="1681481344944" duration="3970000" />
+      <workItem from="1681497838450" duration="7524000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -315,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681345794823</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Added jump animation and changed the walking animation to the running (with a bug)">
+      <created>1681346564334</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1681346564334</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +355,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="test23" />
     <MESSAGE value="Added some controllers to the game" />
     <MESSAGE value="Added some characters classes to the game" />
@@ -358,6 +379,11 @@
     <MESSAGE value="Changed the bug with image scaling and added actual hitbox for the debugging" />
     <MESSAGE value="Added collision to the game with a hitbox" />
     <MESSAGE value="Added jump and a gravity to the game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added jump and a gravity to the game" />
+    <MESSAGE value="Added jump animation and changed the walking animation to the running (with a bug)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added jump animation and changed the walking animation to the running (with a bug)" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
