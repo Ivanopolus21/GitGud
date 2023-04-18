@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added jump animation and changed the walking animation to the running (with a bug)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Gamestate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Statemethods.java" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/button_atlas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/menu_background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,21 +36,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Ivan/Documents/KAIJI SEMESTER/JavaLin/GitGud",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ivan/Documents/KAIJI SEMESTER/JavaLin/hangman-FX&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ivan\Documents\KAIJI SEMESTER\JavaLin\GitGud\src\main\resources" />
@@ -111,7 +107,10 @@
       <workItem from="1681376311388" duration="357000" />
       <workItem from="1681402812551" duration="1088000" />
       <workItem from="1681481344944" duration="3970000" />
-      <workItem from="1681497838450" duration="7524000" />
+      <workItem from="1681497838450" duration="8721000" />
+      <workItem from="1681713314534" duration="12000" />
+      <workItem from="1681715980148" duration="580000" />
+      <workItem from="1681857697674" duration="1767000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -337,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681346564334</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class">
+      <created>1681505753669</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1681505753669</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +361,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test23" />
     <MESSAGE value="Added some controllers to the game" />
     <MESSAGE value="Added some characters classes to the game" />
     <MESSAGE value="Added some view and item classes to the game" />
@@ -380,7 +385,8 @@
     <MESSAGE value="Added collision to the game with a hitbox" />
     <MESSAGE value="Added jump and a gravity to the game" />
     <MESSAGE value="Added jump animation and changed the walking animation to the running (with a bug)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added jump animation and changed the walking animation to the running (with a bug)" />
+    <MESSAGE value="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
