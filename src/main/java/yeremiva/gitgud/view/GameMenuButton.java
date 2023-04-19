@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static yeremiva.gitgud.core.settings.Constants.View.Buttons.*;
-
+//MENUBUTTON
 public class GameMenuButton {
     private int xPos, yPos, rowIndex, index;
     private int xOffsetCenter = B_WIDTH / 2;
@@ -62,6 +62,14 @@ public class GameMenuButton {
 
     public boolean isMousePressed() {
         return mousePressed;
+    }
+
+    public void setMouseOver(boolean mouseOver) {
+        this.mouseOver = mouseOver;
+    }
+
+    public void setMousePressed(boolean mousePressed) {
+        this.mousePressed = mousePressed;
     }
 
     public Rectangle getBounds() {

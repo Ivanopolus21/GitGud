@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/button_atlas.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/menu_background.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added configuration for menu buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Gamestate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Gamestate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +109,8 @@
       <workItem from="1681497838450" duration="8721000" />
       <workItem from="1681713314534" duration="12000" />
       <workItem from="1681715980148" duration="580000" />
-      <workItem from="1681857697674" duration="1767000" />
+      <workItem from="1681857697674" duration="2113000" />
+      <workItem from="1681903440422" duration="1212000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -343,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681505753669</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added configuration for menu buttons">
+      <created>1681859805511</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1681859805511</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +368,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some controllers to the game" />
     <MESSAGE value="Added some characters classes to the game" />
     <MESSAGE value="Added some view and item classes to the game" />
     <MESSAGE value="Added the window of the game to be terminated while closed" />
@@ -386,7 +392,8 @@
     <MESSAGE value="Added jump and a gravity to the game" />
     <MESSAGE value="Added jump animation and changed the walking animation to the running (with a bug)" />
     <MESSAGE value="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class" />
+    <MESSAGE value="Added configuration for menu buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added configuration for menu buttons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
