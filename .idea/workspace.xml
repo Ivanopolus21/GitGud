@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added game menu buttons binded to its' mouse keys">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-    </list>
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added background to game menu" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +104,7 @@
       <workItem from="1681713314534" duration="12000" />
       <workItem from="1681715980148" duration="580000" />
       <workItem from="1681857697674" duration="2113000" />
-      <workItem from="1681903440422" duration="2627000" />
+      <workItem from="1681903440422" duration="2950000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -362,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681905163916</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Added background to game menu">
+      <created>1681910312030</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1681910312030</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +383,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added the window of the game to be terminated while closed" />
     <MESSAGE value="Added the rectangle inside the window just as test" />
     <MESSAGE value="Added the filled rectangle inside the window just as test" />
     <MESSAGE value="Added inputs to the rectangle (maybe for the main character)" />
@@ -405,7 +407,8 @@
     <MESSAGE value="Added configuration for menu buttons" />
     <MESSAGE value="Added game menu buttons view, but without binding to the keyinputs" />
     <MESSAGE value="Added game menu buttons binded to its' mouse keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added game menu buttons binded to its' mouse keys" />
+    <MESSAGE value="Added background to game menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added background to game menu" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

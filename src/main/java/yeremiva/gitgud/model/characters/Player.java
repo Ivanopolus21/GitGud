@@ -39,7 +39,7 @@ public class Player extends Character{
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
-        initHitbox(x, y, 16 * GameController.SCALE, 27 * GameController.SCALE);
+        initHitbox(x, y, (int) (16 * GameController.SCALE), (int) (27 * GameController.SCALE));
 
     }
 
