@@ -14,6 +14,8 @@ import java.awt.event.MouseEvent;
 public class GameProcessController extends State implements Statemethods {
     private Player player;
     private LevelController levelController;
+    private PauseController pauseController;
+    private boolean paused;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -24,6 +26,7 @@ public class GameProcessController extends State implements Statemethods {
         levelController = new LevelController(gameController);
         player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE));
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
+        pauseController = new PauseController();
     }
 
     @Override
@@ -36,6 +39,8 @@ public class GameProcessController extends State implements Statemethods {
     public void draw(Graphics g) {
         levelController.draw(g);
         player.render(g);
+
+        pauseController.draw(g);
     }
 
     @Override

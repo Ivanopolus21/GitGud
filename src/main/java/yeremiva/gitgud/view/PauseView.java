@@ -1,4 +1,5 @@
 package yeremiva.gitgud.view;
 
-public class GameMenuView {
+public class PauseView {
+
 }
