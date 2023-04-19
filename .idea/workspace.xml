@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added configuration for menu buttons">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Gamestate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/Gamestate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added game menu buttons view, but without binding to the keyinputs">
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +106,7 @@
       <workItem from="1681713314534" duration="12000" />
       <workItem from="1681715980148" duration="580000" />
       <workItem from="1681857697674" duration="2113000" />
-      <workItem from="1681903440422" duration="1212000" />
+      <workItem from="1681903440422" duration="1517000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -350,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681859805511</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added game menu buttons view, but without binding to the keyinputs">
+      <created>1681904769329</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1681904769329</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +371,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some characters classes to the game" />
     <MESSAGE value="Added some view and item classes to the game" />
     <MESSAGE value="Added the window of the game to be terminated while closed" />
     <MESSAGE value="Added the rectangle inside the window just as test" />
@@ -393,7 +395,8 @@
     <MESSAGE value="Added jump animation and changed the walking animation to the running (with a bug)" />
     <MESSAGE value="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class" />
     <MESSAGE value="Added configuration for menu buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added configuration for menu buttons" />
+    <MESSAGE value="Added game menu buttons view, but without binding to the keyinputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added game menu buttons view, but without binding to the keyinputs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

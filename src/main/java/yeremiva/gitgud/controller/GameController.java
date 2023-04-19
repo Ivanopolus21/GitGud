@@ -54,6 +54,11 @@ public class GameController implements Runnable{
             case PLAYING:
                 gameProcessController.update();
                 break;
+            case OPTIONS:
+            case QUIT:
+            default:
+                System.exit(0);
+                break;
         }
     }
 
