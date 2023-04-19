@@ -23,7 +23,7 @@ public class Player extends Character{
     private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
     private boolean left, up, right, down, jump;
-    private float playerSpeed = 1.5f;
+    private float playerSpeed = 1.0f * GameController.SCALE;
     private int[][] lvlData;
     private float xDrawOffset = 7 * GameController.SCALE;
     private float yDrawOffset = 4 * GameController.SCALE;
