@@ -15,7 +15,7 @@ public class GameProcessController extends State implements Statemethods {
     private Player player;
     private LevelController levelController;
     private PauseController pauseController;
-    private boolean paused = true;
+    private boolean paused = false;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -26,15 +26,17 @@ public class GameProcessController extends State implements Statemethods {
         levelController = new LevelController(gameController);
         player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE));
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
-        pauseController = new PauseController();
+        pauseController = new PauseController(this);
     }
 
     @Override
     public void update() {
-        levelController.update();
-        player.update();
-
-        pauseController.update();
+        if (!paused){
+            levelController.update();
+            player.update();
+        } else {
+            pauseController.update();
+        }
     }
 
     @Override
@@ -42,7 +44,16 @@ public class GameProcessController extends State implements Statemethods {
         levelController.draw(g);
         player.render(g);
 
-        pauseController.draw(g);
+        if (paused) {
+            pauseController.draw(g);
+        }
+
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        if (paused) {
+            pauseController.mouseDragged(e);
+        }
     }
 
     @Override
@@ -96,7 +107,7 @@ public class GameProcessController extends State implements Statemethods {
                 player.setAttacking(true);
                 break;
             case KeyEvent.VK_ESCAPE:
-                Gamestate.state = Gamestate.MENU;
+                paused = !paused;
                 break;
         }
 
@@ -115,6 +126,10 @@ public class GameProcessController extends State implements Statemethods {
                 player.setJump(false);
                 break;
         }
+    }
+
+    public void unpauseGame() {
+        paused = false;
     }
 
     public void  windowFocusLost(){

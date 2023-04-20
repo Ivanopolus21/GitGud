@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added pause menu position and view, removed unnecessary images, added new">
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PauseButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/SoundButtonView.java" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added pause menu sound buttons, their logic and view">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/UrmButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/VolumeButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/SoundButtonView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/SoundButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ivan/Documents/KAIJI SEMESTER/JavaLin/hangman-FX&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ivan/Documents/KAIJI SEMESTER/TS1/online_shop_tests&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -114,7 +117,10 @@
       <workItem from="1681857697674" duration="2113000" />
       <workItem from="1681903440422" duration="7161000" />
       <workItem from="1681926939596" duration="5927000" />
-      <workItem from="1681978905905" duration="3318000" />
+      <workItem from="1681978905905" duration="3400000" />
+      <workItem from="1681987762136" duration="766000" />
+      <workItem from="1682000127109" duration="273000" />
+      <workItem from="1682016607792" duration="8568000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -396,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681914118143</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Added pause menu sound buttons, their logic and view">
+      <created>1681982552363</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1681982552363</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +427,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some color configs" />
     <MESSAGE value="Fixed color configs" />
     <MESSAGE value="Added sprite for the main character, modified inputs, changed the size of the window" />
     <MESSAGE value="Added sprite animations that I can input manually and switch between them" />
@@ -439,7 +451,8 @@
     <MESSAGE value="Fixing a bug with an animation" />
     <MESSAGE value="Changing player speed to scalable" />
     <MESSAGE value="Added pause menu position and view, removed unnecessary images, added new" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added pause menu position and view, removed unnecessary images, added new" />
+    <MESSAGE value="Added pause menu sound buttons, their logic and view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added pause menu sound buttons, their logic and view" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

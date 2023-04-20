@@ -7,13 +7,13 @@ import java.awt.image.BufferedImage;
 
 import static yeremiva.gitgud.core.settings.Constants.View.PauseButtons.*;
 
-public class SoundButtonView extends PauseButton{
+public class SoundButton extends PauseButton{
 
     private BufferedImage[][] soundImgs;
     private boolean mouseOver, mousePressed;
     private boolean muted;
     private int rowIndex, columnIndex;
-    public SoundButtonView(int x, int y, int width, int height) {
+    public SoundButton(int x, int y, int width, int height) {
         super(x, y, width, height);
 
         loadSoundImgs();
