@@ -15,7 +15,7 @@ public class GameProcessController extends State implements Statemethods {
     private Player player;
     private LevelController levelController;
     private PauseController pauseController;
-    private boolean paused;
+    private boolean paused = true;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -33,6 +33,8 @@ public class GameProcessController extends State implements Statemethods {
     public void update() {
         levelController.update();
         player.update();
+
+        pauseController.update();
     }
 
     @Override
@@ -52,18 +54,31 @@ public class GameProcessController extends State implements Statemethods {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        if (paused) {
+            pauseController.mousePressed(e);
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        if (paused) {
+            pauseController.mouseReleased(e);
+        }
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        if (paused) {
+            pauseController.mouseMoved(e);
+        }
     }
+
+//    @Override
+//    public void mouseDragged(MouseEvent e) {
+//        if (paused) {
+//            pauseController.mouseDragged(e);
+//        }
+//    }
 
     @Override
     public void keyPressed(KeyEvent e) {

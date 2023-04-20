@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Changing player speed to scalable">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/pause_menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sound_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/urm_buttons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/volume_buttons.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added pause menu position and view, removed unnecessary images, added new">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PauseButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/SoundButtonView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PauseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_Main_bckgrdlev_build.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_background_obj.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_day1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_day2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_day3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_night1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_night2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_bakcground_night3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SET1_decorative_obj.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +112,9 @@
       <workItem from="1681713314534" duration="12000" />
       <workItem from="1681715980148" duration="580000" />
       <workItem from="1681857697674" duration="2113000" />
-      <workItem from="1681903440422" duration="6228000" />
+      <workItem from="1681903440422" duration="7161000" />
+      <workItem from="1681926939596" duration="5927000" />
+      <workItem from="1681978905905" duration="3318000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -398,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681910663268</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added pause menu position and view, removed unnecessary images, added new">
+      <created>1681914118143</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1681914118143</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +414,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added inputs to the rectangle (maybe for the main character)" />
     <MESSAGE value="Added some color configs" />
     <MESSAGE value="Fixed color configs" />
     <MESSAGE value="Added sprite for the main character, modified inputs, changed the size of the window" />
@@ -441,7 +438,8 @@
     <MESSAGE value="Added background to game menu" />
     <MESSAGE value="Fixing a bug with an animation" />
     <MESSAGE value="Changing player speed to scalable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing player speed to scalable" />
+    <MESSAGE value="Added pause menu position and view, removed unnecessary images, added new" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added pause menu position and view, removed unnecessary images, added new" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
