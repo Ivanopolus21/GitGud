@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Changed some button sprites to fit more for my game">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/level_one_data_long.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Update of menu buttons view">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/background_menu.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +115,8 @@
       <workItem from="1681987762136" duration="766000" />
       <workItem from="1682000127109" duration="273000" />
       <workItem from="1682016607792" duration="8790000" />
-      <workItem from="1682066906253" duration="3529000" />
+      <workItem from="1682066906253" duration="4976000" />
+      <workItem from="1682086163050" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -430,7 +426,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682029044619</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Added longer level and added camera movement when a player is passing through the end of the window">
+      <created>1682071660295</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1682071660295</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Update of menu buttons view">
+      <created>1682071681016</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1682071681016</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,8 +458,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added constants for the player, his direction and animations" />
-    <MESSAGE value="Added an UPS (updates) to the game loop" />
     <MESSAGE value="Added the Player class and refactored some code" />
     <MESSAGE value="Added greater Player inputs and the player has an opportunity to go diagonally" />
     <MESSAGE value="Added attack animation for the Player on keyboard &quot;DOWN&quot; arrow" />
@@ -473,7 +481,9 @@
     <MESSAGE value="Added a slider for volume button in pause menu" />
     <MESSAGE value="Changed some sprites to fit more for my game" />
     <MESSAGE value="Changed some button sprites to fit more for my game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed some button sprites to fit more for my game" />
+    <MESSAGE value="Added longer level and added camera movement when a player is passing through the end of the window" />
+    <MESSAGE value="Update of menu buttons view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update of menu buttons view" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,6 +1,5 @@
 package yeremiva.gitgud.controller;
 
-import javafx.scene.control.MenuButton;
 import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.core.states.State;
@@ -15,20 +14,21 @@ import java.awt.image.BufferedImage;
 //MENU
 public class MainMenuController extends State implements Statemethods {
     private GameMenuButton[] buttons = new GameMenuButton[3];
-    private BufferedImage backgroundImg;
+    private BufferedImage backgroundImgOfMenuOverlay, backgroundImg;
     private int menuX, menuY, menuWidth, menuHeight;
 
     public MainMenuController(GameController gameController) {
         super(gameController);
         loadButtons();
         loadBackground();
+        backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND_IMAGE);
     }
 
     //Function that loads menu background
     private void loadBackground() {
-        backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
-        menuWidth = (int) (backgroundImg.getWidth() * GameController.SCALE);
-        menuHeight = (int) (backgroundImg.getHeight() * GameController.SCALE);
+        backgroundImgOfMenuOverlay = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
+        menuWidth = (int) (backgroundImgOfMenuOverlay.getWidth() * GameController.SCALE);
+        menuHeight = (int) (backgroundImgOfMenuOverlay.getHeight() * GameController.SCALE);
         menuX = GameController.GAME_WIDTH / 2 - menuWidth / 2;
         menuY = (int) (45 * GameController.SCALE);
     }
@@ -50,7 +50,9 @@ public class MainMenuController extends State implements Statemethods {
     @Override
     public void draw(Graphics g) {
 
-        g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
+        g.drawImage(backgroundImg, 0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT, null);
+
+        g.drawImage(backgroundImgOfMenuOverlay, menuX, menuY, menuWidth, menuHeight, null);
 
         for (GameMenuButton gmb : buttons) {
             gmb.draw(g);
