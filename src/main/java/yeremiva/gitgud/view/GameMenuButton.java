@@ -12,7 +12,7 @@ public class GameMenuButton {
     private int xPos, yPos, rowIndex, index;
     private int xOffsetCenter = B_WIDTH / 2;
     private Gamestate state;
-    private BufferedImage[] imgs;
+    private BufferedImage[] imgs, arrows;
     public boolean mouseOver, mousePressed;
     private Rectangle bounds;
 
@@ -38,11 +38,20 @@ public class GameMenuButton {
         for (int i =  0; i < imgs.length; i++){
             imgs[i] = temp.getSubimage(i * B_WIDTH_DEFAULT, rowIndex * B_HEIGHT_DEFAULT, B_WIDTH_DEFAULT, B_HEIGHT_DEFAULT);
         }
+
+//        arrows = new BufferedImage[3];
+////        BufferedImage temp1 = LoadSave.GetSpriteAtlas(LoadSave.MENU_BUTTON_ARROWS);
+//        for (int i =  0; i < imgs.length; i++){
+//            imgs[i] = temp.getSubimage(i * B_WIDTH_DEFAULT, rowIndex * B_HEIGHT_DEFAULT, B_WIDTH_DEFAULT, B_HEIGHT_DEFAULT);
+//        }
     }
 
     //Function that draws the buttons on the screen
     public void draw(Graphics g){
         g.drawImage(imgs[index], xPos - xOffsetCenter, yPos, B_WIDTH, B_HEIGHT, null);
+//        if (mouseOver) {
+//            g.drawImage()
+//        }
     }
 
     //Function to update the buttons

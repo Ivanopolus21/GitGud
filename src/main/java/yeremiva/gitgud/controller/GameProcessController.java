@@ -1,6 +1,7 @@
 package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.Game;
+import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.core.states.State;
 import yeremiva.gitgud.core.states.Statemethods;
@@ -16,6 +17,13 @@ public class GameProcessController extends State implements Statemethods {
     private LevelController levelController;
     private PauseController pauseController;
     private boolean paused = false;
+
+    private int xLvlOffset;
+    private int leftBorder = (int) (0.2 * GameController.GAME_WIDTH);
+    private int rightBorder = (int) (0.8 * GameController.GAME_WIDTH);
+    private int lvlTilesWide = LoadSave.GetLevelData()[0].length;
+    private int maxTilesOffset = lvlTilesWide - GameController.TILES_IN_WIDTH;
+    private int maxLvlOffsetX = maxTilesOffset * GameController.TILES_SIZE;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -34,17 +42,37 @@ public class GameProcessController extends State implements Statemethods {
         if (!paused){
             levelController.update();
             player.update();
+            checkCloseToBorder();
         } else {
             pauseController.update();
         }
     }
 
+    private void checkCloseToBorder() {
+        int playerX = (int) (player.getHitbox().x);
+        int diff = playerX - xLvlOffset;
+
+        if (diff > rightBorder) {
+            xLvlOffset += diff - rightBorder;
+        } else if (diff < leftBorder) {
+            xLvlOffset += diff - leftBorder;
+        }
+
+        if (xLvlOffset > maxLvlOffsetX) {
+            xLvlOffset = maxLvlOffsetX;
+        } else if (xLvlOffset < 0) {
+            xLvlOffset = 0;
+        }
+    }
+
     @Override
     public void draw(Graphics g) {
-        levelController.draw(g);
-        player.render(g);
+        levelController.draw(g, xLvlOffset);
+        player.render(g, xLvlOffset);
 
         if (paused) {
+            g.setColor(new Color(0, 0, 0, 150));
+            g.fillRect(0,0,GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
             pauseController.draw(g);
         }
 

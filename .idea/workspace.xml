@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added pause menu sound buttons, their logic and view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/UrmButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/VolumeButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Changed some button sprites to fit more for my game">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/level_one_data_long.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/inputs/MouseInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/SoundButtonView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/SoundButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +119,8 @@
       <workItem from="1681978905905" duration="3400000" />
       <workItem from="1681987762136" duration="766000" />
       <workItem from="1682000127109" duration="273000" />
-      <workItem from="1682016607792" duration="8568000" />
+      <workItem from="1682016607792" duration="8790000" />
+      <workItem from="1682066906253" duration="3529000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1680500051110</created>
@@ -409,7 +409,28 @@
       <option name="project" value="LOCAL" />
       <updated>1681982552363</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Added a slider for volume button in pause menu">
+      <created>1682028995734</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1682028995734</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Changed some sprites to fit more for my game">
+      <created>1682029033696</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1682029033696</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Changed some button sprites to fit more for my game">
+      <created>1682029044619</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1682029044619</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,9 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed color configs" />
-    <MESSAGE value="Added sprite for the main character, modified inputs, changed the size of the window" />
-    <MESSAGE value="Added sprite animations that I can input manually and switch between them" />
     <MESSAGE value="Added constants for the player, his direction and animations" />
     <MESSAGE value="Added an UPS (updates) to the game loop" />
     <MESSAGE value="Added the Player class and refactored some code" />
@@ -452,7 +470,10 @@
     <MESSAGE value="Changing player speed to scalable" />
     <MESSAGE value="Added pause menu position and view, removed unnecessary images, added new" />
     <MESSAGE value="Added pause menu sound buttons, their logic and view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added pause menu sound buttons, their logic and view" />
+    <MESSAGE value="Added a slider for volume button in pause menu" />
+    <MESSAGE value="Changed some sprites to fit more for my game" />
+    <MESSAGE value="Changed some button sprites to fit more for my game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed some button sprites to fit more for my game" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
