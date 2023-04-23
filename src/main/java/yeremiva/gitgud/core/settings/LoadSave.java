@@ -1,12 +1,16 @@
 package yeremiva.gitgud.core.settings;
 
 import yeremiva.gitgud.controller.GameController;
+import yeremiva.gitgud.model.characters.Skeleton;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+
+import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.SKELETON;
 
 public class LoadSave {
 
@@ -40,7 +44,11 @@ public static final String LEVEL_ONE_DATA = "level_one_data_long.png";
     public static final String PLAYING_BACKGROUND_IMAGE = "playing_bg_img.png";
     public static final String BIG_CLOUDS = "big_clouds.png";
     public static final String SMALL_CLOUDS = "small_clouds.png";
-    public static final String MINI_SKELETON_SPRITE = "mini_skeleton_fixed.png";
+
+
+//    public static final String SKELETON_SPRITE = "mini_skeleton_fixed.png";
+    public static final String SKELETON_SPRITE = "mini_skeleton_fixed_for_real_this_time (2).png";
+//    public static final String SKELETON_SPRITE = "crabby_sprite.png";
 
     public static BufferedImage GetSpriteAtlas(String atlas){
         BufferedImage img = null;
@@ -57,6 +65,22 @@ public static final String LEVEL_ONE_DATA = "level_one_data_long.png";
             }
         }
         return img;
+    }
+
+    public static ArrayList<Skeleton> GetSkeletons() {
+        BufferedImage img = GetSpriteAtlas(LEVEL_ONE_DATA);
+        ArrayList<Skeleton> list = new ArrayList<>();
+
+        for (int j = 0; j < img.getHeight(); j++){
+            for (int i = 0; i < img.getWidth(); i ++){
+                Color color = new Color(img.getRGB(i, j));
+                int value = color.getGreen();
+                if (value == SKELETON) {
+                    list.add(new Skeleton(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE));
+                }
+            }
+        }
+        return list;
     }
 
     public static int[][] GetLevelData(){

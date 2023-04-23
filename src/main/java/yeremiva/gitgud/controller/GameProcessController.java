@@ -5,6 +5,7 @@ import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.core.states.State;
 import yeremiva.gitgud.core.states.Statemethods;
+import yeremiva.gitgud.model.characters.Enemy;
 import yeremiva.gitgud.model.characters.Player;
 
 import java.awt.*;
@@ -19,6 +20,7 @@ import static yeremiva.gitgud.core.settings.Constants.Enviroment.*;
 public class GameProcessController extends State implements Statemethods {
     private Player player;
     private LevelController levelController;
+    private EnemyController enemyController;
     private PauseController pauseController;
     private boolean paused = false;
 
@@ -48,6 +50,7 @@ public class GameProcessController extends State implements Statemethods {
 
     private void initClasses() {
         levelController = new LevelController(gameController);
+        enemyController = new EnemyController(this);
         player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE));
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
         pauseController = new PauseController(this);
@@ -58,6 +61,7 @@ public class GameProcessController extends State implements Statemethods {
         if (!paused){
             levelController.update();
             player.update();
+            enemyController.update();
             checkCloseToBorder();
         } else {
             pauseController.update();
@@ -89,6 +93,7 @@ public class GameProcessController extends State implements Statemethods {
 
         levelController.draw(g, xLvlOffset);
         player.render(g, xLvlOffset);
+        enemyController.draw(g, xLvlOffset);
 
         if (paused) {
             g.setColor(new Color(0, 0, 0, 150));
@@ -103,7 +108,7 @@ public class GameProcessController extends State implements Statemethods {
             g.drawImage(bigCloud, i * BIG_CLOUD_WIDTH - (int) (xLvlOffset * 0.3), (int) (204 * GameController.SCALE), BIG_CLOUD_WIDTH, BIG_CLOUD_HEIGHT, null);
         }
         for (int i = 0; i < smallCloudsPos.length; i++) {
-            g.drawImage(smallCloud, SMALL_CLOUD_WIDTH * 4 * i - (int) (xLvlOffset * 0.7), smallCloudsPos[i], SMALL_CLOUD_WIDTH, SMALl_CLOUD_HEIGHT, null);
+            g.drawImage(smallCloud, SMALL_CLOUD_WIDTH * 4 * i - (int) (xLvlOffset * 0.7 ), smallCloudsPos[i], SMALL_CLOUD_WIDTH, SMALl_CLOUD_HEIGHT, null);
         }
 
     }

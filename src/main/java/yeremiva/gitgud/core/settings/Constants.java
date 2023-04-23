@@ -14,8 +14,9 @@ public class Constants {
         public static final int DEAD = 4;
 
 //        public static final int SKELETON_WIDTH_DEFAULT = 72;
-        public static final int SKELETON_WIDTH_DEFAULT = 15;
-        public static final int SKELETON_HEIGHT_DEFAULT = 17;
+        public static final int SKELETON_WIDTH_DEFAULT = 64;
+//        public static final int SKELETON_HEIGHT_DEFAULT = 32;
+        public static final int SKELETON_HEIGHT_DEFAULT = 64;
 
         public static final int SKELETON_WIDTH = (int) (SKELETON_WIDTH_DEFAULT *  GameController.SCALE);
         public static final int SKELETON_HEIGHT = (int) (SKELETON_HEIGHT_DEFAULT *  GameController.SCALE);

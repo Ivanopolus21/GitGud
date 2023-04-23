@@ -3,8 +3,8 @@ package yeremiva.gitgud.model.characters;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 
 public abstract class Enemy extends Character{
-    protected int aniIndex, enemyState, enemyType;
-    protected int aniTick, aniSpeed = 25;
+    private int aniIndex, enemyState, enemyType;
+    private int aniTick, aniSpeed = 25;
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);
         this.enemyType = enemyType;
