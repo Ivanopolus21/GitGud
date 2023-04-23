@@ -4,6 +4,40 @@ import yeremiva.gitgud.controller.GameController;
 
 public class Constants {
 
+    public static class EnemyConstants {
+        public static final int SKELETON = 0;
+
+        public static final int IDLE = 0;
+        public static final int RUNNING = 1;
+        public static final int ATTACK = 2;
+        public static final int HIT = 3;
+        public static final int DEAD = 4;
+
+//        public static final int SKELETON_WIDTH_DEFAULT = 72;
+        public static final int SKELETON_WIDTH_DEFAULT = 15;
+        public static final int SKELETON_HEIGHT_DEFAULT = 17;
+
+        public static final int SKELETON_WIDTH = (int) (SKELETON_WIDTH_DEFAULT *  GameController.SCALE);
+        public static final int SKELETON_HEIGHT = (int) (SKELETON_HEIGHT_DEFAULT *  GameController.SCALE);
+
+        public static int GetSpriteAmount(int enemy_type, int enemy_state) {
+            switch (enemy_type) {
+                case SKELETON:
+                    switch(enemy_state) {
+                        case IDLE:
+                            return 4;
+                        case RUNNING:
+                        case ATTACK:
+                        case DEAD:
+                            return 6;
+                        case HIT:
+                            return 4;
+                    }
+            }
+            return 0;
+        }
+    }
+
     public static class Enviroment{
         public static final int BIG_CLOUD_WIDTH_DEFAULT = 448;
         public static final int BIG_CLOUD_HEIGHT_DEFAULT = 101;
