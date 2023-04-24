@@ -34,7 +34,7 @@ public class PauseController {
 
     private void createVolumeButton() {
         int volumeX = (int) (309 * GameController.SCALE);
-        int volumeY = (int) (278 * GameController.SCALE);
+        int volumeY = (int) (258 * GameController.SCALE);
         volumeButton = new VolumeButton(volumeX, volumeY, SLIDER_WIDTH, VOLUME_HEIGHT);
     }
 
@@ -43,7 +43,7 @@ public class PauseController {
         int menuX = (int) (313 * GameController.SCALE);
         int replayX = (int) (387 * GameController.SCALE);
         int unpauseX = (int) (462 * GameController.SCALE);
-        int buttonY = (int) (325 * GameController.SCALE);
+        int buttonY = (int) (305 * GameController.SCALE);
 
         menuB = new UrmButton(menuX, buttonY, URM_SIZE, URM_SIZE, 2);
         replayB = new UrmButton(replayX, buttonY, URM_SIZE, URM_SIZE, 1);
@@ -52,8 +52,8 @@ public class PauseController {
 
     private void createSoundButtons() {
         int soundX = (int) (450 * GameController.SCALE);
-        int musicY = (int) (140 * GameController.SCALE);
-        int sfxY = (int) (186 * GameController.SCALE);
+        int musicY = (int) (115 * GameController.SCALE);
+        int sfxY = (int) (161 * GameController.SCALE);
         musicButton = new SoundButton(soundX, musicY, SOUND_SIZE, SOUND_SIZE);
         sfxButton = new SoundButton(soundX, sfxY, SOUND_SIZE, SOUND_SIZE);
     }
@@ -64,7 +64,7 @@ public class PauseController {
         bgWidth = (int) (backgroundImg.getWidth() * GameController.SCALE);
         bgHeight = (int) (backgroundImg.getHeight() * GameController.SCALE);
         bgX = GameController.GAME_WIDTH / 2 - bgWidth / 2;
-        bgY = (int) (25 * GameController.SCALE);
+        bgY = (int) (80 * GameController.SCALE);
     }
 
     public void update(){

@@ -21,6 +21,9 @@ public class Constants {
         public static final int SKELETON_WIDTH = (int) (SKELETON_WIDTH_DEFAULT *  GameController.SCALE);
         public static final int SKELETON_HEIGHT = (int) (SKELETON_HEIGHT_DEFAULT *  GameController.SCALE);
 
+        public static final int SKELETON_DRAWOFFSET_X = (int) (26 * GameController.SCALE);
+        public static final int SKELETON_DRAWOFFSET_Y = (int) (40 * GameController.SCALE);
+
         public static int GetSpriteAmount(int enemy_type, int enemy_state) {
             switch (enemy_type) {
                 case SKELETON:

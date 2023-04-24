@@ -37,10 +37,17 @@ public static final String LEVEL_ONE_DATA = "level_one_data_long.png";
     public static final String MENU_BACKGROUND_IMAGE = "background_menu_fixed.png";
 
 
-    public static final String PAUSE_BACKGROUND = "pause_menu.png";
-    public static final String URM_BUTTONS = "urm_buttons.png";
-    public static final String VOLUME_BUTTONS = "volume_buttons.png";
-    public static final String SOUND_BUTTONS = "sound_button.png";
+//    public static final String PAUSE_BACKGROUND = "pause_menu.png";
+//    public static final String URM_BUTTONS = "urm_buttons.png";
+//    public static final String VOLUME_BUTTONS = "volume_buttons.png";
+//    public static final String SOUND_BUTTONS = "sound_button.png";
+
+    public static final String PAUSE_BACKGROUND = "pause_menu_fixed.png";
+    public static final String URM_BUTTONS = "urm_buttons_fixed.png";
+    public static final String VOLUME_BUTTONS = "volume_buttons_fixed.png";
+    public static final String SOUND_BUTTONS = "sound_button_fixed.png";
+
+
     public static final String PLAYING_BACKGROUND_IMAGE = "playing_bg_img.png";
     public static final String BIG_CLOUDS = "big_clouds.png";
     public static final String SMALL_CLOUDS = "small_clouds.png";

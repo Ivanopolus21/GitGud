@@ -67,7 +67,7 @@ public class HelpMethods {
         }
     }
 
-    public static boolean IsCharacterOnFloor(Rectangle2D.Float hitbox, int [][] lvlData) {
+    public static boolean IsCharacterOnFloor(Rectangle2D.Float hitbox, int[][] lvlData) {
         //Check the pixel below bottomleft and bottomright
         if (!IsSolid(hitbox.x, hitbox.y + hitbox.height + 1, lvlData)) {
             if (!IsSolid(hitbox.x + hitbox.width, hitbox.y + hitbox.height + 1, lvlData)) {
@@ -75,5 +75,9 @@ public class HelpMethods {
             }
         }
         return true;
+    }
+
+    public static boolean IsFloor(Rectangle2D.Float hitbox, float xSpeed, int[][] lvlData) {
+        return IsSolid(hitbox.x + xSpeed, hitbox.y + hitbox.height + 1, lvlData);
     }
 }

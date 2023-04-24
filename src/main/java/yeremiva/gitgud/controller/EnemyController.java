@@ -2,6 +2,8 @@ package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.Game;
 import yeremiva.gitgud.core.settings.LoadSave;
+import yeremiva.gitgud.model.characters.Enemy;
+import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.model.characters.Skeleton;
 
 import java.awt.*;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 
 public class EnemyController {
+    private Skeleton skeleton;
     private GameProcessController gameProcessController;
     private BufferedImage[][] skeletonArr;
     private ArrayList<Skeleton> skeletons = new ArrayList<>();
@@ -25,9 +28,9 @@ public class EnemyController {
         System.out.println("size of skeletons: " + skeletons.size());
     }
 
-    public void update(){
+    public void update(int[][] lvlData){
         for (Skeleton s: skeletons) {
-            s.update();
+            s.update(lvlData);
         }
     }
 

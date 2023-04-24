@@ -13,9 +13,9 @@ public class GameWindowView {
 
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.add(gamePanel);
-        jframe.setLocationRelativeTo(null);
         jframe.setResizable(false);
         jframe.pack();
+        jframe.setLocationRelativeTo(null);
         jframe.setVisible(true);
         jframe.addWindowFocusListener(new WindowFocusListener() {
             @Override
