@@ -15,7 +15,7 @@ public abstract class Character {
         this.height = height;
     }
 
-    protected void drawHitbox(Graphics g, int xLvlOffset){
+    protected void drawHitbox(Graphics g, int xLvlOffset) {
         // For debugging the hitbox
         g.setColor(Color.PINK);
         g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);

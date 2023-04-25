@@ -1,5 +1,6 @@
 package yeremiva.gitgud.model.characters;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import yeremiva.gitgud.controller.GameController;
 
 import java.awt.*;
@@ -17,13 +18,16 @@ public abstract class Enemy extends Character{
     protected float gravity = 0.04f * GameController.SCALE;
     protected float walkSpeed = 0.5f * GameController.SCALE;
     protected int walkDir = LEFT;
+    protected int tileY;
+    protected float attackDistance = GameController.TILES_SIZE;
+
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);
         this.enemyType = enemyType;
         initHitbox(x, y, width, height);
     }
 
-    protected void drawHitbox(Graphics g, int xLvlOffset){
+    public void drawHitbox(Graphics g, int xLvlOffset){
         // For debugging the hitbox
         g.setColor(Color.PINK);
         g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
@@ -43,6 +47,7 @@ public abstract class Enemy extends Character{
         } else {
             inAir = false;
             hitbox.y = GetCharacterYPosUnderRoofOrAboveFloor(hitbox, fallSpeed);
+            tileY = (int) (hitbox.y / GameController.TILES_SIZE);
         }
     }
 
@@ -63,6 +68,42 @@ public abstract class Enemy extends Character{
         changeWalkDir();
     }
 
+    protected void turnTowardsPlayer(Player player) {
+        if (player.hitbox.x > hitbox.x) {
+            walkDir = RIGHT;
+        } else {
+            walkDir = LEFT;
+        }
+    }
+
+    protected boolean canSeePlayer(int[][] lvlData, Player player) {
+        int playerTileY = (int) (player.getHitbox().y / GameController.TILES_SIZE);
+        if (playerTileY == tileY) {
+            if (isPlayerInRange(player)) {
+                if (IsSightClear(lvlData, hitbox, player.hitbox, tileY)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    protected boolean isPlayerInRange(Player player) {
+        int absValue = (int) Math.abs(player.hitbox.x - hitbox.x);
+        return absValue <= attackDistance * 5;
+    }
+
+    protected boolean isPlayerCloseForAttack(Player player) {
+        int absValue = (int) Math.abs(player.hitbox.x - hitbox.x);
+        return absValue <= attackDistance;
+    }
+
+    protected void newState(int enemyState) {
+        this.enemyState = enemyState;
+        aniTick = 0;
+        aniIndex = 0;
+    }
+
     protected void updateAnimationTick() {
         aniTick++;
         if (aniTick >= aniSpeed){
@@ -70,6 +111,9 @@ public abstract class Enemy extends Character{
             aniIndex++;
             if (aniIndex >= GetSpriteAmount(enemyType, enemyState)) {
                 aniIndex = 0;
+                if (enemyState == ATTACK) {
+                    enemyState = IDLE;
+                }
             }
         }
     }

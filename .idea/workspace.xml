@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added an enemy that can patrol">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Some refactoring of the Skeleton code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Skeleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mini_skeleton_fixed_for_real_this_time (2).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mini_skeleton_fixed_for_real_this_time (2).png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,14 +127,7 @@
       <workItem from="1682316964370" duration="691000" />
       <workItem from="1682329363028" duration="250000" />
       <workItem from="1682366659619" duration="4547000" />
-      <workItem from="1682420641309" duration="306000" />
-    </task>
-    <task id="LOCAL-00006" summary="Added some characters classes to the game">
-      <created>1680816623489</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1680816623489</updated>
+      <workItem from="1682420641309" duration="6163000" />
     </task>
     <task id="LOCAL-00007" summary="Added some view and item classes to the game">
       <created>1680873013123</created>
@@ -467,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682371030053</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Some refactoring of the Skeleton code">
+      <created>1682421248741</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1682421248742</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added collision to the game with a hitbox" />
     <MESSAGE value="Added jump and a gravity to the game" />
     <MESSAGE value="Added jump animation and changed the walking animation to the running (with a bug)" />
     <MESSAGE value="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class" />
@@ -510,7 +514,8 @@
     <MESSAGE value="Added enemy Skeleton view and animations" />
     <MESSAGE value="Updated view of pause menu and buttons" />
     <MESSAGE value="Added an enemy that can patrol" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added an enemy that can patrol" />
+    <MESSAGE value="Some refactoring of the Skeleton code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some refactoring of the Skeleton code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -28,19 +28,27 @@ public class EnemyController {
         System.out.println("size of skeletons: " + skeletons.size());
     }
 
-    public void update(int[][] lvlData){
+    public void update(int[][] lvlData, Player player){
         for (Skeleton s: skeletons) {
-            s.update(lvlData);
+            s.update(lvlData, player);
         }
     }
 
     public void draw(Graphics g, int xLvlOffset) {
         drawSkeletons(g, xLvlOffset);
+
     }
 
     private void drawSkeletons(Graphics g, int xLvlOffset) {
         for(Skeleton s: skeletons) {
-            g.drawImage(skeletonArr[s.getEnemyState()][s.getAniIndex()], (int) s.getHitbox().x - xLvlOffset, (int) s.getHitbox().y - 48, SKELETON_WIDTH, SKELETON_HEIGHT, null);
+            g.drawImage(
+                    skeletonArr[s.getEnemyState()][s.getAniIndex()],
+                    (int) s.getHitbox().x - xLvlOffset - SKELETON_DRAWOFFSET_X,
+                    (int) s.getHitbox().y + 11 - SKELETON_DRAWOFFSET_Y,
+                    SKELETON_WIDTH,
+                    SKELETON_HEIGHT,
+                    null);
+            s.drawHitbox(g, xLvlOffset);
         }
     }
 

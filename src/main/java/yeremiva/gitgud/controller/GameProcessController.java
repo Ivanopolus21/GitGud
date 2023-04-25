@@ -61,7 +61,7 @@ public class GameProcessController extends State implements Statemethods {
         if (!paused){
             levelController.update();
             player.update();
-            enemyController.update(levelController.getCurrentLevel().getLvlData());
+            enemyController.update(levelController.getCurrentLevel().getLvlData(), player);
             checkCloseToBorder();
         } else {
             pauseController.update();

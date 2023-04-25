@@ -25,7 +25,7 @@ public class Player extends Character{
     private boolean left, up, right, down, jump;
     private float playerSpeed = 1.0f * GameController.SCALE;
     private int[][] lvlData;
-    private float xDrawOffset = 7 * GameController.SCALE;
+    private float xDrawOffset = 6 * GameController.SCALE;
     private float yDrawOffset = 4 * GameController.SCALE;
 
     // Jumping/Gravity
@@ -39,7 +39,7 @@ public class Player extends Character{
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
-        initHitbox(x, y, (int) (16 * GameController.SCALE), (int) (27 * GameController.SCALE));
+        initHitbox(x, y, (int) (17 * GameController.SCALE), (int) (27 * GameController.SCALE));
 
     }
 
@@ -51,7 +51,7 @@ public class Player extends Character{
 
     public void render(Graphics g, int lvlOffset){
         g.drawImage(animations[playerAction][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset, (int) (hitbox.y - yDrawOffset), width, height, null);
-//        drawHitbox(g);
+        drawHitbox(g, lvlOffset);
     }
 
     private void updateAnimationTick() {
