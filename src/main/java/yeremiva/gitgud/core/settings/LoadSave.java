@@ -55,7 +55,9 @@ public static final String LEVEL_ONE_DATA = "level_one_data_long.png";
 
 //    public static final String SKELETON_SPRITE = "mini_skeleton_fixed.png";
     public static final String SKELETON_SPRITE = "mini_skeleton_fixed_for_real_this_time (2).png";
-//    public static final String SKELETON_SPRITE = "crabby_sprite.png";
+
+
+    public static final String STATUS_BAR = "health_power_bar.png";
 
     public static BufferedImage GetSpriteAtlas(String atlas){
         BufferedImage img = null;

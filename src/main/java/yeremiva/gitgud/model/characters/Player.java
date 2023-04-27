@@ -35,6 +35,19 @@ public class Player extends Character{
     private float fallSpeedAfterCollision = 0.5f * GameController.SCALE;
     private boolean inAir = false;
 
+    //StatusBar View
+    private BufferedImage statusBarImg;
+
+    private int statusBarWidth = (int) (192 * GameController.SCALE);
+    private int statusBarHeight = (int) (58 * GameController.SCALE);
+    private int statusBarX = (int) (10 * GameController.SCALE);
+    private int statusBarY = (int) (10 * GameController.SCALE);
+
+    private int healthBarWidth = (int) (150 * GameController.SCALE);
+    private int healthBarHeight = (int) (4 * GameController.SCALE);
+    private int healthBarXStart = (int) (34 * GameController.SCALE);
+    private int healthBarYStart = (int) (14 * GameController.SCALE);
+
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
@@ -52,6 +65,12 @@ public class Player extends Character{
     public void render(Graphics g, int lvlOffset){
         g.drawImage(animations[playerAction][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset, (int) (hitbox.y - yDrawOffset), width, height, null);
         drawHitbox(g, lvlOffset);
+
+        drawUI(g);
+    }
+
+    private void drawUI(Graphics g) {
+        g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
     }
 
     private void updateAnimationTick() {
@@ -181,6 +200,8 @@ public class Player extends Character{
                 animations[j][i] = img.getSubimage(i * 32, j*32, 32, 32);
             }
         }
+
+        statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
     }
 
     public void loadLvlData(int[][] lvlData){
