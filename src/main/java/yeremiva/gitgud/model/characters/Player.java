@@ -48,6 +48,10 @@ public class Player extends Character{
     private int healthBarXStart = (int) (34 * GameController.SCALE);
     private int healthBarYStart = (int) (14 * GameController.SCALE);
 
+    private int maxHealth = 100;
+    private int currentHealth = maxHealth;
+    private int healthWidth = healthBarWidth;
+
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
@@ -57,9 +61,17 @@ public class Player extends Character{
     }
 
     public void update(){
+        updateHealthBar();
+
         updatePosition();
         updateAnimationTick();
         setAnimation();
+
+
+    }
+
+    private void updateHealthBar() {
+        healthWidth = (int) ((currentHealth / (float)(maxHealth)) * healthBarWidth);
     }
 
     public void render(Graphics g, int lvlOffset){
@@ -71,6 +83,8 @@ public class Player extends Character{
 
     private void drawUI(Graphics g) {
         g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
+        g.setColor(Color.red);
+        g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
     }
 
     private void updateAnimationTick() {
@@ -190,6 +204,16 @@ public class Player extends Character{
         }
     }
 
+    public void changeHealth(int value) {
+        currentHealth += value;
+
+        if (currentHealth <= 0) {
+            currentHealth = 0;
+            //gameOver();
+        } else if (currentHealth >= maxHealth) {
+            currentHealth = maxHealth;
+        }
+     }
 
     private void loadAnimations() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
