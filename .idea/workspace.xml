@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added health for a health bar and an opportunity to change it manually">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added view of the attack box for the player weapon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
@@ -126,13 +126,7 @@
       <workItem from="1682508252180" duration="1412000" />
       <workItem from="1682509760266" duration="170000" />
       <workItem from="1682597520421" duration="8160000" />
-    </task>
-    <task id="LOCAL-00011" summary="Added the rectangle inside the window just as test">
-      <created>1680877003626</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1680877003626</updated>
+      <workItem from="1682635094227" duration="358000" />
     </task>
     <task id="LOCAL-00012" summary="Added the filled rectangle inside the window just as test">
       <created>1680877139376</created>
@@ -470,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682599011707</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Added view of the attack box for the player weapon">
+      <created>1682635451557</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1682635451558</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,7 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added game menu buttons view, but without binding to the keyinputs" />
     <MESSAGE value="Added game menu buttons binded to its' mouse keys" />
     <MESSAGE value="Added background to game menu" />
     <MESSAGE value="Fixing a bug with an animation" />
@@ -513,7 +513,8 @@
     <MESSAGE value="Updated design of the buttons" />
     <MESSAGE value="Added view for status bar" />
     <MESSAGE value="Added health for a health bar and an opportunity to change it manually" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added health for a health bar and an opportunity to change it manually" />
+    <MESSAGE value="Added view of the attack box for the player weapon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added view of the attack box for the player weapon" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

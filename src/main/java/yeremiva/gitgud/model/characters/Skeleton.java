@@ -5,6 +5,7 @@ import yeremiva.gitgud.controller.GameController;
 import java.awt.*;
 
 import static yeremiva.gitgud.core.settings.Constants.Directions.LEFT;
+import static yeremiva.gitgud.core.settings.Constants.Directions.RIGHT;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
@@ -43,6 +44,22 @@ public class Skeleton extends Enemy{
                     move(lvlData);
                     break;
             }
+        }
+    }
+
+    public int flipX() {
+        if (walkDir == LEFT) {
+            return width;
+        } else {
+            return 0;
+        }
+    }
+
+    public int flipW() {
+        if (walkDir == LEFT) {
+            return -1;
+        } else {
+            return 1;
         }
     }
 

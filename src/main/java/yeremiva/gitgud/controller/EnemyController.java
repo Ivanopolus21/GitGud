@@ -43,9 +43,9 @@ public class EnemyController {
         for(Skeleton s: skeletons) {
             g.drawImage(
                     skeletonArr[s.getEnemyState()][s.getAniIndex()],
-                    (int) s.getHitbox().x - xLvlOffset - SKELETON_DRAWOFFSET_X,
+                    (int) s.getHitbox().x - xLvlOffset - SKELETON_DRAWOFFSET_X + s.flipX(),
                     (int) s.getHitbox().y + 11 - SKELETON_DRAWOFFSET_Y,
-                    SKELETON_WIDTH,
+                    SKELETON_WIDTH * s.flipW(),
                     SKELETON_HEIGHT,
                     null);
             s.drawHitbox(g, xLvlOffset);
