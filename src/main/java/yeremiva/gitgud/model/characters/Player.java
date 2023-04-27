@@ -1,5 +1,6 @@
 package yeremiva.gitgud.model.characters;
 
+import com.sun.imageio.spi.RAFImageInputStreamSpi;
 import yeremiva.gitgud.Game;
 import yeremiva.gitgud.controller.GameController;
 import yeremiva.gitgud.core.settings.HelpMethods;
@@ -7,6 +8,7 @@ import yeremiva.gitgud.core.settings.LoadSave;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +21,7 @@ public class Player extends Character{
     //43 height, 25 width 00 -- 10, 5
 
     private BufferedImage[][] animations;
-    private int aniTick, aniIndex, aniSpeed = 30;
+    private int aniTick, aniIndex, aniSpeed = 20;
     private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
     private boolean left, up, right, down, jump;
@@ -52,16 +54,26 @@ public class Player extends Character{
     private int currentHealth = maxHealth;
     private int healthWidth = healthBarWidth;
 
+    //Attackbox
+    private Rectangle2D.Float attackBox;
+    private int flipX = 0;
+    private int flipW = 1;
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
         initHitbox(x, y, (int) (17 * GameController.SCALE), (int) (27 * GameController.SCALE));
+        initAttackBox();
+    }
+
+    private void initAttackBox() {
+        attackBox = new Rectangle2D.Float(x, y, (int) (25 * GameController.SCALE), (int) (35 * GameController.SCALE));
 
     }
 
     public void update(){
         updateHealthBar();
+        updateAttackBox();
 
         updatePosition();
         updateAnimationTick();
@@ -70,15 +82,32 @@ public class Player extends Character{
 
     }
 
+    private void updateAttackBox() {
+        if (right) {
+            attackBox.x = hitbox.x + hitbox.width + (int) (1 * GameController.SCALE);
+        } else if (left) {
+            attackBox.x = hitbox.x - hitbox.width - (int) (10 * GameController.SCALE);
+        }
+        attackBox.y = hitbox.y - (4 * GameController.SCALE);
+    }
+
     private void updateHealthBar() {
         healthWidth = (int) ((currentHealth / (float)(maxHealth)) * healthBarWidth);
     }
 
     public void render(Graphics g, int lvlOffset){
-        g.drawImage(animations[playerAction][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset, (int) (hitbox.y - yDrawOffset), width, height, null);
+        g.drawImage(animations[playerAction][aniIndex],
+                (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
+                   (int) (hitbox.y - yDrawOffset),
+                    width * flipW, height, null);
         drawHitbox(g, lvlOffset);
-
+        drawAttackBox(g, lvlOffset);
         drawUI(g);
+    }
+
+    private void drawAttackBox(Graphics g, int lvlOffset) {
+        g.setColor(Color.red);
+        g.drawRect((int) attackBox.x - lvlOffset, (int) attackBox.y, (int) attackBox.width, (int) attackBox.height);
     }
 
     private void drawUI(Graphics g) {
@@ -112,7 +141,7 @@ public class Player extends Character{
             if (airSpeed < 0) {
                 playerAction = JUMPING;
             } else {
-                playerAction = KNEELING;
+                playerAction = FALLING;
             }
         }
 
@@ -152,9 +181,13 @@ public class Player extends Character{
 
         if (left) {
             xSpeed -= playerSpeed;
+            flipX = width;
+            flipW = -1;
         }
         if (right) {
             xSpeed += playerSpeed;
+            flipX = 0;
+            flipW = 1;
         }
 
         if (!inAir) {
@@ -218,7 +251,7 @@ public class Player extends Character{
     private void loadAnimations() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 
-        animations = new BufferedImage[9][8];
+        animations = new BufferedImage[7][8];
         for (int j = 0; j < animations.length; j++) {
             for (int i = 0; i < animations[j].length; i++) {
                 animations[j][i] = img.getSubimage(i * 32, j*32, 32, 32);

@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Some refactoring of the Skeleton code">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added health for a health bar and an opportunity to change it manually">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Skeleton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,35 +122,10 @@
       <workItem from="1682316964370" duration="691000" />
       <workItem from="1682329363028" duration="250000" />
       <workItem from="1682366659619" duration="4547000" />
-      <workItem from="1682420641309" duration="6163000" />
-    </task>
-    <task id="LOCAL-00007" summary="Added some view and item classes to the game">
-      <created>1680873013123</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1680873013123</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added the window of the game to be terminated while closed">
-      <created>1680874250598</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1680874250598</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Added the window of the game to be terminated while closed">
-      <created>1680874358809</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1680874358809</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added the window of the game to be terminated while closed">
-      <created>1680874428318</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1680874428318</updated>
+      <workItem from="1682420641309" duration="6913000" />
+      <workItem from="1682508252180" duration="1412000" />
+      <workItem from="1682509760266" duration="170000" />
+      <workItem from="1682597520421" duration="8160000" />
     </task>
     <task id="LOCAL-00011" summary="Added the rectangle inside the window just as test">
       <created>1680877003626</created>
@@ -472,7 +442,35 @@
       <option name="project" value="LOCAL" />
       <updated>1682421248742</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Added attack animation view for Skeleton and his sight for a player">
+      <created>1682428863072</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1682428863072</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Updated design of the buttons">
+      <created>1682429332783</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1682429332783</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Added view for status bar">
+      <created>1682598342806</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1682598342807</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Added health for a health bar and an opportunity to change it manually">
+      <created>1682599011707</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1682599011707</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,10 +488,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added jump and a gravity to the game" />
-    <MESSAGE value="Added jump animation and changed the walking animation to the running (with a bug)" />
-    <MESSAGE value="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class" />
-    <MESSAGE value="Added configuration for menu buttons" />
     <MESSAGE value="Added game menu buttons view, but without binding to the keyinputs" />
     <MESSAGE value="Added game menu buttons binded to its' mouse keys" />
     <MESSAGE value="Added background to game menu" />
@@ -515,7 +509,11 @@
     <MESSAGE value="Updated view of pause menu and buttons" />
     <MESSAGE value="Added an enemy that can patrol" />
     <MESSAGE value="Some refactoring of the Skeleton code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some refactoring of the Skeleton code" />
+    <MESSAGE value="Added attack animation view for Skeleton and his sight for a player" />
+    <MESSAGE value="Updated design of the buttons" />
+    <MESSAGE value="Added view for status bar" />
+    <MESSAGE value="Added health for a health bar and an opportunity to change it manually" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added health for a health bar and an opportunity to change it manually" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

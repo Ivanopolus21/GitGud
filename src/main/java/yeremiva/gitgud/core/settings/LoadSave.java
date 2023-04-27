@@ -14,7 +14,8 @@ import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.SKELETON;
 
 public class LoadSave {
 
-    public static final String PLAYER_ATLAS = "player_sprites.png";
+//    public static final String PLAYER_ATLAS = "player_sprites.png";
+    public static final String PLAYER_ATLAS = "player_sprites_fixed_2.png";
 
 
 //    public static final String LEVEL_ATLAS = "outside_sprites.png";
