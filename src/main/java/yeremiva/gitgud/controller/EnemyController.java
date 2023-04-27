@@ -40,15 +40,17 @@ public class EnemyController {
     }
 
     private void drawSkeletons(Graphics g, int xLvlOffset) {
+        int fixSkeletonHitboxHeight = 11;
         for(Skeleton s: skeletons) {
             g.drawImage(
                     skeletonArr[s.getEnemyState()][s.getAniIndex()],
                     (int) s.getHitbox().x - xLvlOffset - SKELETON_DRAWOFFSET_X + s.flipX(),
-                    (int) s.getHitbox().y + 11 - SKELETON_DRAWOFFSET_Y,
+                    (int) s.getHitbox().y + fixSkeletonHitboxHeight - SKELETON_DRAWOFFSET_Y,
                     SKELETON_WIDTH * s.flipW(),
                     SKELETON_HEIGHT,
                     null);
             s.drawHitbox(g, xLvlOffset);
+            s.drawAttackBox(g, xLvlOffset);
         }
     }
 

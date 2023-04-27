@@ -24,7 +24,7 @@ public class Player extends Character{
     private int aniTick, aniIndex, aniSpeed = 20;
     private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
-    private boolean left, up, right, down, jump;
+    private boolean left, right, jump;
     private float playerSpeed = 1.0f * GameController.SCALE;
     private int[][] lvlData;
     private float xDrawOffset = 6 * GameController.SCALE;
@@ -271,8 +271,6 @@ public class Player extends Character{
     public void resetDirBooleans(){
         left = false;
         right = false;
-        up = false;
-        down = false;
     }
 
     public void setAttacking(boolean attacking){
@@ -283,16 +281,8 @@ public class Player extends Character{
         this.left = left;
     }
 
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
     public void setRight(boolean right) {
         this.right = right;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
     }
 
     public void setJump(boolean jump){

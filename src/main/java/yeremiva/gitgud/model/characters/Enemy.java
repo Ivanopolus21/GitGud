@@ -21,6 +21,7 @@ public abstract class Enemy extends Character{
     protected int tileY;
     protected float attackDistance = GameController.TILES_SIZE;
 
+
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);
         this.enemyType = enemyType;
@@ -94,7 +95,12 @@ public abstract class Enemy extends Character{
     }
 
     protected boolean isPlayerCloseForAttack(Player player) {
-        int absValue = (int) Math.abs(player.hitbox.x - hitbox.x);
+        int fixOfssetLeft = 10;
+        int fixOffsetRight = 15;
+        int absValue = (int) Math.abs(player.hitbox.x - hitbox.x - fixOfssetLeft);
+        if (walkDir == RIGHT) {
+            absValue = (int) Math.abs(player.hitbox.x - hitbox.x + fixOffsetRight);
+        }
         return absValue <= attackDistance;
     }
 

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added view of the attack box for the player weapon">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Skeleton now can turn around in view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Skeleton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,14 +126,7 @@
       <workItem from="1682508252180" duration="1412000" />
       <workItem from="1682509760266" duration="170000" />
       <workItem from="1682597520421" duration="8160000" />
-      <workItem from="1682635094227" duration="358000" />
-    </task>
-    <task id="LOCAL-00012" summary="Added the filled rectangle inside the window just as test">
-      <created>1680877139376</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1680877139376</updated>
+      <workItem from="1682635094227" duration="1463000" />
     </task>
     <task id="LOCAL-00013" summary="Added inputs to the rectangle (maybe for the main character)">
       <created>1681060343794</created>
@@ -471,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682635451558</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Skeleton now can turn around in view">
+      <created>1682635721442</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1682635721442</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,7 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added game menu buttons binded to its' mouse keys" />
     <MESSAGE value="Added background to game menu" />
     <MESSAGE value="Fixing a bug with an animation" />
     <MESSAGE value="Changing player speed to scalable" />
@@ -514,7 +513,8 @@
     <MESSAGE value="Added view for status bar" />
     <MESSAGE value="Added health for a health bar and an opportunity to change it manually" />
     <MESSAGE value="Added view of the attack box for the player weapon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added view of the attack box for the player weapon" />
+    <MESSAGE value="Skeleton now can turn around in view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Skeleton now can turn around in view" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
