@@ -123,6 +123,10 @@ public class GameProcessController extends State implements Statemethods {
 
     public void resetAll() {
         //reset player, enemy etc.
+        gameOver = false;
+        paused = false;
+        player.resetAll();
+        enemyController.resetAllEnemies();
     }
 
     public void setGameOver(boolean gameOver) {

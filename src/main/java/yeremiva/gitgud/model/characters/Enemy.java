@@ -1,5 +1,6 @@
 package yeremiva.gitgud.model.characters;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import yeremiva.gitgud.controller.GameController;
 
 import java.awt.*;
@@ -157,6 +158,16 @@ public abstract class Enemy extends Character{
         } else {
             walkDir = LEFT;
         }
+    }
+
+    public void resetEnemy() {
+        hitbox.x = x;
+        hitbox.y = y;
+        firstUpdate = true;
+        currentHealth = maxHealth;
+        newState(IDLE);
+        alive = true;
+        fallSpeed = 0;
     }
 
     public int getAniIndex() {

@@ -316,4 +316,20 @@ public class Player extends Character{
     public void setJump(boolean jump){
         this.jump = jump;
     }
+
+    public void resetAll() {
+        resetDirBooleans();
+        inAir = false;
+        attacking = false;
+        moving = false;
+        playerAction = IDLE;
+        currentHealth = maxHealth;
+
+        hitbox.x = x;
+        hitbox.y = y;
+
+        if (!IsCharacterOnFloor(hitbox, lvlData)) {
+            inAir = true;
+        }
+    }
 }

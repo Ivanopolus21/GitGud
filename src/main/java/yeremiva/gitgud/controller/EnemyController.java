@@ -77,4 +77,10 @@ public class EnemyController {
             }
         }
     }
+
+    public void resetAllEnemies() {
+        for (Skeleton s : skeletons) {
+            s.resetEnemy();
+        }
+    }
 }
