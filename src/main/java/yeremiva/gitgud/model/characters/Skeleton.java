@@ -8,7 +8,6 @@ import java.awt.geom.Rectangle2D;
 import static yeremiva.gitgud.core.settings.Constants.Directions.LEFT;
 import static yeremiva.gitgud.core.settings.Constants.Directions.RIGHT;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
-import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
 public class Skeleton extends Enemy{
 
@@ -29,9 +28,10 @@ public class Skeleton extends Enemy{
 
 
     public void update(int[][] lvlData, Player player) {
-        updateMove(lvlData, player);
+        updateBehavior(lvlData, player);
         updateAnimationTick();
         updateAttackBox();
+
     }
 
     private void updateAttackBox() {
@@ -44,7 +44,7 @@ public class Skeleton extends Enemy{
     }
 
 
-    private void updateMove(int[][] lvlData, Player player) {
+    private void updateBehavior(int[][] lvlData, Player player) {
         if (firstUpdate) {
             firstUpdateCheck(lvlData);
         }
@@ -56,15 +56,24 @@ public class Skeleton extends Enemy{
                     newState(RUNNING);
                     break;
                 case RUNNING:
-
                     if (canSeePlayer(lvlData, player)) {
                         turnTowardsPlayer(player);
                     }
                     if (isPlayerCloseForAttack(player)) {
                         newState(ATTACK);
                     }
-
                     move(lvlData);
+                    break;
+                case ATTACK:
+                    if (aniIndex == 0) {
+                        attackChecked = false;
+                    }
+
+                    if (aniIndex == 2 && !attackChecked) {
+                        checkIfEnemyHitsPlayer(attackBox, player);
+                    }
+                    break;
+                case HIT:
                     break;
             }
         }

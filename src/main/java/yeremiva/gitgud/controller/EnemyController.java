@@ -1,12 +1,11 @@
 package yeremiva.gitgud.controller;
 
-import yeremiva.gitgud.Game;
 import yeremiva.gitgud.core.settings.LoadSave;
-import yeremiva.gitgud.model.characters.Enemy;
 import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.model.characters.Skeleton;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -17,6 +16,7 @@ public class EnemyController {
     private GameProcessController gameProcessController;
     private BufferedImage[][] skeletonArr;
     private ArrayList<Skeleton> skeletons = new ArrayList<>();
+
     public EnemyController(GameProcessController gameProcessController){
         this.gameProcessController = gameProcessController;
         loadEnemyImgs();
@@ -30,27 +30,41 @@ public class EnemyController {
 
     public void update(int[][] lvlData, Player player){
         for (Skeleton s: skeletons) {
-            s.update(lvlData, player);
+            if (s.isAlive()) {
+                s.update(lvlData, player);
+            }
         }
     }
 
     public void draw(Graphics g, int xLvlOffset) {
         drawSkeletons(g, xLvlOffset);
-
     }
 
     private void drawSkeletons(Graphics g, int xLvlOffset) {
         int fixSkeletonHitboxHeight = 11;
         for(Skeleton s: skeletons) {
-            g.drawImage(
-                    skeletonArr[s.getEnemyState()][s.getAniIndex()],
-                    (int) s.getHitbox().x - xLvlOffset - SKELETON_DRAWOFFSET_X + s.flipX(),
-                    (int) s.getHitbox().y + fixSkeletonHitboxHeight - SKELETON_DRAWOFFSET_Y,
-                    SKELETON_WIDTH * s.flipW(),
-                    SKELETON_HEIGHT,
-                    null);
-            s.drawHitbox(g, xLvlOffset);
-            s.drawAttackBox(g, xLvlOffset);
+            if (s.isAlive()) {
+                g.drawImage(
+                        skeletonArr[s.getEnemyState()][s.getAniIndex()],
+                        (int) s.getHitbox().x - xLvlOffset - SKELETON_DRAWOFFSET_X + s.flipX(),
+                        (int) s.getHitbox().y + fixSkeletonHitboxHeight - SKELETON_DRAWOFFSET_Y,
+                        SKELETON_WIDTH * s.flipW(),
+                        SKELETON_HEIGHT,
+                        null);
+                s.drawHitbox(g, xLvlOffset);
+                s.drawAttackBox(g, xLvlOffset);
+            }
+        }
+    }
+
+    public void checkEnemyHit(Rectangle2D.Float attackBox) {
+        for (Skeleton s : skeletons) {
+            if (s.isAlive()) {
+                if (attackBox.intersects(s.getHitbox())) {
+                    s.hurt(10);
+                    return;
+                }
+            }
         }
     }
 

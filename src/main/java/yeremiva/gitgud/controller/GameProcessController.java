@@ -7,10 +7,12 @@ import yeremiva.gitgud.core.states.State;
 import yeremiva.gitgud.core.states.Statemethods;
 import yeremiva.gitgud.model.characters.Enemy;
 import yeremiva.gitgud.model.characters.Player;
+import yeremiva.gitgud.view.GameOverView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -22,6 +24,7 @@ public class GameProcessController extends State implements Statemethods {
     private LevelController levelController;
     private EnemyController enemyController;
     private PauseController pauseController;
+    private GameOverController gameOverController;
     private boolean paused = false;
 
     private int xLvlOffset;
@@ -34,6 +37,8 @@ public class GameProcessController extends State implements Statemethods {
     private BufferedImage backgroundImg, bigCloud, smallCloud;
     private int[] smallCloudsPos;
     private Random rnd = new Random();
+
+    private boolean gameOver;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -51,9 +56,10 @@ public class GameProcessController extends State implements Statemethods {
     private void initClasses() {
         levelController = new LevelController(gameController);
         enemyController = new EnemyController(this);
-        player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE));
+        player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE), this);
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
         pauseController = new PauseController(this);
+        gameOverController = new GameOverController(this);
     }
 
     @Override
@@ -99,6 +105,8 @@ public class GameProcessController extends State implements Statemethods {
             g.setColor(new Color(0, 0, 0, 150));
             g.fillRect(0,0,GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
             pauseController.draw(g);
+        } else if (gameOver) {
+            gameOverController.draw(g);
         }
 
     }
@@ -113,37 +121,59 @@ public class GameProcessController extends State implements Statemethods {
 
     }
 
+    public void resetAll() {
+        //reset player, enemy etc.
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
+    public void checkIfPlayerHitsEnemy(Rectangle2D.Float attackBox) {
+        enemyController.checkEnemyHit(attackBox);
+    }
+
     public void mouseDragged(MouseEvent e) {
-        if (paused) {
-            pauseController.mouseDragged(e);
+        if (!gameOver) {
+            if (paused) {
+                pauseController.mouseDragged(e);
+            }
         }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
-            player.setAttacking(true);
+        if (!gameOver) {
+            if (e.getButton() == MouseEvent.BUTTON1) {
+                player.setAttacking(true);
+            }
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if (paused) {
-            pauseController.mousePressed(e);
+        if (!gameOver) {
+            if (paused) {
+                pauseController.mousePressed(e);
+            }
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (paused) {
-            pauseController.mouseReleased(e);
+        if (!gameOver) {
+            if (paused) {
+                pauseController.mouseReleased(e);
+            }
         }
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        if (paused) {
-            pauseController.mouseMoved(e);
+        if (!gameOver) {
+            if (paused) {
+                pauseController.mouseMoved(e);
+            }
         }
     }
 
@@ -156,38 +186,43 @@ public class GameProcessController extends State implements Statemethods {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_A:
-                player.setLeft(true);
-                break;
-            case KeyEvent.VK_D:
-                player.setRight(true);
-                break;
-            case KeyEvent.VK_SPACE:
-                player.setJump(true);
-                break;
-            case KeyEvent.VK_DOWN:
-                player.setAttacking(true);
-                break;
-            case KeyEvent.VK_ESCAPE:
-                paused = !paused;
-                break;
+        if (gameOver) {
+            gameOverController.keyPressed(e);
+        } else {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_A:
+                    player.setLeft(true);
+                    break;
+                case KeyEvent.VK_D:
+                    player.setRight(true);
+                    break;
+                case KeyEvent.VK_SPACE:
+                    player.setJump(true);
+                    break;
+                case KeyEvent.VK_DOWN:
+                    player.setAttacking(true);
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    paused = !paused;
+                    break;
+            }
         }
-
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_A:
-                player.setLeft(false);
-                break;
-            case KeyEvent.VK_D:
-                player.setRight(false);
-                break;
-            case KeyEvent.VK_SPACE:
-                player.setJump(false);
-                break;
+        if (!gameOver) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_A:
+                    player.setLeft(false);
+                    break;
+                case KeyEvent.VK_D:
+                    player.setRight(false);
+                    break;
+                case KeyEvent.VK_SPACE:
+                    player.setJump(false);
+                    break;
+            }
         }
     }
 

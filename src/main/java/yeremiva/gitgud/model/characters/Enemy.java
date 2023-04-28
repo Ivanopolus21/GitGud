@@ -1,9 +1,9 @@
 package yeremiva.gitgud.model.characters;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import yeremiva.gitgud.controller.GameController;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 import static yeremiva.gitgud.core.settings.Constants.Directions.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
@@ -20,12 +20,17 @@ public abstract class Enemy extends Character{
     protected int walkDir = LEFT;
     protected int tileY;
     protected float attackDistance = GameController.TILES_SIZE;
-
+    protected int maxHealth;
+    protected int currentHealth;
+    protected boolean alive = true;
+    protected boolean attackChecked;
 
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);
         this.enemyType = enemyType;
         initHitbox(x, y, width, height);
+        maxHealth = GetMaxHealth(enemyType);
+        currentHealth = maxHealth;
     }
 
     public void drawHitbox(Graphics g, int xLvlOffset){
@@ -110,6 +115,23 @@ public abstract class Enemy extends Character{
         aniIndex = 0;
     }
 
+    public void hurt(int amount) {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0) {
+            newState(DEAD);
+        } else {
+            newState(HIT);
+        }
+    }
+
+    protected void checkIfEnemyHitsPlayer(Rectangle2D.Float attackBox, Player player) {
+        if (attackBox.intersects(player.hitbox)) {
+            player.changeHealth(-GetEnemyDmg(enemyType));
+        }
+        attackChecked = true;
+    }
+
     protected void updateAnimationTick() {
         aniTick++;
         if (aniTick >= aniSpeed){
@@ -117,8 +139,13 @@ public abstract class Enemy extends Character{
             aniIndex++;
             if (aniIndex >= GetSpriteAmount(enemyType, enemyState)) {
                 aniIndex = 0;
-                if (enemyState == ATTACK) {
-                    enemyState = IDLE;
+                switch(enemyState) {
+                    case ATTACK:
+                    case HIT:
+                        enemyState = IDLE;
+                        break;
+                    case DEAD:
+                        alive = false;
                 }
             }
         }
@@ -139,4 +166,13 @@ public abstract class Enemy extends Character{
     public int getEnemyState() {
         return enemyState;
     }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
 }
+

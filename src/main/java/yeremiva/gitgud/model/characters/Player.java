@@ -3,6 +3,7 @@ package yeremiva.gitgud.model.characters;
 import com.sun.imageio.spi.RAFImageInputStreamSpi;
 import yeremiva.gitgud.Game;
 import yeremiva.gitgud.controller.GameController;
+import yeremiva.gitgud.controller.GameProcessController;
 import yeremiva.gitgud.core.settings.HelpMethods;
 import yeremiva.gitgud.core.settings.LoadSave;
 
@@ -59,8 +60,12 @@ public class Player extends Character{
     private int flipX = 0;
     private int flipW = 1;
 
-    public Player(float x, float y, int width, int height) {
+    private boolean attackChecked = false;
+    private GameProcessController gameProcessController;
+
+    public Player(float x, float y, int width, int height, GameProcessController gameProcessController) {
         super(x, y, width, height);
+        this.gameProcessController = gameProcessController;
         loadAnimations();
         initHitbox(x, y, (int) (17 * GameController.SCALE), (int) (27 * GameController.SCALE));
         initAttackBox();
@@ -72,14 +77,30 @@ public class Player extends Character{
     }
 
     public void update(){
+        if (currentHealth <= 0) {
+            gameProcessController.setGameOver(true);
+            return;
+        }
+
         updateHealthBar();
         updateAttackBox();
 
         updatePosition();
+        if (attacking) {
+            checkAttack();
+        }
         updateAnimationTick();
         setAnimation();
 
 
+    }
+
+    private void checkAttack() {
+        if (attackChecked || aniIndex != 4) {
+            return;
+        }
+        attackChecked = true;
+        gameProcessController.checkIfPlayerHitsEnemy(attackBox);
     }
 
     private void updateAttackBox() {
@@ -118,12 +139,13 @@ public class Player extends Character{
 
     private void updateAnimationTick() {
         aniTick++;
-        if(aniTick >= aniSpeed) {
+        if (aniTick >= aniSpeed) {
             aniTick = 0;
             aniIndex++;
-            if(aniIndex >= GetSpriteAmount(playerAction)){
+            if (aniIndex >= GetSpriteAmount(playerAction)) {
                 aniIndex = 0;
                 attacking = false;
+                attackChecked = false;
             }
         }
     }
@@ -131,13 +153,13 @@ public class Player extends Character{
     public void setAnimation(){
         int startAni = playerAction;
 
-        if(moving){
+        if (moving) {
             playerAction = RUNNING;
         } else {
             playerAction = IDLE;
         }
 
-        if (inAir){
+        if (inAir) {
             if (airSpeed < 0) {
                 playerAction = JUMPING;
             } else {
@@ -147,7 +169,11 @@ public class Player extends Character{
 
         if (attacking){
             playerAction = ATTACKING;
-
+            if (startAni != ATTACKING) {
+                aniIndex = 4;
+                aniTick = 0;
+                return;
+            }
         }
 
         if (startAni != playerAction){
