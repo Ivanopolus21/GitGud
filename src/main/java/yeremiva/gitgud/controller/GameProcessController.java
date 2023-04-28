@@ -64,7 +64,7 @@ public class GameProcessController extends State implements Statemethods {
 
     @Override
     public void update() {
-        if (!paused){
+        if (!paused && !gameOver){
             levelController.update();
             player.update();
             enemyController.update(levelController.getCurrentLevel().getLvlData(), player);

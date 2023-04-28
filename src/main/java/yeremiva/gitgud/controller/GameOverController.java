@@ -14,7 +14,7 @@ public class GameOverController {
 
     public void draw (Graphics g) {
         g.setColor(new Color(0, 0, 0, 200));
-        g.fillRect(0, 0, GameController.GAME_HEIGHT, GameController.GAME_HEIGHT);
+        g.fillRect(0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
 
         g.setColor(Color.white);
         g.drawString("Game Over", GameController.GAME_WIDTH / 2, 150);

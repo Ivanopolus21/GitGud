@@ -77,12 +77,14 @@ public class Player extends Character{
     }
 
     public void update(){
+        updateHealthBar();
+
         if (currentHealth <= 0) {
             gameProcessController.setGameOver(true);
             return;
         }
 
-        updateHealthBar();
+
         updateAttackBox();
 
         updatePosition();
