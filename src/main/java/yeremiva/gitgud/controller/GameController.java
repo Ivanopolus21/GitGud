@@ -1,6 +1,7 @@
 package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.Game;
+import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.GamePanel;
 import yeremiva.gitgud.view.GameWindowView;

@@ -1,6 +1,7 @@
 package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.core.settings.LoadSave;
+import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.UrmButton;
 
 import java.awt.*;
@@ -38,7 +39,8 @@ public class LevelCompletedController {
     }
 
     public void update() {
-
+        nextLvl.update();
+        menu.update();
     }
 
     public void draw(Graphics g) {
@@ -47,14 +49,41 @@ public class LevelCompletedController {
         menu.draw(g);
     }
 
+    private boolean isIn(UrmButton b, MouseEvent e) {
+        return b.getBounds().contains(e.getX(), e.getY());
+    }
+
     public void mouseMoved(MouseEvent e) {
+        nextLvl.setMouseOver(false);
+        menu.setMouseOver(false);
+
+        if (isIn(menu, e)) {
+            menu.setMouseOver(true);
+        } else if (isIn(nextLvl, e)) {
+            nextLvl.setMouseOver(true);
+        }
     }
 
     public void mouseReleased(MouseEvent e) {
-
+        if (isIn(menu, e)) {
+            if (menu.isMousePressed()) {
+                gameProcessController.resetAll();
+                Gamestate.state = Gamestate.MENU;
+            }
+        } else if (isIn(nextLvl, e)) {
+            if (nextLvl.isMousePressed()) {
+                gameProcessController.loadNextLevel();
+            }
+        }
+        menu.resetBools();
+        nextLvl.resetBools();
     }
 
     public void mousePressed(MouseEvent e) {
-
+        if (isIn(menu, e)) {
+            menu.setMousePressed(true);
+        } else if (isIn(nextLvl, e)) {
+            nextLvl.setMousePressed(true);
+        }
     }
 }

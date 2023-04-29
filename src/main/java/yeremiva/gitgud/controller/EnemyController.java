@@ -3,6 +3,7 @@ package yeremiva.gitgud.controller;
 import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.model.characters.Skeleton;
+import yeremiva.gitgud.view.LevelView;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -20,19 +21,22 @@ public class EnemyController {
     public EnemyController(GameProcessController gameProcessController){
         this.gameProcessController = gameProcessController;
         loadEnemyImgs();
-        addEnemies();
     }
 
-    private void addEnemies() {
-        skeletons = LoadSave.GetSkeletons();
-        System.out.println("size of skeletons: " + skeletons.size());
+    public void loadEnemies(LevelView levelView) {
+        skeletons = levelView.getSkeletons();
     }
 
     public void update(int[][] lvlData, Player player){
+        boolean isAnyAlive = false;
         for (Skeleton s: skeletons) {
             if (s.isAlive()) {
                 s.update(lvlData, player);
+                isAnyAlive = true;
             }
+        }
+        if (!isAnyAlive) {
+            gameProcessController.setLevelCompleted(true);
         }
     }
 

@@ -31,15 +31,14 @@ public class GameProcessController extends State implements Statemethods {
     private int xLvlOffset;
     private int leftBorder = (int) (0.2 * GameController.GAME_WIDTH);
     private int rightBorder = (int) (0.8 * GameController.GAME_WIDTH);
-    private int lvlTilesWide = LoadSave.GetLevelData()[0].length;
-    private int maxTilesOffset = lvlTilesWide - GameController.TILES_IN_WIDTH;
-    private int maxLvlOffsetX = maxTilesOffset * GameController.TILES_SIZE;
+    private int maxLvlOffsetX;
 
     private BufferedImage backgroundImg, bigCloud, smallCloud;
     private int[] smallCloudsPos;
     private Random rnd = new Random();
 
     private boolean gameOver;
+    private boolean lvlCompleted;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -52,6 +51,22 @@ public class GameProcessController extends State implements Statemethods {
         for (int i = 0; i < smallCloudsPos.length; i++){
             smallCloudsPos[i] = (int) (90 * GameController.SCALE) + rnd.nextInt((int) (100 * GameController.SCALE));
         }
+
+        calculateLevelOffset();
+        loadStartLevel();
+    }
+
+    public void loadNextLevel() {
+        resetAll();
+        levelController.loadNextLevel();
+    }
+
+    private void loadStartLevel() {
+        enemyController.loadEnemies(levelController.getCurrentLevel());
+    }
+
+    private void calculateLevelOffset() {
+        maxLvlOffsetX = levelController.getCurrentLevel().getMaxLvlOffsetX();
     }
 
     private void initClasses() {
@@ -66,13 +81,15 @@ public class GameProcessController extends State implements Statemethods {
 
     @Override
     public void update() {
-        if (!paused && !gameOver){
+        if (paused) {
+            pauseController.update();
+        } else if (lvlCompleted) {
+            levelCompletedController.update();
+        } else if (!gameOver){
             levelController.update();
             player.update();
             enemyController.update(levelController.getCurrentLevel().getLvlData(), player);
             checkCloseToBorder();
-        } else {
-            pauseController.update();
         }
     }
 
@@ -109,10 +126,9 @@ public class GameProcessController extends State implements Statemethods {
             pauseController.draw(g);
         } else if (gameOver) {
             gameOverController.draw(g);
+        } else if (lvlCompleted) {
+            levelCompletedController.draw(g);
         }
-
-        levelCompletedController.draw(g);
-
     }
 
     private void drawClouds(Graphics g) {
@@ -129,6 +145,7 @@ public class GameProcessController extends State implements Statemethods {
         //reset player, enemy etc.
         gameOver = false;
         paused = false;
+        lvlCompleted = false;
         player.resetAll();
         enemyController.resetAllEnemies();
     }
@@ -163,8 +180,10 @@ public class GameProcessController extends State implements Statemethods {
         if (!gameOver) {
             if (paused) {
                 pauseController.mousePressed(e);
+            } else if (lvlCompleted) {
+                levelCompletedController.mousePressed(e);
             }
-        }
+         }
     }
 
     @Override
@@ -172,6 +191,8 @@ public class GameProcessController extends State implements Statemethods {
         if (!gameOver) {
             if (paused) {
                 pauseController.mouseReleased(e);
+            } else if (lvlCompleted) {
+                levelCompletedController.mouseReleased(e);
             }
         }
     }
@@ -181,16 +202,15 @@ public class GameProcessController extends State implements Statemethods {
         if (!gameOver) {
             if (paused) {
                 pauseController.mouseMoved(e);
+            } else if (lvlCompleted) {
+                levelCompletedController.mouseMoved(e);
             }
         }
     }
 
-//    @Override
-//    public void mouseDragged(MouseEvent e) {
-//        if (paused) {
-//            pauseController.mouseDragged(e);
-//        }
-//    }
+    public void setLevelCompleted(boolean levelCompleted) {
+        this.lvlCompleted = levelCompleted;
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -234,6 +254,10 @@ public class GameProcessController extends State implements Statemethods {
         }
     }
 
+    public void setMaxLvlOffsetX(int xLvlOffset) {
+        this.maxLvlOffsetX = xLvlOffset;
+    }
+
     public void unpauseGame() {
         paused = false;
     }
@@ -246,4 +270,7 @@ public class GameProcessController extends State implements Statemethods {
         return player;
     }
 
+    public EnemyController getEnemyController() {
+        return enemyController;
+    }
 }
