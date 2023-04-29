@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Fixes for the combat system">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Bug fixes with enemy animations">
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +129,7 @@
       <workItem from="1682696052060" duration="8389000" />
       <workItem from="1682705456052" duration="1849000" />
       <workItem from="1682710623131" duration="138000" />
-      <workItem from="1682771790524" duration="320000" />
-    </task>
-    <task id="LOCAL-00017" summary="Added sprite animations that I can input manually and switch between them">
-      <created>1681144755622</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1681144755622</updated>
+      <workItem from="1682771790524" duration="653000" />
     </task>
     <task id="LOCAL-00018" summary="Added constants for the player, his direction and animations">
       <created>1681147087348</created>
@@ -475,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682707300234</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Bug fixes with enemy animations">
+      <created>1682772299109</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1682772299109</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added pause menu position and view, removed unnecessary images, added new" />
     <MESSAGE value="Added pause menu sound buttons, their logic and view" />
     <MESSAGE value="Added a slider for volume button in pause menu" />
     <MESSAGE value="Changed some sprites to fit more for my game" />
@@ -518,7 +516,8 @@
     <MESSAGE value="Minor bug fixes (hitbox and attack box)" />
     <MESSAGE value="Just added combat system (beta)" />
     <MESSAGE value="Fixes for the combat system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes for the combat system" />
+    <MESSAGE value="Bug fixes with enemy animations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes with enemy animations" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

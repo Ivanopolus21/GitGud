@@ -31,6 +31,7 @@ public class GameController implements Runnable{
 
         gamePanel = new GamePanel(this);
         gameWindowView = new GameWindowView(gamePanel);
+        gamePanel.setFocusable(true);
         gamePanel.requestFocus();
 
         startGameLoop();
