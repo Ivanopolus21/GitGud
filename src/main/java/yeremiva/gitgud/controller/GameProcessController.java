@@ -25,6 +25,7 @@ public class GameProcessController extends State implements Statemethods {
     private EnemyController enemyController;
     private PauseController pauseController;
     private GameOverController gameOverController;
+    private LevelCompletedController levelCompletedController;
     private boolean paused = false;
 
     private int xLvlOffset;
@@ -60,6 +61,7 @@ public class GameProcessController extends State implements Statemethods {
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
         pauseController = new PauseController(this);
         gameOverController = new GameOverController(this);
+        levelCompletedController = new LevelCompletedController(this);
     }
 
     @Override
@@ -108,6 +110,8 @@ public class GameProcessController extends State implements Statemethods {
         } else if (gameOver) {
             gameOverController.draw(g);
         }
+
+        levelCompletedController.draw(g);
 
     }
 

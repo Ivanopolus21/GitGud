@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Bug fixes with enemy animations">
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Fixed bug with unfocusable window in some cases">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelCompletedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,21 +132,7 @@
       <workItem from="1682696052060" duration="8389000" />
       <workItem from="1682705456052" duration="1849000" />
       <workItem from="1682710623131" duration="138000" />
-      <workItem from="1682771790524" duration="653000" />
-    </task>
-    <task id="LOCAL-00018" summary="Added constants for the player, his direction and animations">
-      <created>1681147087348</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1681147087348</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added an UPS (updates) to the game loop">
-      <created>1681155228505</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1681155228505</updated>
+      <workItem from="1682771790524" duration="2993000" />
     </task>
     <task id="LOCAL-00020" summary="Added the Player class and refactored some code">
       <created>1681168486874</created>
@@ -474,7 +463,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682772299109</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Fixed replay button">
+      <created>1682772465870</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1682772465870</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Fixed bug with unfocusable window in some cases">
+      <created>1682772575083</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1682772575083</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,8 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added pause menu sound buttons, their logic and view" />
-    <MESSAGE value="Added a slider for volume button in pause menu" />
     <MESSAGE value="Changed some sprites to fit more for my game" />
     <MESSAGE value="Changed some button sprites to fit more for my game" />
     <MESSAGE value="Added longer level and added camera movement when a player is passing through the end of the window" />
@@ -517,7 +518,9 @@
     <MESSAGE value="Just added combat system (beta)" />
     <MESSAGE value="Fixes for the combat system" />
     <MESSAGE value="Bug fixes with enemy animations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes with enemy animations" />
+    <MESSAGE value="Fixed replay button" />
+    <MESSAGE value="Fixed bug with unfocusable window in some cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with unfocusable window in some cases" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
