@@ -58,9 +58,9 @@ public class Skeleton extends Enemy{
                 case RUNNING:
                     if (canSeePlayer(lvlData, player)) {
                         turnTowardsPlayer(player);
-                    }
-                    if (isPlayerCloseForAttack(player)) {
-                        newState(ATTACK);
+                        if (isPlayerCloseForAttack(player)) {
+                            newState(ATTACK);
+                        }
                     }
                     move(lvlData);
                     break;
