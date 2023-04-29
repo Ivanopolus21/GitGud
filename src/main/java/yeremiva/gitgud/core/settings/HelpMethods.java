@@ -147,4 +147,17 @@ public class HelpMethods {
         }
         return list;
     }
+
+    public static Point GetPlayerSpawn(BufferedImage img) {
+        for (int j = 0; j < img.getHeight(); j++){
+            for (int i = 0; i < img.getWidth(); i ++){
+                Color color = new Color(img.getRGB(i, j));
+                int value = color.getGreen();
+                if (value == 100) {
+                    return new Point(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE);
+                }
+            }
+        }
+        return new Point(1 * GameController.TILES_SIZE, 1 * GameController.TILES_SIZE) ;
+    }
 }

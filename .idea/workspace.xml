@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added view for level completed">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added more levels and an option to beat them all">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelCompletedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelCompletedController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/level_one_data.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/level_one_data_long.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,14 +133,7 @@
       <workItem from="1682696052060" duration="8389000" />
       <workItem from="1682705456052" duration="1849000" />
       <workItem from="1682710623131" duration="138000" />
-      <workItem from="1682771790524" duration="7846000" />
-    </task>
-    <task id="LOCAL-00021" summary="Added the Player class and refactored some code">
-      <created>1681168497908</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1681168497908</updated>
+      <workItem from="1682771790524" duration="8459000" />
     </task>
     <task id="LOCAL-00022" summary="Added greater Player inputs and the player has an opportunity to go diagonally">
       <created>1681213315792</created>
@@ -484,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682775463401</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Added more levels and an option to beat them all">
+      <created>1682780853631</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1682780853631</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,7 +496,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed some button sprites to fit more for my game" />
     <MESSAGE value="Added longer level and added camera movement when a player is passing through the end of the window" />
     <MESSAGE value="Update of menu buttons view" />
     <MESSAGE value="Changed the background of menu overlay" />
@@ -527,7 +520,8 @@
     <MESSAGE value="Fixed replay button" />
     <MESSAGE value="Fixed bug with unfocusable window in some cases" />
     <MESSAGE value="Added view for level completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added view for level completed" />
+    <MESSAGE value="Added more levels and an option to beat them all" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more levels and an option to beat them all" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,9 +1,9 @@
 package yeremiva.gitgud.view;
 
 import yeremiva.gitgud.controller.GameController;
-import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.model.characters.Skeleton;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -18,13 +18,18 @@ public class LevelView {
     private int lvlTilesWide;
     private int maxTilesOffset;
     private int maxLvlOffsetX;
+    private Point playerSpawn;
 
     public LevelView(BufferedImage img){
         this.img = img;
         createLevelData();
         createEnemies();
         calculateLevelOffsets();
+        calculatePlayerSpawn();
+    }
 
+    private void calculatePlayerSpawn() {
+        playerSpawn = GetPlayerSpawn(img);
     }
 
     private void calculateLevelOffsets() {
@@ -55,5 +60,9 @@ public class LevelView {
 
     public ArrayList<Skeleton> getSkeletons() {
         return skeletons;
+    }
+
+    public Point getPlayerSpawn() {
+        return playerSpawn;
     }
 }

@@ -59,6 +59,7 @@ public class GameProcessController extends State implements Statemethods {
     public void loadNextLevel() {
         resetAll();
         levelController.loadNextLevel();
+        player.setSpawn(levelController.getCurrentLevel().getPlayerSpawn());
     }
 
     private void loadStartLevel() {
@@ -72,8 +73,11 @@ public class GameProcessController extends State implements Statemethods {
     private void initClasses() {
         levelController = new LevelController(gameController);
         enemyController = new EnemyController(this);
+
         player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE), this);
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
+        player.setSpawn(levelController.getCurrentLevel().getPlayerSpawn());
+
         pauseController = new PauseController(this);
         gameOverController = new GameOverController(this);
         levelCompletedController = new LevelCompletedController(this);
