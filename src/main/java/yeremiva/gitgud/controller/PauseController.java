@@ -133,7 +133,8 @@ public class PauseController {
             }
         } else if (isIn(e, replayB)) {
             if (replayB.isMousePressed()) {
-                System.out.println("Replay lvl!");
+                gameProcessController.resetAll();
+                gameProcessController.unpauseGame();
             }
         } else if (isIn(e, unpauseB)) {
             if (unpauseB.isMousePressed()) {
