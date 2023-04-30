@@ -35,9 +35,11 @@ public class LoadSave {
     public static final String URM_BUTTONS = "urm_buttons_fixed.png";
     public static final String VOLUME_BUTTONS = "volume_buttons_fixed.png";
     public static final String SOUND_BUTTONS = "sound_button_fixed.png";
-    public static final String PLAYING_BACKGROUND_IMAGE = "playing_bg_img.png";
+//    public static final String PLAYING_BACKGROUND_IMAGE = "playing_bg_img.png";
+    public static final String PLAYING_BACKGROUND_IMAGE = "playing_bg_img_fixed.png";
     public static final String BIG_CLOUDS = "big_clouds.png";
-    public static final String SMALL_CLOUDS = "small_clouds.png";
+//    public static final String SMALL_CLOUDS = "small_clouds.png";
+    public static final String SMALL_CLOUDS = "small_clouds_fixed.png";
 //    public static final String SKELETON_SPRITE = "mini_skeleton_fixed.png";
     public static final String SKELETON_SPRITE = "mini_skeleton_fixed_for_real_this_time (2).png";
     public static final String STATUS_BAR = "health_power_bar.png";

@@ -4,6 +4,8 @@ import yeremiva.gitgud.controller.GameController;
 
 public class Constants {
 
+    public static final float GRAVITY = 0.04f * GameController.SCALE;
+    public static final int ANI_SPEED = 25;
     public static class EnemyConstants {
         public static final int SKELETON = 0;
 

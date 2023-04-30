@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static yeremiva.gitgud.core.settings.Constants.ANI_SPEED;
+import static yeremiva.gitgud.core.settings.Constants.GRAVITY;
 import static yeremiva.gitgud.core.settings.Constants.PlayerConstants.*;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
@@ -22,21 +24,15 @@ public class Player extends Character{
     //43 height, 25 width 00 -- 10, 5
 
     private BufferedImage[][] animations;
-    private int aniTick, aniIndex, aniSpeed = 20;
-    private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
     private boolean left, right, jump;
-    private float playerSpeed = 1.0f * GameController.SCALE;
     private int[][] lvlData;
     private float xDrawOffset = 6 * GameController.SCALE;
     private float yDrawOffset = 4 * GameController.SCALE;
 
     // Jumping/Gravity
-    private float airSpeed = 0f;
-    private float gravity = 0.04f * GameController.SCALE;
     private float jumpSpeed = -2.25f * GameController.SCALE;
     private float fallSpeedAfterCollision = 0.5f * GameController.SCALE;
-    private boolean inAir = false;
 
     //StatusBar View
     private BufferedImage statusBarImg;
@@ -50,13 +46,9 @@ public class Player extends Character{
     private int healthBarHeight = (int) (4 * GameController.SCALE);
     private int healthBarXStart = (int) (34 * GameController.SCALE);
     private int healthBarYStart = (int) (14 * GameController.SCALE);
-
-    private int maxHealth = 100;
-    private int currentHealth = maxHealth;
     private int healthWidth = healthBarWidth;
 
     //Attackbox
-    private Rectangle2D.Float attackBox;
     private int flipX = 0;
     private int flipW = 1;
 
@@ -66,8 +58,12 @@ public class Player extends Character{
     public Player(float x, float y, int width, int height, GameProcessController gameProcessController) {
         super(x, y, width, height);
         this.gameProcessController = gameProcessController;
+        this.state = IDLE;
+        this.maxHealth = 100;
+        this.currentHealth = maxHealth;
+        this.walkSpeed = GameController.SCALE * 1.0f;
         loadAnimations();
-        initHitbox(x, y, (int) (17 * GameController.SCALE), (int) (27 * GameController.SCALE));
+        initHitbox(17, 27);
         initAttackBox();
     }
 
@@ -126,18 +122,13 @@ public class Player extends Character{
     }
 
     public void render(Graphics g, int lvlOffset){
-        g.drawImage(animations[playerAction][aniIndex],
+        g.drawImage(animations[state][aniIndex],
                 (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
                    (int) (hitbox.y - yDrawOffset),
                     width * flipW, height, null);
         drawHitbox(g, lvlOffset);
         drawAttackBox(g, lvlOffset);
         drawUI(g);
-    }
-
-    private void drawAttackBox(Graphics g, int lvlOffset) {
-        g.setColor(Color.red);
-        g.drawRect((int) attackBox.x - lvlOffset, (int) attackBox.y, (int) attackBox.width, (int) attackBox.height);
     }
 
     private void drawUI(Graphics g) {
@@ -148,10 +139,10 @@ public class Player extends Character{
 
     private void updateAnimationTick() {
         aniTick++;
-        if (aniTick >= aniSpeed) {
+        if (aniTick >= ANI_SPEED) {
             aniTick = 0;
             aniIndex++;
-            if (aniIndex >= GetSpriteAmount(playerAction)) {
+            if (aniIndex >= GetSpriteAmount(state)) {
                 aniIndex = 0;
                 attacking = false;
                 attackChecked = false;
@@ -160,24 +151,24 @@ public class Player extends Character{
     }
 
     public void setAnimation(){
-        int startAni = playerAction;
+        int startAni = state;
 
         if (moving) {
-            playerAction = RUNNING;
+            state = RUNNING;
         } else {
-            playerAction = IDLE;
+            state = IDLE;
         }
 
         if (inAir) {
             if (airSpeed < 0) {
-                playerAction = JUMPING;
+                state = JUMPING;
             } else {
-                playerAction = FALLING;
+                state = FALLING;
             }
         }
 
         if (attacking){
-            playerAction = ATTACKING;
+            state = ATTACKING;
             if (startAni != ATTACKING) {
                 aniIndex = 4;
                 aniTick = 0;
@@ -185,7 +176,7 @@ public class Player extends Character{
             }
         }
 
-        if (startAni != playerAction){
+        if (startAni != state){
             resetAniTick();
         }
     }
@@ -215,12 +206,12 @@ public class Player extends Character{
         float xSpeed = 0;
 
         if (left) {
-            xSpeed -= playerSpeed;
+            xSpeed -= walkSpeed;
             flipX = width;
             flipW = -1;
         }
         if (right) {
-            xSpeed += playerSpeed;
+            xSpeed += walkSpeed;
             flipX = 0;
             flipW = 1;
         }
@@ -234,7 +225,7 @@ public class Player extends Character{
         if (inAir) {
             if (CanMoveHere(hitbox.x, hitbox.y + airSpeed, hitbox.width, hitbox.height, lvlData)) {
                 hitbox.y += airSpeed;
-                airSpeed += gravity;
+                airSpeed += GRAVITY;
                 updateXPos(xSpeed);
             } else {
                 hitbox.y = GetCharacterYPosUnderRoofOrAboveFloor(hitbox, airSpeed);
@@ -329,7 +320,7 @@ public class Player extends Character{
         inAir = false;
         attacking = false;
         moving = false;
-        playerAction = IDLE;
+        state = IDLE;
         currentHealth = maxHealth;
 
         hitbox.x = x;
