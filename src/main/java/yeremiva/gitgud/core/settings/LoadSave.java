@@ -44,6 +44,8 @@ public class LoadSave {
     public static final String SKELETON_SPRITE = "mini_skeleton_fixed_for_real_this_time (2).png";
     public static final String STATUS_BAR = "health_power_bar.png";
     public static final String COMPLETED_IMAGE = "completed_sprite.png";
+    public static final String POTION_ATLAS = "potions_sprites.png";
+    public static final String CONTAINER_ATLAS = "objects_sprites.png";
 
 
     public static BufferedImage GetSpriteAtlas(String atlas){
