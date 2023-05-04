@@ -2,6 +2,8 @@ package yeremiva.gitgud.core.settings;
 
 import yeremiva.gitgud.controller.GameController;
 import yeremiva.gitgud.model.characters.Skeleton;
+import yeremiva.gitgud.model.objects.GameContainer;
+import yeremiva.gitgud.model.objects.Potion;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -9,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.SKELETON;
+import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 
 public class HelpMethods {
 
@@ -159,5 +162,33 @@ public class HelpMethods {
             }
         }
         return new Point(1 * GameController.TILES_SIZE, 1 * GameController.TILES_SIZE) ;
+    }
+
+    public static ArrayList<Potion> GetPotions(BufferedImage img) {
+        ArrayList<Potion> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++){
+            for (int i = 0; i < img.getWidth(); i ++){
+                Color color = new Color(img.getRGB(i, j));
+                int value = color.getBlue();
+                if (value == RED_POTION || value == BLUE_POTION) {
+                    list.add(new Potion(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE, value));
+                }
+            }
+        }
+        return list;
+    }
+
+    public static ArrayList<GameContainer> GetContainers(BufferedImage img) {
+        ArrayList<GameContainer> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++){
+            for (int i = 0; i < img.getWidth(); i ++){
+                Color color = new Color(img.getRGB(i, j));
+                int value = color.getBlue();
+                if (value == BARREL || value == BOX) {
+                    list.add(new GameContainer(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE, value));
+                }
+            }
+        }
+        return list;
     }
 }

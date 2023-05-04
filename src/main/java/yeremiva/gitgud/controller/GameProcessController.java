@@ -65,6 +65,7 @@ public class GameProcessController extends State implements Statemethods {
 
     private void loadStartLevel() {
         enemyController.loadEnemies(levelController.getCurrentLevel());
+        objectController.loadObjects(levelController.getCurrentLevel());
     }
 
     private void calculateLevelOffset() {

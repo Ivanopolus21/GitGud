@@ -3,6 +3,7 @@ package yeremiva.gitgud.controller;
 import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.model.objects.GameContainer;
 import yeremiva.gitgud.model.objects.Potion;
+import yeremiva.gitgud.view.LevelView;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -28,6 +29,11 @@ public class ObjectController {
 
         containers.add(new GameContainer(500, 300, BARREL));
         containers.add(new GameContainer(600, 300, BOX));
+    }
+
+    public void loadObjects(LevelView newLevel) {
+        potions = newLevel.getPotions();
+        containers = newLevel.getContainers();
     }
 
     private void loadImgs() {

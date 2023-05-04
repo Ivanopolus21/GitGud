@@ -36,6 +36,7 @@ public class LevelController {
         gameController.getGameProcessController().getEnemyController().loadEnemies(newLevel);
         gameController.getGameProcessController().getPlayer().loadLvlData(newLevel.getLvlData());
         gameController.getGameProcessController().setMaxLvlOffsetX(newLevel.getMaxLvlOffsetX());
+        gameController.getGameProcessController().getObjectController().loadObjects(newLevel);
     }
     private void buildAllLevels() {
         BufferedImage[] allLevels = LoadSave.GetAllLevels();
