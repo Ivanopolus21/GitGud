@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Clean up the code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/objects_sprites.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/potions_sprites.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added some &quot;blueprints&quot; for the objects in the game">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,14 +136,8 @@
       <workItem from="1682771790524" duration="8989000" />
       <workItem from="1682888589286" duration="2226000" />
       <workItem from="1683047978515" duration="46000" />
-      <workItem from="1683152512037" duration="2266000" />
-    </task>
-    <task id="LOCAL-00024" summary="Added attack animation for the Player on a left mouse button">
-      <created>1681214527330</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1681214527330</updated>
+      <workItem from="1683152512037" duration="2520000" />
+      <workItem from="1683198550566" duration="3552000" />
     </task>
     <task id="LOCAL-00025" summary="Added the first version of the first level sprites (beta)">
       <created>1681226746417</created>
@@ -483,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682890793086</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Added some &quot;blueprints&quot; for the objects in the game">
+      <created>1683155005190</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1683155005190</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +500,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed the background of menu overlay" />
     <MESSAGE value="Added background image for main menu" />
     <MESSAGE value="Upgrading some background images" />
     <MESSAGE value="Adding a moving background to the game" />
@@ -526,7 +524,8 @@
     <MESSAGE value="Added more levels and an option to beat them all" />
     <MESSAGE value="Added player spawn" />
     <MESSAGE value="Clean up the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up the code" />
+    <MESSAGE value="Added some &quot;blueprints&quot; for the objects in the game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some &quot;blueprints&quot; for the objects in the game" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

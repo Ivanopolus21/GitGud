@@ -23,6 +23,7 @@ public class GameProcessController extends State implements Statemethods {
     private Player player;
     private LevelController levelController;
     private EnemyController enemyController;
+    private ObjectController objectController;
     private PauseController pauseController;
     private GameOverController gameOverController;
     private LevelCompletedController levelCompletedController;
@@ -73,6 +74,7 @@ public class GameProcessController extends State implements Statemethods {
     private void initClasses() {
         levelController = new LevelController(gameController);
         enemyController = new EnemyController(this);
+        objectController = new ObjectController(this);
 
         player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE), this);
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
@@ -81,6 +83,8 @@ public class GameProcessController extends State implements Statemethods {
         pauseController = new PauseController(this);
         gameOverController = new GameOverController(this);
         levelCompletedController = new LevelCompletedController(this);
+
+
     }
 
     @Override
@@ -93,6 +97,7 @@ public class GameProcessController extends State implements Statemethods {
             levelController.update();
             player.update();
             enemyController.update(levelController.getCurrentLevel().getLvlData(), player);
+            objectController.update();
             checkCloseToBorder();
         }
     }
@@ -123,6 +128,7 @@ public class GameProcessController extends State implements Statemethods {
         levelController.draw(g, xLvlOffset);
         player.render(g, xLvlOffset);
         enemyController.draw(g, xLvlOffset);
+        objectController.draw(g, xLvlOffset);
 
         if (paused) {
             g.setColor(new Color(0, 0, 0, 150));
@@ -276,5 +282,9 @@ public class GameProcessController extends State implements Statemethods {
 
     public EnemyController getEnemyController() {
         return enemyController;
+    }
+
+    public ObjectController getObjectController() {
+        return objectController;
     }
 }
