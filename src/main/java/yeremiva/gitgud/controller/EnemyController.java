@@ -55,8 +55,8 @@ public class EnemyController {
                         SKELETON_WIDTH * s.flipW(),
                         SKELETON_HEIGHT,
                         null);
-                s.drawHitbox(g, xLvlOffset);
-                s.drawAttackBox(g, xLvlOffset);
+//                s.drawHitbox(g, xLvlOffset);
+//                s.drawAttackBox(g, xLvlOffset);
             }
         }
     }

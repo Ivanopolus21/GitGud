@@ -91,6 +91,9 @@ public class Player extends Character{
         updateAttackBox();
 
         updatePosition();
+        if (moving) {
+            checkPotionTouched();
+        }
         if (attacking) {
             checkAttack();
         }
@@ -100,12 +103,17 @@ public class Player extends Character{
 
     }
 
+    private void checkPotionTouched() {
+        gameProcessController.checkPotionTouched(hitbox);
+    }
+
     private void checkAttack() {
         if (attackChecked || aniIndex != 4) {
             return;
         }
         attackChecked = true;
         gameProcessController.checkIfPlayerHitsEnemy(attackBox);
+        gameProcessController.checkObjectHit(attackBox);
     }
 
     private void updateAttackBox() {
@@ -126,8 +134,8 @@ public class Player extends Character{
                 (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
                    (int) (hitbox.y - yDrawOffset),
                     width * flipW, height, null);
-        drawHitbox(g, lvlOffset);
-        drawAttackBox(g, lvlOffset);
+//        drawHitbox(g, lvlOffset);
+//        drawAttackBox(g, lvlOffset);
         drawUI(g);
     }
 
@@ -273,6 +281,10 @@ public class Player extends Character{
             currentHealth = maxHealth;
         }
      }
+
+    public void changePower(int value) {
+        System.out.println("Changed power!");
+    }
 
     private void loadAnimations() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);

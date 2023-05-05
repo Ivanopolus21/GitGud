@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 import static yeremiva.gitgud.core.settings.Constants.Enviroment.*;
 
@@ -159,6 +160,7 @@ public class GameProcessController extends State implements Statemethods {
         lvlCompleted = false;
         player.resetAll();
         enemyController.resetAllEnemies();
+        objectController.resetAllObjects();
     }
 
     public void setGameOver(boolean gameOver) {
@@ -167,6 +169,14 @@ public class GameProcessController extends State implements Statemethods {
 
     public void checkIfPlayerHitsEnemy(Rectangle2D.Float attackBox) {
         enemyController.checkEnemyHit(attackBox);
+    }
+
+    public void checkObjectHit(Rectangle2D.Float attackBox) {
+        objectController.checkObjectHit(attackBox);
+    }
+
+    public void checkPotionTouched(Rectangle2D.Float hitbox) {
+        objectController.checkObjectTouched(hitbox);
     }
 
     public void mouseDragged(MouseEvent e) {
@@ -288,4 +298,6 @@ public class GameProcessController extends State implements Statemethods {
     public ObjectController getObjectController() {
         return objectController;
     }
+
+
 }
