@@ -63,9 +63,8 @@ public class EnemyController {
 
     public void checkEnemyHit(Rectangle2D.Float attackBox) {
         for (Skeleton s : skeletons) {
-            if (s.isAlive() && !s.isDoAnimation()) {
+            if (s.isAlive() && s.getCurrentHealth() > 0) {
                 if (attackBox.intersects(s.getHitbox())) {
-                    s.setAnimation(true);
                     s.hurt(10);
                     return;
                 }

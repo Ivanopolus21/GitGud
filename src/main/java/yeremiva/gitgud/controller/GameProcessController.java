@@ -3,8 +3,7 @@ package yeremiva.gitgud.controller;
 import yeremiva.gitgud.Game;
 import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
-import yeremiva.gitgud.core.states.State;
-import yeremiva.gitgud.core.states.Statemethods;
+import yeremiva.gitgud.core.states.*;
 import yeremiva.gitgud.model.characters.Enemy;
 import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.view.GameOverView;
@@ -41,6 +40,7 @@ public class GameProcessController extends State implements Statemethods {
 
     private boolean gameOver;
     private boolean lvlCompleted;
+    private boolean playerDying;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -95,7 +95,11 @@ public class GameProcessController extends State implements Statemethods {
             pauseController.update();
         } else if (lvlCompleted) {
             levelCompletedController.update();
-        } else if (!gameOver){
+        } else if (gameOver) {
+            gameOverController.update();
+        } else if (playerDying) {
+            player.update();
+        } else {
             levelController.update();
             player.update();
             enemyController.update(levelController.getCurrentLevel().getLvlData(), player);
@@ -153,16 +157,6 @@ public class GameProcessController extends State implements Statemethods {
 
     }
 
-    public void resetAll() {
-        //reset player, enemy etc.
-        gameOver = false;
-        paused = false;
-        lvlCompleted = false;
-        player.resetAll();
-        enemyController.resetAllEnemies();
-        objectController.resetAllObjects();
-    }
-
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
     }
@@ -208,7 +202,9 @@ public class GameProcessController extends State implements Statemethods {
             } else if (lvlCompleted) {
                 levelCompletedController.mousePressed(e);
             }
-         }
+         } else {
+            gameOverController.mousePressed(e);
+        }
     }
 
     @Override
@@ -219,6 +215,8 @@ public class GameProcessController extends State implements Statemethods {
             } else if (lvlCompleted) {
                 levelCompletedController.mouseReleased(e);
             }
+        } else {
+            gameOverController.mouseReleased(e);
         }
     }
 
@@ -230,6 +228,8 @@ public class GameProcessController extends State implements Statemethods {
             } else if (lvlCompleted) {
                 levelCompletedController.mouseMoved(e);
             }
+        } else {
+            gameOverController.mouseMoved(e);
         }
     }
 
@@ -307,4 +307,18 @@ public class GameProcessController extends State implements Statemethods {
         return levelController;
     }
 
+    public void setPlayerDying(boolean playerDying) {
+        this.playerDying = playerDying;
+    }
+
+    public void resetAll() {
+        //reset player, enemy etc.
+        gameOver = false;
+        paused = false;
+        lvlCompleted = false;
+        playerDying = false;
+        player.resetAll();
+        enemyController.resetAllEnemies();
+        objectController.resetAllObjects();
+    }
 }

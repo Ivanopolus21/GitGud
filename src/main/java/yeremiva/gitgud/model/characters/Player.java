@@ -83,7 +83,16 @@ public class Player extends Character{
         updateHealthBar();
 
         if (currentHealth <= 0) {
-            gameProcessController.setGameOver(true);
+            if (state != DEAD) {
+                state = DEAD;
+                aniTick = 0;
+                aniIndex = 0;
+                gameProcessController.setPlayerDying(true);
+            } else if (aniIndex == GetSpriteAmount(DEAD) - 1 && aniTick >= ANI_SPEED - 1) {
+                gameProcessController.setGameOver(true);
+            } else {
+                updateAnimationTick();
+            }
             return;
         }
 
@@ -101,21 +110,8 @@ public class Player extends Character{
         setAnimation();
     }
 
-    private void checkSpikesTouched() {
-        gameProcessController.checkSpikesTouched(this);
-    }
-
-    private void checkPotionTouched() {
-        gameProcessController.checkPotionTouched(hitbox);
-    }
-
-    private void checkAttack() {
-        if (attackChecked || aniIndex != 4) {
-            return;
-        }
-        attackChecked = true;
-        gameProcessController.checkIfPlayerHitsEnemy(attackBox);
-        gameProcessController.checkObjectHit(attackBox);
+    private void updateHealthBar() {
+        healthWidth = (int) ((currentHealth / (float)(maxHealth)) * healthBarWidth);
     }
 
     private void updateAttackBox() {
@@ -127,85 +123,12 @@ public class Player extends Character{
         attackBox.y = hitbox.y - (4 * GameController.SCALE);
     }
 
-    private void updateHealthBar() {
-        healthWidth = (int) ((currentHealth / (float)(maxHealth)) * healthBarWidth);
-    }
-
-    public void render(Graphics g, int lvlOffset){
-        g.drawImage(animations[state][aniIndex],
-                (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
-                   (int) (hitbox.y - yDrawOffset),
-                    width * flipW, height, null);
-        drawHitbox(g, lvlOffset);
-        drawAttackBox(g, lvlOffset);
-        drawUI(g);
-    }
-
-    private void drawUI(Graphics g) {
-        g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
-        g.setColor(Color.red);
-        g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
-    }
-
-    private void updateAnimationTick() {
-        aniTick++;
-        if (aniTick >= ANI_SPEED) {
-            aniTick = 0;
-            aniIndex++;
-            if (aniIndex >= GetSpriteAmount(state)) {
-                aniIndex = 0;
-                attacking = false;
-                attackChecked = false;
-            }
-        }
-    }
-
-    public void setAnimation(){
-        int startAni = state;
-
-        if (moving) {
-            state = RUNNING;
-        } else {
-            state = IDLE;
-        }
-
-        if (inAir) {
-            if (airSpeed < 0) {
-                state = JUMPING;
-            } else {
-                state = FALLING;
-            }
-        }
-
-        if (attacking){
-            state = ATTACKING;
-            if (startAni != ATTACKING) {
-                aniIndex = 4;
-                aniTick = 0;
-                return;
-            }
-        }
-
-        if (startAni != state){
-            resetAniTick();
-        }
-    }
-
-    private void resetAniTick(){
-        aniTick = 0;
-        aniIndex = 0;
-    }
-
     public void updatePosition() {
         moving = false;
 
         if (jump) {
             jump();
         }
-
-//        if (!left && !right && !inAir) {
-//            return;
-//        }
 
         if (!inAir) {
             if ((!left && !right) || (right && left)) {
@@ -251,6 +174,89 @@ public class Player extends Character{
         }
         moving = true;
     }
+
+    private void updateAnimationTick() {
+        aniTick++;
+        if (aniTick >= ANI_SPEED) {
+            aniTick = 0;
+            aniIndex++;
+            if (aniIndex >= GetSpriteAmount(state)) {
+                aniIndex = 0;
+                attacking = false;
+                attackChecked = false;
+            }
+        }
+    }
+
+    public void render(Graphics g, int lvlOffset){
+        g.drawImage(animations[state][aniIndex],
+                (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
+                (int) (hitbox.y - yDrawOffset),
+                width * flipW, height, null);
+        drawHitbox(g, lvlOffset);
+        drawAttackBox(g, lvlOffset);
+        drawUI(g);
+    }
+
+    private void drawUI(Graphics g) {
+        g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
+        g.setColor(Color.red);
+        g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
+    }
+
+    private void checkSpikesTouched() {
+        gameProcessController.checkSpikesTouched(this);
+    }
+
+    private void checkPotionTouched() {
+        gameProcessController.checkPotionTouched(hitbox);
+    }
+
+    private void checkAttack() {
+        if (attackChecked || aniIndex != 4) {
+            return;
+        }
+        attackChecked = true;
+        gameProcessController.checkIfPlayerHitsEnemy(attackBox);
+        gameProcessController.checkObjectHit(attackBox);
+    }
+
+    public void setAnimation(){
+        int startAni = state;
+
+        if (moving) {
+            state = RUNNING;
+        } else {
+            state = IDLE;
+        }
+
+        if (inAir) {
+            if (airSpeed < 0) {
+                state = JUMPING;
+            } else {
+                state = FALLING;
+            }
+        }
+
+        if (attacking){
+            state = ATTACKING;
+            if (startAni != ATTACKING) {
+                aniIndex = 4;
+                aniTick = 0;
+                return;
+            }
+        }
+
+        if (startAni != state){
+            resetAniTick();
+        }
+    }
+
+    private void resetAniTick(){
+        aniTick = 0;
+        aniIndex = 0;
+    }
+
 
     private void jump(){
         if (inAir){
