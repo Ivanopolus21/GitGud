@@ -179,6 +179,10 @@ public class GameProcessController extends State implements Statemethods {
         objectController.checkObjectTouched(hitbox);
     }
 
+    public void checkSpikesTouched(Player player) {
+        objectController.checkSpikesTouched(player);
+    }
+
     public void mouseDragged(MouseEvent e) {
         if (!gameOver) {
             if (paused) {

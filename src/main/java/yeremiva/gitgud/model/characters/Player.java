@@ -87,20 +87,22 @@ public class Player extends Character{
             return;
         }
 
-
         updateAttackBox();
 
         updatePosition();
         if (moving) {
             checkPotionTouched();
+            checkSpikesTouched();
         }
         if (attacking) {
             checkAttack();
         }
         updateAnimationTick();
         setAnimation();
+    }
 
-
+    private void checkSpikesTouched() {
+        gameProcessController.checkSpikesTouched(this);
     }
 
     private void checkPotionTouched() {
@@ -134,8 +136,8 @@ public class Player extends Character{
                 (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
                    (int) (hitbox.y - yDrawOffset),
                     width * flipW, height, null);
-//        drawHitbox(g, lvlOffset);
-//        drawAttackBox(g, lvlOffset);
+        drawHitbox(g, lvlOffset);
+        drawAttackBox(g, lvlOffset);
         drawUI(g);
     }
 
@@ -280,7 +282,12 @@ public class Player extends Character{
         } else if (currentHealth >= maxHealth) {
             currentHealth = maxHealth;
         }
-     }
+    }
+
+
+    public void kill() {
+        currentHealth = 0;
+    }
 
     public void changePower(int value) {
         System.out.println("Changed power!");
@@ -342,4 +349,5 @@ public class Player extends Character{
             inAir = true;
         }
     }
+
 }

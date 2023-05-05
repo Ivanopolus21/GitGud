@@ -12,6 +12,7 @@ public class Constants {
         public static final int BLUE_POTION = 1;
         public static final int BARREL = 2;
         public static final int BOX = 3;
+        public static final int SPIKE = 4;
 
         public static final int RED_POTION_VALUE = 15;
         public static final int BLUE_POTION_VALUE = 10;
@@ -25,6 +26,12 @@ public class Constants {
         public static final int CONTAINER_HEIGHT_DEFAULT = 30;
         public static final int CONTAINER_WIDTH = (int) (CONTAINER_WIDTH_DEFAULT * GameController.SCALE);
         public static final int CONTAINER_HEIGHT = (int) (CONTAINER_HEIGHT_DEFAULT * GameController.SCALE);
+
+        public static final int SPIKE_WIDTH_DEFAULT = 32;
+        public static final int SPIKE_HEIGHT_DEFAULT = 32;
+        public static final int SPIKE_WIDTH = (int) (SPIKE_WIDTH_DEFAULT * GameController.SCALE);
+        public static final int SPIKE_HEIGHT = (int) (SPIKE_HEIGHT_DEFAULT * GameController.SCALE);
+
 
         public static int GetSpriteAmount(int object_type) {
             switch (object_type) {

@@ -5,6 +5,7 @@ import yeremiva.gitgud.core.settings.HelpMethods;
 import yeremiva.gitgud.model.characters.Skeleton;
 import yeremiva.gitgud.model.objects.GameContainer;
 import yeremiva.gitgud.model.objects.Potion;
+import yeremiva.gitgud.model.objects.Spike;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,6 +20,7 @@ public class LevelView {
     private int[][] lvlData;
     private ArrayList<Skeleton> skeletons;
     private ArrayList<Potion> potions;
+    private ArrayList<Spike> spikes;
     private ArrayList<GameContainer> containers;
     private int lvlTilesWide;
     private int maxTilesOffset;
@@ -31,8 +33,13 @@ public class LevelView {
         createEnemies();
         createPotions();
         createContainers();
+        createSpikes();
         calculateLevelOffsets();
         calculatePlayerSpawn();
+    }
+
+    private void createSpikes() {
+        spikes = HelpMethods.GetSpikes(img);
     }
 
     private void createContainers() {
@@ -87,5 +94,9 @@ public class LevelView {
 
     public ArrayList<GameContainer> getContainers() {
         return containers;
+    }
+
+    public ArrayList<Spike> getSpikes() {
+        return spikes;
     }
 }

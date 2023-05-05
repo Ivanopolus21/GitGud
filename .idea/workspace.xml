@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added objects logic">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Bug fixes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/Spike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/trap_atlas.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levels/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levels/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levels/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levels/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levels/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levels/3.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,14 +146,7 @@
       <workItem from="1683047978515" duration="46000" />
       <workItem from="1683152512037" duration="2520000" />
       <workItem from="1683198550566" duration="6263000" />
-      <workItem from="1683290042439" duration="4777000" />
-    </task>
-    <task id="LOCAL-00028" summary="Added the IsSolid check for the blocks or any objects">
-      <created>1681329635743</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1681329635743</updated>
+      <workItem from="1683290042439" duration="7047000" />
     </task>
     <task id="LOCAL-00029" summary="Changed the bug with image scaling and added actual hitbox for the debugging">
       <created>1681331332062</created>
@@ -484,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683292791071</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Bug fixes">
+      <created>1683296404820</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1683296404820</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,7 +509,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some logic for upcoming enemy" />
     <MESSAGE value="Added enemy Skeleton view and animations" />
     <MESSAGE value="Updated view of pause menu and buttons" />
     <MESSAGE value="Added an enemy that can patrol" />
@@ -527,7 +533,8 @@
     <MESSAGE value="Added view for objects" />
     <MESSAGE value="Added objects spawn on the levels and updated their appearance" />
     <MESSAGE value="Added objects logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added objects logic" />
+    <MESSAGE value="Bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

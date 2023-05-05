@@ -1,8 +1,10 @@
 package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.core.settings.LoadSave;
+import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.model.objects.GameContainer;
 import yeremiva.gitgud.model.objects.Potion;
+import yeremiva.gitgud.model.objects.Spike;
 import yeremiva.gitgud.view.LevelView;
 
 import java.awt.*;
@@ -16,20 +18,22 @@ public class ObjectController {
 
     private GameProcessController gameProcessController;
     private BufferedImage[][] potionImgs, containerImgs;
+    private BufferedImage spikeImg;
     private ArrayList<Potion> potions;
     private ArrayList<GameContainer> containers;
+    private ArrayList<Spike> spikes;
 
     public ObjectController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
         loadImgs();
+    }
 
-        potions = new ArrayList<>();
-        containers = new ArrayList<>();
-        potions.add(new Potion(300, 300, RED_POTION));
-        potions.add(new Potion(400, 300, BLUE_POTION));
-
-        containers.add(new GameContainer(500, 300, BARREL));
-        containers.add(new GameContainer(600, 300, BOX));
+    public void checkSpikesTouched(Player player) {
+        for (Spike s : spikes) {
+            if (s.getHitbox().intersects(player.getHitbox())) {
+                player.kill();
+            }
+        }
     }
 
     public void checkObjectTouched(Rectangle2D.Float hitbox) {
@@ -61,7 +65,7 @@ public class ObjectController {
                         type = 1;
                     }
                     potions.add(new Potion((int) (gc.getHitbox().x + gc.getHitbox().width / 2),
-                            (int)(gc.getHitbox().y - gc.getHitbox().height / 2),
+                            (int)(gc.getHitbox().y - gc.getHitbox().height / 4),
                             type));
                     return;
                 }
@@ -71,6 +75,7 @@ public class ObjectController {
     public void loadObjects(LevelView newLevel) {
         potions = new ArrayList<>(newLevel.getPotions());
         containers = new ArrayList<>(newLevel.getContainers());
+        spikes = newLevel.getSpikes();
     }
 
     private void loadImgs() {
@@ -91,6 +96,8 @@ public class ObjectController {
                 containerImgs[j][i] = containerSprite.getSubimage(40 * i, 30 * j, 40, 30);
             }
         }
+
+        spikeImg = LoadSave.GetSpriteAtlas(LoadSave.TRAP_ATLAS);
     }
 
     public void update() {
@@ -110,6 +117,15 @@ public class ObjectController {
     public void draw(Graphics g, int xLvlOffset) {
         drawPotions(g, xLvlOffset);
         drawContainers(g, xLvlOffset);
+        drawTraps(g, xLvlOffset);
+    }
+
+    private void drawTraps(Graphics g, int xLvlOffset) {
+        for (Spike s : spikes){
+            g.drawImage(spikeImg, (int)(s.getHitbox().x - xLvlOffset),
+                    (int) (s.getHitbox().y - s.getyDrawOffset()),
+                    SPIKE_WIDTH, SPIKE_HEIGHT, null);
+        }
     }
 
     private void drawContainers(Graphics g, int xLvlOffset) {

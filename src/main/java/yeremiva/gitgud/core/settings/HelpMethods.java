@@ -1,9 +1,11 @@
 package yeremiva.gitgud.core.settings;
 
+import sun.security.provider.ConfigFile;
 import yeremiva.gitgud.controller.GameController;
 import yeremiva.gitgud.model.characters.Skeleton;
 import yeremiva.gitgud.model.objects.GameContainer;
 import yeremiva.gitgud.model.objects.Potion;
+import yeremiva.gitgud.model.objects.Spike;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -186,6 +188,20 @@ public class HelpMethods {
                 int value = color.getBlue();
                 if (value == BARREL || value == BOX) {
                     list.add(new GameContainer(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE, value));
+                }
+            }
+        }
+        return list;
+    }
+
+    public static ArrayList<Spike> GetSpikes(BufferedImage img) {
+        ArrayList<Spike> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++){
+            for (int i = 0; i < img.getWidth(); i ++){
+                Color color = new Color(img.getRGB(i, j));
+                int value = color.getBlue();
+                if (value == SPIKE) {
+                    list.add(new Spike(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE, SPIKE));
                 }
             }
         }
