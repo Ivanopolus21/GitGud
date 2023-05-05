@@ -10,6 +10,8 @@ import static yeremiva.gitgud.core.settings.Constants.ANI_SPEED;
 import static yeremiva.gitgud.core.settings.Constants.Directions.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 import static yeremiva.gitgud.core.settings.Constants.GRAVITY;
+import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.BARREL;
+import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.BOX;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
 public abstract class Enemy extends Character{
@@ -150,16 +152,6 @@ public abstract class Enemy extends Character{
         }
     }
 
-    public void resetEnemy() {
-        hitbox.x = x;
-        hitbox.y = y;
-        firstUpdate = true;
-        currentHealth = maxHealth;
-        newState(IDLE);
-        alive = true;
-        airSpeed = 0;
-    }
-
     public void setAnimation(boolean doAnimation) {
         this.doAnimation = doAnimation;
     }
@@ -174,6 +166,20 @@ public abstract class Enemy extends Character{
 
     public int getCurrentHealth() {
         return currentHealth;
+    }
+
+    public void resetEnemy() {
+        hitbox.x = x;
+        hitbox.y = y;
+        firstUpdate = true;
+        currentHealth = maxHealth;
+        newState(IDLE);
+        alive = true;
+        airSpeed = 0;
+
+        if (enemyType == SKELETON) {
+            doAnimation = false;
+        }
     }
 }
 
