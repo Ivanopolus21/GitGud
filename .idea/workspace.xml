@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added objects spawn on the levels and updated their appearance">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added objects logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/Potion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,14 +139,7 @@
       <workItem from="1683047978515" duration="46000" />
       <workItem from="1683152512037" duration="2520000" />
       <workItem from="1683198550566" duration="6263000" />
-      <workItem from="1683290042439" duration="2443000" />
-    </task>
-    <task id="LOCAL-00027" summary="Added the hitbox for the Player">
-      <created>1681303058188</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1681303058188</updated>
+      <workItem from="1683290042439" duration="4777000" />
     </task>
     <task id="LOCAL-00028" summary="Added the IsSolid check for the blocks or any objects">
       <created>1681329635743</created>
@@ -485,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683205909302</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Added objects logic">
+      <created>1683292791071</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1683292791071</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +502,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Adding a moving background to the game" />
     <MESSAGE value="Added some logic for upcoming enemy" />
     <MESSAGE value="Added enemy Skeleton view and animations" />
     <MESSAGE value="Updated view of pause menu and buttons" />
@@ -528,7 +526,8 @@
     <MESSAGE value="Added some &quot;blueprints&quot; for the objects in the game" />
     <MESSAGE value="Added view for objects" />
     <MESSAGE value="Added objects spawn on the levels and updated their appearance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added objects spawn on the levels and updated their appearance" />
+    <MESSAGE value="Added objects logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added objects logic" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

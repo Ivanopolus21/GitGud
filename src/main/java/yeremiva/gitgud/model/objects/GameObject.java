@@ -80,6 +80,10 @@ public class GameObject {
         this.doAnimation = doAnimation;
     }
 
+    public boolean isDoAnimation() {
+        return doAnimation;
+    }
+
     public int getxDrawOffset() {
         return xDrawOffset;
     }

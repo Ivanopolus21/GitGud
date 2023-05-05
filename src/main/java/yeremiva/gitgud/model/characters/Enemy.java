@@ -20,6 +20,7 @@ public abstract class Enemy extends Character{
     protected float attackDistance = GameController.TILES_SIZE;
     protected boolean alive = true;
     protected boolean attackChecked;
+    protected boolean doAnimation;
 
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);
@@ -157,6 +158,14 @@ public abstract class Enemy extends Character{
         newState(IDLE);
         alive = true;
         airSpeed = 0;
+    }
+
+    public void setAnimation(boolean doAnimation) {
+        this.doAnimation = doAnimation;
+    }
+
+    public boolean isDoAnimation() {
+        return doAnimation;
     }
 
     public boolean isAlive() {

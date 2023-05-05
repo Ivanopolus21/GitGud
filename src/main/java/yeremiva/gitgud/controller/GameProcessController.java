@@ -299,5 +299,8 @@ public class GameProcessController extends State implements Statemethods {
         return objectController;
     }
 
+    public LevelController getLevelController() {
+        return levelController;
+    }
 
 }
