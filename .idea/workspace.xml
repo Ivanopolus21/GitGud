@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Fixed bugs with dealing damage to enemies">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/death_screen.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added death screen to the game (updated)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameOverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameOverController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,14 +137,8 @@
       <workItem from="1683047978515" duration="46000" />
       <workItem from="1683152512037" duration="2520000" />
       <workItem from="1683198550566" duration="6263000" />
-      <workItem from="1683290042439" duration="12651000" />
-    </task>
-    <task id="LOCAL-00031" summary="Added jump and a gravity to the game">
-      <created>1681345794823</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1681345794823</updated>
+      <workItem from="1683290042439" duration="15950000" />
+      <workItem from="1683372965573" duration="2173000" />
     </task>
     <task id="LOCAL-00032" summary="Added jump animation and changed the walking animation to the running (with a bug)">
       <created>1681346564334</created>
@@ -486,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683312439290</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Added death screen to the game (updated)">
+      <created>1683315212970</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1683315212970</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +501,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added an enemy that can patrol" />
     <MESSAGE value="Some refactoring of the Skeleton code" />
     <MESSAGE value="Added attack animation view for Skeleton and his sight for a player" />
     <MESSAGE value="Updated design of the buttons" />
@@ -529,7 +525,8 @@
     <MESSAGE value="Bug fixes" />
     <MESSAGE value="Added traps to the game (currently only spikes)" />
     <MESSAGE value="Fixed bugs with dealing damage to enemies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs with dealing damage to enemies" />
+    <MESSAGE value="Added death screen to the game (updated)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added death screen to the game (updated)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

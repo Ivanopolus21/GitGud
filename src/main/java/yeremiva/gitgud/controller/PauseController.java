@@ -128,6 +128,7 @@ public class PauseController {
             }
         } else if (isIn(e, menuB)) {
             if (menuB.isMousePressed()) {
+                gameProcessController.resetAll();
                 Gamestate.state = Gamestate.MENU;
                 gameProcessController.unpauseGame();
             }

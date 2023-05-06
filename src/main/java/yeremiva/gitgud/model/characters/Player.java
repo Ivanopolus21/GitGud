@@ -76,6 +76,7 @@ public class Player extends Character{
 
     private void initAttackBox() {
         attackBox = new Rectangle2D.Float(x, y, (int) (25 * GameController.SCALE), (int) (35 * GameController.SCALE));
+//        resetAttackBox();
 
     }
 
@@ -115,7 +116,13 @@ public class Player extends Character{
     }
 
     private void updateAttackBox() {
-        if (right) {
+        if (right && left) {
+            if (flipW == 1) {
+                attackBox.x = hitbox.x + hitbox.width + (int) (1 * GameController.SCALE);
+            } else {
+                attackBox.x = hitbox.x - hitbox.width - (int) (10 * GameController.SCALE);
+            }
+        } else if (right) {
             attackBox.x = hitbox.x + hitbox.width + (int) (1 * GameController.SCALE);
         } else if (left) {
             attackBox.x = hitbox.x - hitbox.width - (int) (10 * GameController.SCALE);
@@ -345,15 +352,25 @@ public class Player extends Character{
         inAir = false;
         attacking = false;
         moving = false;
+        airSpeed = 0f;
         state = IDLE;
         currentHealth = maxHealth;
 
         hitbox.x = x;
         hitbox.y = y;
 
+        resetAttackBox();
+
         if (!IsCharacterOnFloor(hitbox, lvlData)) {
             inAir = true;
         }
     }
 
+    private void resetAttackBox() {
+        if (flipW == 1) {
+            attackBox.x = hitbox.x + hitbox.width + (int) (1 * GameController.SCALE);
+        } else {
+            attackBox.x = hitbox.x - hitbox.width - (int) (10 * GameController.SCALE);
+        }
+    }
 }

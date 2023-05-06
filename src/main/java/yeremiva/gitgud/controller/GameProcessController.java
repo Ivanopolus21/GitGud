@@ -59,9 +59,9 @@ public class GameProcessController extends State implements Statemethods {
     }
 
     public void loadNextLevel() {
-        resetAll();
         levelController.loadNextLevel();
         player.setSpawn(levelController.getCurrentLevel().getPlayerSpawn());
+        resetAll();
     }
 
     private void loadStartLevel() {
