@@ -3,24 +3,29 @@ package yeremiva.gitgud.controller;
 import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.model.characters.Skeleton;
+import yeremiva.gitgud.view.EnemyView;
 import yeremiva.gitgud.view.LevelView;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 
 public class EnemyController {
-    private Skeleton skeleton;
+    private static Logger log = Logger.getLogger(EnemyController.class.getName());
+
+    private EnemyView enemyView;
     private GameProcessController gameProcessController;
-    private BufferedImage[][] skeletonArr;
+
     private ArrayList<Skeleton> skeletons = new ArrayList<>();
+    private Skeleton skeleton;
 
     public EnemyController(GameProcessController gameProcessController){
         this.gameProcessController = gameProcessController;
-        loadEnemyImgs();
+        this.enemyView = new EnemyView();
     }
 
     public void loadEnemies(LevelView levelView) {
@@ -40,46 +45,23 @@ public class EnemyController {
         }
     }
 
-    public void draw(Graphics g, int xLvlOffset) {
-        drawSkeletons(g, xLvlOffset);
-    }
-
-    private void drawSkeletons(Graphics g, int xLvlOffset) {
-        int fixSkeletonHitboxHeight = 11;
-        for(Skeleton s: skeletons) {
-            if (s.isAlive()) {
-                g.drawImage(
-                        skeletonArr[s.getState()][s.getAniIndex()],
-                        (int) s.getHitbox().x - xLvlOffset - SKELETON_DRAWOFFSET_X + s.flipX(),
-                        (int) s.getHitbox().y + fixSkeletonHitboxHeight - SKELETON_DRAWOFFSET_Y,
-                        SKELETON_WIDTH * s.flipW(),
-                        SKELETON_HEIGHT,
-                        null);
-//                s.drawHitbox(g, xLvlOffset);
-//                s.drawAttackBox(g, xLvlOffset);
-            }
-        }
-    }
-
-    public void checkEnemyHit(Rectangle2D.Float attackBox) {
+    public void checkEnemyHit(Rectangle2D.Float attackBox, int playerDamage) {
         for (Skeleton s : skeletons) {
             if (s.isAlive() && s.getCurrentHealth() > 0) {
                 if (attackBox.intersects(s.getHitbox())) {
-                    s.hurt(10);
+                    s.hurt(playerDamage);
                     return;
                 }
             }
         }
     }
 
-    private void loadEnemyImgs() {
-        skeletonArr = new BufferedImage[5][6];
-        BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.SKELETON_SPRITE);
-        for (int j = 0; j < skeletonArr.length; j++){
-            for (int i = 0; i < skeletonArr[j].length; i++) {
-                skeletonArr[j][i] = temp.getSubimage(i * SKELETON_WIDTH_DEFAULT, j * SKELETON_HEIGHT_DEFAULT, SKELETON_WIDTH_DEFAULT, SKELETON_HEIGHT_DEFAULT);
-            }
-        }
+    public void draw(Graphics g, int xLvlOffset) {
+        enemyView.draw(g, skeletons, xLvlOffset);
+    }
+
+    public Skeleton getSkeleton() {
+        return skeleton;
     }
 
     public void resetAllEnemies() {
