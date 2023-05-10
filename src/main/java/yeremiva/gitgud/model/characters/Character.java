@@ -36,9 +36,9 @@ public abstract class Character {
         g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
     }
 
-        protected void initHitbox(int width, int height){
-            hitbox = new Rectangle2D.Float( x, y, (int) (width * GameController.SCALE), (int)(height * GameController.SCALE));
-        }
+    protected void initHitbox(int width, int height){
+        hitbox = new Rectangle2D.Float( x, y, (int) (width * GameController.SCALE), (int)(height * GameController.SCALE));
+    }
 
 //    protected void updateHitbox(){
 //        hitbox.x = (int) x;

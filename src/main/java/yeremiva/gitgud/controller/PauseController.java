@@ -79,6 +79,10 @@ public class PauseController {
     }
 
     public void draw(Graphics g){
+
+        g.setColor(new Color(0, 0, 0, 200));
+        g.fillRect(0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
+
         //Background
         g.drawImage(backgroundImg, bgX, bgY, bgWidth, bgHeight, null);
 

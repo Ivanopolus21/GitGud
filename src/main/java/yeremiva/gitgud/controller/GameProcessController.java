@@ -85,8 +85,6 @@ public class GameProcessController extends State implements Statemethods {
         pauseController = new PauseController(this);
         gameOverController = new GameOverController(this);
         levelCompletedController = new LevelCompletedController(this);
-
-
     }
 
     @Override
@@ -137,8 +135,6 @@ public class GameProcessController extends State implements Statemethods {
         objectController.draw(g, xLvlOffset);
 
         if (paused) {
-            g.setColor(new Color(0, 0, 0, 150));
-            g.fillRect(0,0,GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
             pauseController.draw(g);
         } else if (gameOver) {
             gameOverController.draw(g);

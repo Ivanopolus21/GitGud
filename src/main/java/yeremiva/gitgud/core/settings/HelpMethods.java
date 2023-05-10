@@ -1,11 +1,6 @@
 package yeremiva.gitgud.core.settings;
 
-import sun.security.provider.ConfigFile;
 import yeremiva.gitgud.controller.GameController;
-import yeremiva.gitgud.model.characters.Skeleton;
-import yeremiva.gitgud.model.objects.GameContainer;
-import yeremiva.gitgud.model.objects.Potion;
-import yeremiva.gitgud.model.objects.Spike;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -121,90 +116,5 @@ public class HelpMethods {
         } else {
             return IsAllTilesWalkable(firstXTile, secondXTile, yTile, lvlData);
         }
-    }
-
-    public static int[][] GetLevelData(BufferedImage img){
-        int[][] lvlData = new int[img.getHeight()][img.getWidth()];
-
-        for (int j = 0; j < img.getHeight(); j++){
-            for (int i = 0; i < img.getWidth(); i ++){
-                Color color = new Color(img.getRGB(i, j));
-                int value = color.getRed();
-                if (value >= 48) {
-                    value = 0;
-                }
-                lvlData[j][i] = value;
-            }
-        }
-        return lvlData;
-    }
-
-    public static ArrayList<Skeleton> GetSkeletons(BufferedImage img) {
-        ArrayList<Skeleton> list = new ArrayList<>();
-        for (int j = 0; j < img.getHeight(); j++){
-            for (int i = 0; i < img.getWidth(); i ++){
-                Color color = new Color(img.getRGB(i, j));
-                int value = color.getGreen();
-                if (value == SKELETON) {
-                    list.add(new Skeleton(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE));
-                }
-            }
-        }
-        return list;
-    }
-
-    public static Point GetPlayerSpawn(BufferedImage img) {
-        for (int j = 0; j < img.getHeight(); j++){
-            for (int i = 0; i < img.getWidth(); i ++){
-                Color color = new Color(img.getRGB(i, j));
-                int value = color.getGreen();
-                if (value == 100) {
-                    return new Point(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE);
-                }
-            }
-        }
-        return new Point(1 * GameController.TILES_SIZE, 1 * GameController.TILES_SIZE) ;
-    }
-
-    public static ArrayList<Potion> GetPotions(BufferedImage img) {
-        ArrayList<Potion> list = new ArrayList<>();
-        for (int j = 0; j < img.getHeight(); j++){
-            for (int i = 0; i < img.getWidth(); i ++){
-                Color color = new Color(img.getRGB(i, j));
-                int value = color.getBlue();
-                if (value == RED_POTION || value == BLUE_POTION) {
-                    list.add(new Potion(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE, value));
-                }
-            }
-        }
-        return list;
-    }
-
-    public static ArrayList<GameContainer> GetContainers(BufferedImage img) {
-        ArrayList<GameContainer> list = new ArrayList<>();
-        for (int j = 0; j < img.getHeight(); j++){
-            for (int i = 0; i < img.getWidth(); i ++){
-                Color color = new Color(img.getRGB(i, j));
-                int value = color.getBlue();
-                if (value == BARREL || value == BOX) {
-                    list.add(new GameContainer(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE, value));
-                }
-            }
-        }
-        return list;
-    }
-
-    public static ArrayList<Spike> GetSpikes(BufferedImage img) {
-        ArrayList<Spike> list = new ArrayList<>();
-        for (int j = 0; j < img.getHeight(); j++){
-            for (int i = 0; i < img.getWidth(); i ++){
-                Color color = new Color(img.getRGB(i, j));
-                int value = color.getBlue();
-                if (value == SPIKE) {
-                    list.add(new Spike(i * GameController.TILES_SIZE, j * GameController.TILES_SIZE, SPIKE));
-                }
-            }
-        }
-        return list;
     }
 }

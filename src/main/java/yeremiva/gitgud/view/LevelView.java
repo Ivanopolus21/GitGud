@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
+import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
 //LEVEL
@@ -18,10 +20,10 @@ public class LevelView {
 
     private BufferedImage img;
     private int[][] lvlData;
-    private ArrayList<Skeleton> skeletons;
-    private ArrayList<Potion> potions;
-    private ArrayList<Spike> spikes;
-    private ArrayList<GameContainer> containers;
+    private ArrayList<Skeleton> skeletons = new ArrayList<>();
+    private ArrayList<Potion> potions = new ArrayList<>();
+    private ArrayList<Spike> spikes = new ArrayList<>();
+    private ArrayList<GameContainer> containers = new ArrayList<>();
     private int lvlTilesWide;
     private int maxTilesOffset;
     private int maxLvlOffsetX;
@@ -29,43 +31,68 @@ public class LevelView {
 
     public LevelView(BufferedImage img){
         this.img = img;
-        createLevelData();
-        createEnemies();
-        createPotions();
-        createContainers();
-        createSpikes();
+        lvlData = new int[img.getHeight()][img.getWidth()];
+
+        loadLevel();
         calculateLevelOffsets();
-        calculatePlayerSpawn();
     }
 
-    private void createSpikes() {
-        spikes = HelpMethods.GetSpikes(img);
+    private void loadLevel() {
+
+        // Looping through the image colors just once. Instead of one per
+        // object/enemy/etc..
+
+        for (int y = 0; y < img.getHeight(); y++)
+            for (int x = 0; x < img.getWidth(); x++) {
+                Color c = new Color(img.getRGB(x, y));
+                int red = c.getRed();
+                int green = c.getGreen();
+                int blue = c.getBlue();
+
+                loadLevelData(red, x, y);
+                loadEntities(green, x, y);
+                loadObjects(blue, x, y);
+            }
     }
 
-    private void createContainers() {
-        containers = HelpMethods.GetContainers(img);
+    private void loadLevelData(int redValue, int x, int y) {
+        if (redValue >= 50)
+            lvlData[y][x] = 0;
+        else
+            lvlData[y][x] = redValue;
     }
 
-    private void createPotions() {
-        potions = HelpMethods.GetPotions(img);
+    private void loadObjects(int blueValue, int x, int y) {
+        switch (blueValue) {
+            case RED_POTION:
+            case BLUE_POTION:
+                potions.add(new Potion(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE, blueValue));
+                break;
+            case BARREL:
+            case BOX:
+                containers.add(new GameContainer(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE, blueValue));
+                break;
+            case SPIKE:
+                spikes.add(new Spike(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE, SPIKE));
+                break;
+        }
     }
 
-    private void calculatePlayerSpawn() {
-        playerSpawn = GetPlayerSpawn(img);
+    private void loadEntities(int greenValue, int x, int y) {
+        switch (greenValue) {
+            case SKELETON:
+                skeletons.add(new Skeleton(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE));
+                break;
+            case 100:
+                playerSpawn = new Point(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE);
+                break;
+        }
     }
 
     private void calculateLevelOffsets() {
         lvlTilesWide = img.getWidth();
         maxTilesOffset = lvlTilesWide - GameController.TILES_IN_WIDTH;
         maxLvlOffsetX = GameController.TILES_SIZE * maxTilesOffset;
-    }
-
-    private void createEnemies() {
-        skeletons = GetSkeletons(img);
-    }
-
-    private void createLevelData() {
-        lvlData = GetLevelData(img);
     }
 
     public int getSpriteIndex(int x, int y){
