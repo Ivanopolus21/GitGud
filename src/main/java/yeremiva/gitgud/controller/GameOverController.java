@@ -2,6 +2,7 @@ package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
+import yeremiva.gitgud.view.GameOverView;
 import yeremiva.gitgud.view.UrmButton;
 
 import java.awt.*;
@@ -13,43 +14,15 @@ import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.URM_SIZE;
 
 public class GameOverController {
     private GameProcessController gameProcessController;
-    private BufferedImage img;
-    private int imgX, imgY, imgWidth, imgHeight;
-    private UrmButton menu, play;
+    private GameOverView gameOverView;
+    private UrmButton menu;
+    private UrmButton play;
 
     public GameOverController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
-        createImg();
-        createButtons();
-    }
-
-    private void createButtons() {
-        int menuX = (int) (335 * GameController.SCALE);
-        int playX = (int) (440 * GameController.SCALE);
-        int y = (int) (195 * GameController.SCALE);
-        play = new UrmButton(playX, y, URM_SIZE, URM_SIZE, 0);
-        menu = new UrmButton(menuX, y, URM_SIZE, URM_SIZE, 2);
-    }
-
-    private void createImg() {
-        img = LoadSave.GetSpriteAtlas(LoadSave.DEATH_SCREEN);
-        imgWidth = (int) (img.getWidth() * GameController.SCALE);
-        imgHeight = (int) (img.getHeight() * GameController.SCALE);
-        imgX = GameController.GAME_WIDTH / 2 - imgWidth / 2;
-        imgY = (int) (100 * GameController.SCALE);
-    }
-
-    public void draw (Graphics g) {
-        g.setColor(new Color(0, 0, 0, 200));
-        g.fillRect(0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
-
-        g.drawImage(img, imgX, imgY, imgWidth, imgHeight, null);
-
-        menu.draw(g);
-        play.draw(g);
-//        g.setColor(Color.white);
-//        g.drawString("Game Over", GameController.GAME_WIDTH / 2, 150);
-//        g.drawString("Press ESCAPE button to enther Main Menu!", GameController.GAME_WIDTH / 2, 300);
+        this.gameOverView = new GameOverView();
+        this.menu = gameOverView.getMenu();
+        this.play = gameOverView.getPlay();
     }
 
     public void update() {
@@ -99,5 +72,9 @@ public class GameOverController {
         } else if (isIn(play, e)) {
             play.setMousePressed(true);
         }
+    }
+
+    public void draw(Graphics g) {
+        gameOverView.draw(g);
     }
 }
