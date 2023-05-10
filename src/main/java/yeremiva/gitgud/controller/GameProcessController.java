@@ -1,7 +1,9 @@
 package yeremiva.gitgud.controller;
 
+import org.json.JSONObject;
 import yeremiva.gitgud.Game;
 import yeremiva.gitgud.core.settings.LoadSave;
+import yeremiva.gitgud.core.settings.PlayerConfig;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.core.states.*;
 import yeremiva.gitgud.model.characters.Enemy;
@@ -77,8 +79,16 @@ public class GameProcessController extends State implements Statemethods {
         levelController = new LevelController(gameController);
         enemyController = new EnemyController(this);
         objectController = new ObjectController(this);
+        JSONObject playerConfig = PlayerConfig.getPlayerConfig(false);
 
-        player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE), this);
+//        player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE), 100, 100, 10, 1.5f,this);
+        player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE),
+                playerConfig.getInt("maxHealth"),
+                playerConfig.getInt("currentHealth"),
+                playerConfig.getFloat("walkSpeed"),
+                playerConfig.getInt("damage"),
+                this);
+
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
         player.setSpawn(levelController.getCurrentLevel().getPlayerSpawn());
 
@@ -157,8 +167,8 @@ public class GameProcessController extends State implements Statemethods {
         this.gameOver = gameOver;
     }
 
-    public void checkIfPlayerHitsEnemy(Rectangle2D.Float attackBox) {
-        enemyController.checkEnemyHit(attackBox);
+    public void checkIfPlayerHitsEnemy(Rectangle2D.Float attackBox, int playerDamage) {
+        enemyController.checkEnemyHit(attackBox, playerDamage);
     }
 
     public void checkObjectHit(Rectangle2D.Float attackBox) {

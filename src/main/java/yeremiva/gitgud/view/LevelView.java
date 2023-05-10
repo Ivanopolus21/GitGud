@@ -1,7 +1,12 @@
 package yeremiva.gitgud.view;
 
+import org.json.JSONObject;
+import sun.rmi.runtime.Log;
+import yeremiva.gitgud.controller.EnemyController;
 import yeremiva.gitgud.controller.GameController;
+import yeremiva.gitgud.core.settings.EnemyConfig;
 import yeremiva.gitgud.core.settings.HelpMethods;
+import yeremiva.gitgud.core.settings.PlayerConfig;
 import yeremiva.gitgud.model.characters.Skeleton;
 import yeremiva.gitgud.model.objects.GameContainer;
 import yeremiva.gitgud.model.objects.Potion;
@@ -10,6 +15,7 @@ import yeremiva.gitgud.model.objects.Spike;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
@@ -17,6 +23,8 @@ import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
 //LEVEL
 public class LevelView {
+
+    private static Logger log = Logger.getLogger(LevelView.class.getName());
 
     private BufferedImage img;
     private int[][] lvlData;
@@ -28,6 +36,7 @@ public class LevelView {
     private int maxTilesOffset;
     private int maxLvlOffsetX;
     private Point playerSpawn;
+    private EnemyConfig enemyConfig;
 
     public LevelView(BufferedImage img){
         this.img = img;
@@ -81,7 +90,15 @@ public class LevelView {
     private void loadEntities(int greenValue, int x, int y) {
         switch (greenValue) {
             case SKELETON:
-                skeletons.add(new Skeleton(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE));
+                JSONObject enemyConfig = EnemyConfig.getEnemyConfig(false);
+                skeletons.add(new Skeleton(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE,
+                        enemyConfig.getInt("maxHealth"),
+                        enemyConfig.getInt("currentHealth"),
+                        enemyConfig.getFloat("walkSpeed"),
+                        enemyConfig.getInt("damage")
+                ));
+
+                log.info("Enemies were loaded");
                 break;
             case 100:
                 playerSpawn = new Point(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE);

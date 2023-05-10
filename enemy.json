@@ -1,0 +1,8 @@
+{
+  "x": 0,
+  "y": 0,
+  "maxHealth": 10,
+  "currentHealth": 10,
+  "walkSpeed": 0.35,
+  "damage": 1
+}

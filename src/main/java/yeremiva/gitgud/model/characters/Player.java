@@ -48,6 +48,12 @@ public class Player extends Character{
     private int healthBarYStart = (int) (14 * GameController.SCALE);
     private int healthWidth = healthBarWidth;
 
+    //constants
+    private int playerDamage;
+    private int maxHealth;
+    private int currentHealth;
+    private float walkSpeed;
+
     //Attackbox
     private int flipX = 0;
     private int flipW = 1;
@@ -55,13 +61,14 @@ public class Player extends Character{
     private boolean attackChecked = false;
     private GameProcessController gameProcessController;
 
-    public Player(float x, float y, int width, int height, GameProcessController gameProcessController) {
+    public Player(float x, float y, int width, int height, int maxHealth, int currentHealth, float walkSpeed, int playerDamage, GameProcessController gameProcessController) {
         super(x, y, width, height);
         this.gameProcessController = gameProcessController;
         this.state = IDLE;
-        this.maxHealth = 100;
-        this.currentHealth = maxHealth;
-        this.walkSpeed = GameController.SCALE * 1.0f;
+        this.maxHealth = maxHealth;
+        this.currentHealth = currentHealth;
+        this.walkSpeed = walkSpeed * GameController.SCALE;
+        this.playerDamage = playerDamage;
         loadAnimations();
         initHitbox(17, 27);
         initAttackBox();
@@ -224,7 +231,7 @@ public class Player extends Character{
             return;
         }
         attackChecked = true;
-        gameProcessController.checkIfPlayerHitsEnemy(attackBox);
+        gameProcessController.checkIfPlayerHitsEnemy(attackBox, playerDamage);
         gameProcessController.checkObjectHit(attackBox);
     }
 
@@ -345,6 +352,22 @@ public class Player extends Character{
 
     public void setJump(boolean jump){
         this.jump = jump;
+    }
+
+    public int getPlayerDamage() {
+        return playerDamage;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public float getWalkSpeed() {
+        return walkSpeed;
     }
 
     public void resetAll() {

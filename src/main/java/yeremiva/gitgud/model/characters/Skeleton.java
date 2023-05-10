@@ -14,8 +14,9 @@ public class Skeleton extends Enemy{
     //Attackbox
     private int attackBoxOffsetX;
 
-    public Skeleton(float x, float y) {
-        super(x, y, SKELETON_WIDTH, SKELETON_HEIGHT, SKELETON);
+    public Skeleton(float x, float y, int maxHealth, int currentHealth, float walkSpeed, int enemyDamage) {
+        super(x, y, SKELETON_WIDTH, SKELETON_HEIGHT, maxHealth, currentHealth, walkSpeed, enemyDamage, SKELETON);
+
         initHitbox(16, 25);
         initAttackBox();
     }
@@ -94,4 +95,20 @@ public class Skeleton extends Enemy{
         }
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    @Override
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public int getEnemyDamage() {
+        return enemyDamage;
+    }
+
+    public float getWalkSpeed() {
+        return walkSpeed;
+    }
 }

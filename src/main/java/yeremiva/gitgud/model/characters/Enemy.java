@@ -5,16 +5,18 @@ import yeremiva.gitgud.controller.GameController;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.ANI_SPEED;
 import static yeremiva.gitgud.core.settings.Constants.Directions.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 import static yeremiva.gitgud.core.settings.Constants.GRAVITY;
-import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.BARREL;
-import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.BOX;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
 public abstract class Enemy extends Character{
+
+    private static Logger log = Logger.getLogger(Enemy.class.getName());
+
     protected int enemyType;
     protected boolean firstUpdate = true;
     protected int walkDir = LEFT;
@@ -22,13 +24,14 @@ public abstract class Enemy extends Character{
     protected float attackDistance = GameController.TILES_SIZE;
     protected boolean alive = true;
     protected boolean attackChecked;
-
-    public Enemy(float x, float y, int width, int height, int enemyType) {
+    protected int enemyDamage;
+    public Enemy(float x, float y, int width, int height, int maxHealth, int currentHealth, float walkSpeed, int enemyDamage, int enemyType) {
         super(x, y, width, height);
+        this.maxHealth = maxHealth;
+        this.currentHealth = currentHealth;
+        this.walkSpeed = GameController.SCALE * walkSpeed;
+        this.enemyDamage = enemyDamage;
         this.enemyType = enemyType;
-        maxHealth = GetMaxHealth(enemyType);
-        currentHealth = maxHealth;
-        walkSpeed = GameController.SCALE * 0.35f;
     }
 
     protected void firstUpdateCheck(int[][] lvlData) {
@@ -112,14 +115,18 @@ public abstract class Enemy extends Character{
 
         if (currentHealth <= 0) {
             newState(DEAD);
+
+            log.info("Enemy " + enemyType + " died!");
         } else {
             newState(HIT);
         }
+
+        log.info("Enemy " + enemyType + " was hurt by " + amount + "!");
     }
 
     protected void checkIfEnemyHitsPlayer(Rectangle2D.Float attackBox, Player player) {
         if (attackBox.intersects(player.hitbox)) {
-            player.changeHealth(-GetEnemyDmg(enemyType));
+            player.changeHealth(-enemyDamage);
         }
         attackChecked = true;
     }
