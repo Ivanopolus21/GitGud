@@ -5,6 +5,7 @@ import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.core.states.State;
 import yeremiva.gitgud.core.states.Statemethods;
 import yeremiva.gitgud.view.GameMenuButton;
+import yeremiva.gitgud.view.MainMenuView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,31 +14,13 @@ import java.awt.image.BufferedImage;
 
 //MENU
 public class MainMenuController extends State implements Statemethods {
-    private GameMenuButton[] buttons = new GameMenuButton[3];
-    private BufferedImage backgroundImgOfMenuOverlay, backgroundImg;
-    private int menuX, menuY, menuWidth, menuHeight;
+    private GameMenuButton[] buttons;
+    private MainMenuView mainMenuView;
 
     public MainMenuController(GameController gameController) {
         super(gameController);
-        loadButtons();
-        loadBackground();
-        backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND_IMAGE);
-    }
-
-    //Function that loads menu background
-    private void loadBackground() {
-        backgroundImgOfMenuOverlay = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
-        menuWidth = (int) (backgroundImgOfMenuOverlay.getWidth() * GameController.SCALE);
-        menuHeight = (int) (backgroundImgOfMenuOverlay.getHeight() * GameController.SCALE);
-        menuX = GameController.GAME_WIDTH / 2 - menuWidth / 2;
-        menuY = (int) (45 * GameController.SCALE);
-    }
-
-    //Function to load all game menu buttons
-    private void loadButtons() {
-        buttons[0] = new GameMenuButton(GameController.GAME_WIDTH / 2, (int) (150 * GameController.SCALE), 0, Gamestate.PLAYING);
-        buttons[1] = new GameMenuButton(GameController.GAME_WIDTH / 2, (int) (220 * GameController.SCALE), 1, Gamestate.OPTIONS);
-        buttons[2] = new GameMenuButton(GameController.GAME_WIDTH / 2, (int) (290 * GameController.SCALE), 2, Gamestate.QUIT);
+        this.mainMenuView = new MainMenuView(this);
+        this.buttons = mainMenuView.getButtons();
     }
 
     @Override
@@ -49,20 +32,11 @@ public class MainMenuController extends State implements Statemethods {
 
     @Override
     public void draw(Graphics g) {
-
-        g.drawImage(backgroundImg, 0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT, null);
-
-        g.drawImage(backgroundImgOfMenuOverlay, menuX, menuY, menuWidth, menuHeight, null);
-
-        for (GameMenuButton gmb : buttons) {
-            gmb.draw(g);
-        }
-
+        mainMenuView.draw(g);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     @Override
