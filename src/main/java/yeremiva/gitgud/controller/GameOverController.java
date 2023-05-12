@@ -20,7 +20,7 @@ public class GameOverController {
 
     public GameOverController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
-        this.gameOverView = new GameOverView();
+        this.gameOverView = new GameOverView(this);
         this.menu = gameOverView.getMenu();
         this.play = gameOverView.getPlay();
     }
@@ -76,5 +76,9 @@ public class GameOverController {
 
     public void draw(Graphics g) {
         gameOverView.draw(g);
+    }
+
+    public GameOverView getGameOverView() {
+        return gameOverView;
     }
 }

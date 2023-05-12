@@ -1,6 +1,7 @@
 package yeremiva.gitgud.view;
 
 import yeremiva.gitgud.controller.GameController;
+import yeremiva.gitgud.controller.GameOverController;
 import yeremiva.gitgud.core.settings.LoadSave;
 
 import java.awt.*;
@@ -13,8 +14,10 @@ public class GameOverView {
     private BufferedImage img;
     private int imgX, imgY, imgWidth, imgHeight;
     private UrmButton menu, play;
+    private GameOverController gameOverController;
 
-    public GameOverView() {
+    public GameOverView(GameOverController gameOverController) {
+        this.gameOverController = gameOverController;
         createImg();
         createButtons();
     }
