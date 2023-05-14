@@ -1,26 +1,17 @@
 package yeremiva.gitgud.controller;
 
 import org.json.JSONObject;
-import yeremiva.gitgud.Game;
-import yeremiva.gitgud.core.settings.LoadSave;
+
 import yeremiva.gitgud.core.settings.PlayerConfig;
-import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.core.states.*;
-import yeremiva.gitgud.model.characters.Enemy;
 import yeremiva.gitgud.model.characters.Player;
-import yeremiva.gitgud.view.GameOverView;
+import yeremiva.gitgud.view.GameProcessView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.util.Random;
-import java.util.regex.Pattern;
 
-import static yeremiva.gitgud.core.settings.Constants.Enviroment.*;
-
-//PLAYING
 public class GameProcessController extends State implements Statemethods {
     private Player player;
     private LevelController levelController;
@@ -29,56 +20,35 @@ public class GameProcessController extends State implements Statemethods {
     private PauseController pauseController;
     private GameOverController gameOverController;
     private LevelCompletedController levelCompletedController;
+    private GameProcessView gameProcessView;
+
     private boolean paused = false;
 
-    private int xLvlOffset;
-    private int leftBorder = (int) (0.2 * GameController.GAME_WIDTH);
-    private int rightBorder = (int) (0.8 * GameController.GAME_WIDTH);
-    private int maxLvlOffsetX;
+    private int xLvlOffset, maxLvlOffsetX;
+    private final int leftBorder = (int) (0.2 * GameController.GAME_WIDTH);
+    private final int rightBorder = (int) (0.8 * GameController.GAME_WIDTH);
 
-    private BufferedImage backgroundImg, bigCloud, smallCloud;
-    private int[] smallCloudsPos;
-    private Random rnd = new Random();
-
-    private boolean gameOver;
-    private boolean lvlCompleted;
-    private boolean playerDying;
+    private boolean gameOver, lvlCompleted, playerDying;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
         initClasses();
 
-        backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.PLAYING_BACKGROUND_IMAGE);
-        bigCloud = LoadSave.GetSpriteAtlas(LoadSave.BIG_CLOUDS);
-        smallCloud = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
-        smallCloudsPos = new int[8];
-        for (int i = 0; i < smallCloudsPos.length; i++){
-            smallCloudsPos[i] = (int) (90 * GameController.SCALE) + rnd.nextInt((int) (100 * GameController.SCALE));
-        }
-
         calculateLevelOffset();
         loadStartLevel();
     }
 
-    public void loadNextLevel() {
-        levelController.loadNextLevel();
-        player.setSpawn(levelController.getCurrentLevel().getPlayerSpawn());
-        resetAll();
-    }
-
-    private void loadStartLevel() {
-        enemyController.loadEnemies(levelController.getCurrentLevel());
-        objectController.loadObjects(levelController.getCurrentLevel());
-    }
-
-    private void calculateLevelOffset() {
-        maxLvlOffsetX = levelController.getCurrentLevel().getMaxLvlOffsetX();
-    }
-
     private void initClasses() {
+        gameProcessView = new GameProcessView(this);
+
+        pauseController = new PauseController(this);
+        levelCompletedController = new LevelCompletedController(this);
+        gameOverController = new GameOverController(this);
+
         levelController = new LevelController(gameController);
         enemyController = new EnemyController(this);
         objectController = new ObjectController(this);
+
         JSONObject playerConfig = PlayerConfig.getPlayerConfig(false);
 
 //        player = new Player(200, 200, (int) (32 * GameController.SCALE), (int) (32 * GameController.SCALE), 100, 100, 10, 1.5f,this);
@@ -91,10 +61,6 @@ public class GameProcessController extends State implements Statemethods {
 
         player.loadLvlData(levelController.getCurrentLevel().getLvlData());
         player.setSpawn(levelController.getCurrentLevel().getPlayerSpawn());
-
-        pauseController = new PauseController(this);
-        gameOverController = new GameOverController(this);
-        levelCompletedController = new LevelCompletedController(this);
     }
 
     @Override
@@ -112,8 +78,29 @@ public class GameProcessController extends State implements Statemethods {
             player.update();
             enemyController.update(levelController.getCurrentLevel().getLvlData(), player);
             objectController.update();
+
             checkCloseToBorder();
         }
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        gameProcessView.draw(g, xLvlOffset);
+    }
+
+    private void loadStartLevel() {
+        enemyController.loadEnemies(levelController.getCurrentLevel());
+        objectController.loadObjects(levelController.getCurrentLevel());
+    }
+
+    public void loadNextLevel() {
+        levelController.loadNextLevel();
+        player.setSpawn(levelController.getCurrentLevel().getPlayerSpawn());
+        resetAll();
+    }
+
+    public void unpauseGame() {
+        paused = false;
     }
 
     private void checkCloseToBorder() {
@@ -133,40 +120,6 @@ public class GameProcessController extends State implements Statemethods {
         }
     }
 
-    @Override
-    public void draw(Graphics g) {
-        g.drawImage(backgroundImg, 0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT, null);
-
-        drawClouds(g);
-
-        levelController.draw(g, xLvlOffset);
-        player.render(g, xLvlOffset);
-        enemyController.draw(g, xLvlOffset);
-        objectController.draw(g, xLvlOffset);
-
-        if (paused) {
-            pauseController.draw(g);
-        } else if (gameOver) {
-            gameOverController.draw(g);
-        } else if (lvlCompleted) {
-            levelCompletedController.draw(g);
-        }
-    }
-
-    private void drawClouds(Graphics g) {
-        for (int i = 0; i < 3; i++) {
-            g.drawImage(bigCloud, i * BIG_CLOUD_WIDTH - (int) (xLvlOffset * 0.3), (int) (204 * GameController.SCALE), BIG_CLOUD_WIDTH, BIG_CLOUD_HEIGHT, null);
-        }
-        for (int i = 0; i < smallCloudsPos.length; i++) {
-            g.drawImage(smallCloud, SMALL_CLOUD_WIDTH * 4 * i - (int) (xLvlOffset * 0.7 ), smallCloudsPos[i], SMALL_CLOUD_WIDTH, SMALl_CLOUD_HEIGHT, null);
-        }
-
-    }
-
-    public void setGameOver(boolean gameOver) {
-        this.gameOver = gameOver;
-    }
-
     public void checkIfPlayerHitsEnemy(Rectangle2D.Float attackBox, int playerDamage) {
         enemyController.checkEnemyHit(attackBox, playerDamage);
     }
@@ -181,6 +134,10 @@ public class GameProcessController extends State implements Statemethods {
 
     public void checkSpikesTouched(Player player) {
         objectController.checkSpikesTouched(player);
+    }
+
+    private void calculateLevelOffset() {
+        maxLvlOffsetX = levelController.getCurrentLevel().getMaxLvlOffsetX();
     }
 
     public void mouseDragged(MouseEvent e) {
@@ -239,10 +196,6 @@ public class GameProcessController extends State implements Statemethods {
         }
     }
 
-    public void setLevelCompleted(boolean levelCompleted) {
-        this.lvlCompleted = levelCompleted;
-    }
-
     @Override
     public void keyPressed(KeyEvent e) {
         if (gameOver) {
@@ -285,16 +238,20 @@ public class GameProcessController extends State implements Statemethods {
         }
     }
 
+    public void setPlayerDying(boolean playerDying) {
+        this.playerDying = playerDying;
+    }
+
     public void setMaxLvlOffsetX(int xLvlOffset) {
         this.maxLvlOffsetX = xLvlOffset;
     }
 
-    public void unpauseGame() {
-        paused = false;
+    public void setLevelCompleted(boolean levelCompleted) {
+        this.lvlCompleted = levelCompleted;
     }
 
-    public void  windowFocusLost(){
-        player.resetDirBooleans();
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 
     public Player getPlayer(){
@@ -313,8 +270,28 @@ public class GameProcessController extends State implements Statemethods {
         return levelController;
     }
 
-    public void setPlayerDying(boolean playerDying) {
-        this.playerDying = playerDying;
+    public PauseController getPauseController() {
+        return pauseController;
+    }
+
+    public GameOverController getGameOverController() {
+        return gameOverController;
+    }
+
+    public LevelCompletedController getLevelCompletedController() {
+        return levelCompletedController;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isLvlCompleted() {
+        return lvlCompleted;
     }
 
     public void resetAll() {
