@@ -1,22 +1,18 @@
 package yeremiva.gitgud.controller;
 
-import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.GameOverView;
-import yeremiva.gitgud.view.UrmButton;
+import yeremiva.gitgud.view.UrmButtonView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-
-import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.URM_SIZE;
 
 public class GameOverController {
     private GameProcessController gameProcessController;
     private GameOverView gameOverView;
-    private UrmButton menu;
-    private UrmButton play;
+    private UrmButtonView menu;
+    private UrmButtonView play;
 
     public GameOverController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
@@ -29,15 +25,20 @@ public class GameOverController {
         menu.update();
         play.update();
     }
+
+    public void draw(Graphics g) {
+        gameOverView.draw(g);
+    }
+
+    private boolean isIn(UrmButtonView b, MouseEvent e) {
+        return b.getBounds().contains(e.getX(), e.getY());
+    }
+
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             gameProcessController.resetAll();
             Gamestate.state = Gamestate.MENU;
         }
-    }
-
-    private boolean isIn(UrmButton b, MouseEvent e) {
-        return b.getBounds().contains(e.getX(), e.getY());
     }
 
     public void mouseMoved(MouseEvent e) {
@@ -72,10 +73,6 @@ public class GameOverController {
         } else if (isIn(play, e)) {
             play.setMousePressed(true);
         }
-    }
-
-    public void draw(Graphics g) {
-        gameOverView.draw(g);
     }
 
     public GameOverView getGameOverView() {
