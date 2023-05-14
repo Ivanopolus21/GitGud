@@ -5,13 +5,20 @@ import yeremiva.gitgud.controller.GameController;
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 
 public class GameContainer extends GameObject{
+
     public GameContainer(int x, int y, int objType) {
         super(x, y, objType);
+
         createHitbox();
     }
 
-    private void createHitbox() {
+    public void update() {
+        if (doAnimation) {
+            updateAnimationTick();
+        }
+    }
 
+    private void createHitbox() {
         if (objType == BOX) {
             initHitbox(25, 18);
 
@@ -26,11 +33,5 @@ public class GameContainer extends GameObject{
 
         hitbox.y += yDrawOffset + (int) (GameController.SCALE * 2);
         hitbox.x += xDrawOffset / 2;
-    }
-
-    public void update() {
-        if (doAnimation) {
-            updateAnimationTick();
-        }
     }
 }
