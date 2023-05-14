@@ -6,7 +6,6 @@ import yeremiva.gitgud.core.settings.PlayerConfig;
 import yeremiva.gitgud.core.states.*;
 import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.view.GameProcessView;
-import yeremiva.gitgud.view.GameWinView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -29,9 +28,9 @@ public class GameProcessController extends State implements Statemethods {
     private int xLvlOffset, maxLvlOffsetX;
     private final int leftBorder = (int) (0.2 * GameController.GAME_WIDTH);
     private final int rightBorder = (int) (0.8 * GameController.GAME_WIDTH);
-    private GameProcessController gameProcessController;
-    private boolean gameOver, lastLvl, lvlCompleted, lastLvlCompleted, playerDying;
-    private boolean value;
+
+    private boolean gameOver, lvlCompleted, playerDying;
+    private boolean endgameStatus;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -269,6 +268,10 @@ public class GameProcessController extends State implements Statemethods {
         this.gameOver = gameOver;
     }
 
+    public void setWin(boolean endgameStatus) {
+        this.endgameStatus = endgameStatus;
+    }
+
     public Player getPlayer(){
         return player;
     }
@@ -301,6 +304,10 @@ public class GameProcessController extends State implements Statemethods {
         return gameWinController;
     }
 
+    public boolean isWin() {
+        return endgameStatus;
+    }
+
     public boolean isPaused() {
         return paused;
     }
@@ -322,13 +329,5 @@ public class GameProcessController extends State implements Statemethods {
         player.resetAll();
         enemyController.resetAllEnemies();
         objectController.resetAllObjects();
-    }
-
-    public void setWin(boolean value) {
-        this.value = value;
-    }
-
-    public boolean isWin() {
-        return value;
     }
 }

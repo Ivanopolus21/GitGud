@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 public class GameOverController {
     private final GameProcessController gameProcessController;
     private final GameOverView gameOverView;
+
     private final UrmButtonView menu;
     private final UrmButtonView play;
 

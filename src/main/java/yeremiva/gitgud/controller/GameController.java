@@ -7,7 +7,6 @@ import yeremiva.gitgud.view.GameWindowView;
 import java.awt.*;
 
 public class GameController implements Runnable{
-
     private GameProcessController gameProcessController;
     private MainMenuController mainMenuController;
 

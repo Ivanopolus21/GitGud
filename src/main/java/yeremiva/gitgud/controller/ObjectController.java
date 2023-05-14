@@ -1,31 +1,53 @@
 package yeremiva.gitgud.controller;
 
-import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.model.characters.Player;
-import yeremiva.gitgud.model.objects.GameContainer;
-import yeremiva.gitgud.model.objects.Potion;
-import yeremiva.gitgud.model.objects.Spike;
+import yeremiva.gitgud.model.objects.*;
 import yeremiva.gitgud.view.LevelView;
+import yeremiva.gitgud.view.ObjectView;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 
 public class ObjectController {
-
     private GameProcessController gameProcessController;
-    private BufferedImage[][] potionImgs, containerImgs;
-    private BufferedImage spikeImg;
+    private ObjectView objectView;
+
     private ArrayList<Potion> potions;
     private ArrayList<GameContainer> containers;
     private ArrayList<Spike> spikes;
 
     public ObjectController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
-        loadImgs();
+        this.objectView = new ObjectView(this);
+    }
+
+    public void update() {
+        for (Potion p: potions) {
+            if (p.isActive()) {
+                p.update();
+            }
+        }
+
+        for (GameContainer gc: containers) {
+            if (gc.isActive()) {
+                gc.update();
+            }
+        }
+    }
+
+    public void draw(Graphics g, int xLvlOffset) {
+        objectView.draw(g, xLvlOffset);
+    }
+
+    public void loadObjects(LevelView newLevel) {
+        potions = new ArrayList<>(newLevel.getPotions());
+        containers = new ArrayList<>(newLevel.getContainers());
+        spikes = newLevel.getSpikes();
+
+        objectView.init(potions, containers, spikes);
     }
 
     public void checkSpikesTouched(Player player) {
@@ -69,95 +91,6 @@ public class ObjectController {
                             type));
                     return;
                 }
-            }
-        }
-    }
-    public void loadObjects(LevelView newLevel) {
-        potions = new ArrayList<>(newLevel.getPotions());
-        containers = new ArrayList<>(newLevel.getContainers());
-        spikes = newLevel.getSpikes();
-    }
-
-    private void loadImgs() {
-        BufferedImage potionSprite = LoadSave.GetSpriteAtlas(LoadSave.POTION_ATLAS);
-        potionImgs = new BufferedImage[2][7];
-
-        for (int j = 0; j < potionImgs.length; j++) {
-            for (int i = 0; i < potionImgs[j].length; i++) {
-                potionImgs[j][i] = potionSprite.getSubimage(12 * i, 16 * j, 12, 16);
-            }
-        }
-
-        BufferedImage containerSprite = LoadSave.GetSpriteAtlas(LoadSave.CONTAINER_ATLAS);
-        containerImgs = new BufferedImage[2][8];
-
-        for (int j = 0; j < containerImgs.length; j++) {
-            for (int i = 0; i < containerImgs[j].length; i++) {
-                containerImgs[j][i] = containerSprite.getSubimage(40 * i, 30 * j, 40, 30);
-            }
-        }
-
-        spikeImg = LoadSave.GetSpriteAtlas(LoadSave.TRAP_ATLAS);
-    }
-
-    public void update() {
-        for (Potion p: potions) {
-            if (p.isActive()) {
-                p.update();
-            }
-        }
-
-        for (GameContainer gc: containers) {
-            if (gc.isActive()) {
-                gc.update();
-            }
-        }
-    }
-
-    public void draw(Graphics g, int xLvlOffset) {
-        drawPotions(g, xLvlOffset);
-        drawContainers(g, xLvlOffset);
-        drawTraps(g, xLvlOffset);
-    }
-
-    private void drawTraps(Graphics g, int xLvlOffset) {
-        for (Spike s : spikes){
-            g.drawImage(spikeImg, (int)(s.getHitbox().x - xLvlOffset),
-                    (int) (s.getHitbox().y - s.getyDrawOffset()),
-                    SPIKE_WIDTH, SPIKE_HEIGHT, null);
-        }
-    }
-
-    private void drawContainers(Graphics g, int xLvlOffset) {
-        for (GameContainer gc : containers) {
-            if (gc.isActive()) {
-                int type = 0;
-                if(gc.getObjType() == BARREL) {
-                    type = 1;
-                }
-                g.drawImage(containerImgs[type][gc.getAniIndex()],
-                        (int) (gc.getHitbox().x - gc.getxDrawOffset() - xLvlOffset),
-                        (int) (gc.getHitbox().y - gc.getyDrawOffset()),
-                        CONTAINER_WIDTH,
-                        CONTAINER_HEIGHT,
-                        null);
-            }
-        }
-    }
-
-    private void drawPotions(Graphics g, int xLvlOffset) {
-        for (Potion p: potions) {
-            if (p.isActive()) {
-                int type = 0;
-                if (p.getObjType() == RED_POTION) {
-                    type = 1;
-                }
-                g.drawImage(potionImgs[type][p.getAniIndex()],
-                        (int) (p.getHitbox().x - p.getxDrawOffset() - xLvlOffset),
-                        (int) (p.getHitbox().y - p.getyDrawOffset()),
-                        POTION_WIDTH,
-                        POTION_HEIGHT,
-                        null);
             }
         }
     }

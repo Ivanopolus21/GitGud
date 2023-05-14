@@ -1,27 +1,22 @@
 package yeremiva.gitgud.controller;
 
-import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.*;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
-import static yeremiva.gitgud.core.settings.Constants.View.PauseButtons.*;
-import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.*;
-import static yeremiva.gitgud.core.settings.Constants.View.VolumeButtons.*;
-
-//PAUSE OVERLAY
 public class PauseController {
     private GameProcessController gameProcessController;
     private PauseView pauseView;
-    private SoundButton musicButton, sfxButton;
-    private UrmButton menuB, replayB, unpauseB;
+
+    private SoundButtonView musicButton, sfxButton;
+    private UrmButtonView menuB, replayB, unpauseB;
     private VolumeButton volumeButton;
 
-    public PauseController(GameProcessController gameProcessController){
+    public PauseController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
+
         this.pauseView = new PauseView(this);
         this.musicButton = pauseView.getMusicButton();
         this.sfxButton = pauseView.getSfxButton();
@@ -31,11 +26,7 @@ public class PauseController {
         this.volumeButton = pauseView.getVolumeButton();
     }
 
-    public void draw(Graphics g) {
-        pauseView.draw(g);
-    }
-
-    public void update(){
+    public void update() {
         musicButton.update();
         sfxButton.update();
 
@@ -46,7 +37,15 @@ public class PauseController {
         volumeButton.update();
     }
 
-    public void mouseDragged(MouseEvent e){
+    public void draw(Graphics g) {
+        pauseView.draw(g);
+    }
+
+    public boolean isIn(MouseEvent e, PauseButton b) {
+        return (b.getBounds().contains(e.getX(), e.getY()));
+    }
+
+    public void mouseDragged(MouseEvent e) {
         if (volumeButton.isMousePressed()) {
             volumeButton.changeX(e.getX());
         }
@@ -124,9 +123,4 @@ public class PauseController {
             volumeButton.setMouseOver(true);
         }
     }
-
-    public boolean isIn(MouseEvent e, PauseButton b) {
-        return (b.getBounds().contains(e.getX(), e.getY()));
-    }
-
 }
