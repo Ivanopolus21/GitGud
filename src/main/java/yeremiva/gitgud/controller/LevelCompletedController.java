@@ -1,21 +1,21 @@
 package yeremiva.gitgud.controller;
 
-import yeremiva.gitgud.core.settings.LoadSave;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.LevelCompletedView;
-import yeremiva.gitgud.view.PauseView;
-import yeremiva.gitgud.view.UrmButton;
+import yeremiva.gitgud.view.UrmButtonView;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class LevelCompletedController {
-    private GameProcessController gameProcessController;
-    private LevelCompletedView levelCompletedView;
-    private UrmButton menu, nextLvl;
+    private final GameProcessController gameProcessController;
+    private final LevelCompletedView levelCompletedView;
+
+    private final UrmButtonView menu, nextLvl;
 
     public LevelCompletedController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
+
         this.levelCompletedView = new LevelCompletedView(this);
         this.menu = levelCompletedView.getMenu();
         this.nextLvl = levelCompletedView.getNextLvl();
@@ -28,6 +28,10 @@ public class LevelCompletedController {
 
     public void draw(Graphics g) {
         levelCompletedView.draw(g);
+    }
+
+    private boolean isIn(UrmButtonView b, MouseEvent e) {
+        return b.getBounds().contains(e.getX(), e.getY());
     }
 
     public void mouseMoved(MouseEvent e) {
@@ -62,9 +66,5 @@ public class LevelCompletedController {
         } else if (isIn(nextLvl, e)) {
             nextLvl.setMousePressed(true);
         }
-    }
-
-    private boolean isIn(UrmButton b, MouseEvent e) {
-        return b.getBounds().contains(e.getX(), e.getY());
     }
 }
