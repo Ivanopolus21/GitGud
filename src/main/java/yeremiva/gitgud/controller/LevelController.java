@@ -14,7 +14,7 @@ public class LevelController {
     private final GameController gameController;
 
     private BufferedImage[] levelSprite;
-    private final ArrayList<LevelView> levels;
+    private ArrayList<LevelView> levels;
     private int lvlIndex = 0;
 
     public LevelController(GameController gameController) {
@@ -35,12 +35,21 @@ public class LevelController {
         }
     }
 
+    public void resetAllLevels() {
+        levels = new ArrayList<>();
+        lvlIndex = 0;
+
+        importOutsideSprites();
+        buildAllLevels();
+    }
+
     public void loadNextLevel() {
+
         lvlIndex++;
+
         if (lvlIndex >= levels.size()) {
             lvlIndex = 0;
-            System.out.println("No more levels! Game completed!");
-            Gamestate.state = Gamestate.MENU;
+            gameController.getGameProcessController().setWin(true);
         }
 
         LevelView newLevel = levels.get(lvlIndex);
@@ -48,6 +57,9 @@ public class LevelController {
         gameController.getGameProcessController().setMaxLvlOffsetX(newLevel.getMaxLvlOffsetX());
         gameController.getGameProcessController().getEnemyController().loadEnemies(newLevel);
         gameController.getGameProcessController().getObjectController().loadObjects(newLevel);
+
+        System.out.println("Level index is : " + lvlIndex + ". And it comes to the func");
+
     }
 
     private void buildAllLevels() {
@@ -71,7 +83,22 @@ public class LevelController {
     public void update() {
     }
 
+    public void setLvlIndex(int lvlIndex) {
+        this.lvlIndex = lvlIndex;
+        if (lvlIndex == 0) {
+            System.out.println("Index was set to 0");
+        }
+    }
+
     public LevelView getCurrentLevel() {
         return levels.get(lvlIndex);
+    }
+
+    public int getLvlIndex() {
+        return lvlIndex;
+    }
+
+    public int getAmountOfLevels() {
+        return levels.size();
     }
 }

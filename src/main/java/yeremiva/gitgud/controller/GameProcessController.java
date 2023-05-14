@@ -6,6 +6,7 @@ import yeremiva.gitgud.core.settings.PlayerConfig;
 import yeremiva.gitgud.core.states.*;
 import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.view.GameProcessView;
+import yeremiva.gitgud.view.GameWinView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -21,14 +22,16 @@ public class GameProcessController extends State implements Statemethods {
     private GameOverController gameOverController;
     private LevelCompletedController levelCompletedController;
     private GameProcessView gameProcessView;
+    private GameWinController gameWinController;
 
     private boolean paused = false;
 
     private int xLvlOffset, maxLvlOffsetX;
     private final int leftBorder = (int) (0.2 * GameController.GAME_WIDTH);
     private final int rightBorder = (int) (0.8 * GameController.GAME_WIDTH);
-
-    private boolean gameOver, lvlCompleted, playerDying;
+    private GameProcessController gameProcessController;
+    private boolean gameOver, lastLvl, lvlCompleted, lastLvlCompleted, playerDying;
+    private boolean value;
 
     public GameProcessController(GameController gameController) {
         super(gameController);
@@ -44,6 +47,7 @@ public class GameProcessController extends State implements Statemethods {
         pauseController = new PauseController(this);
         levelCompletedController = new LevelCompletedController(this);
         gameOverController = new GameOverController(this);
+        gameWinController = new GameWinController(this);
 
         levelController = new LevelController(gameController);
         enemyController = new EnemyController(this);
@@ -67,6 +71,8 @@ public class GameProcessController extends State implements Statemethods {
     public void update() {
         if (paused) {
             pauseController.update();
+        } else if (isWin()) {
+            gameWinController.update();
         } else if (lvlCompleted) {
             levelCompletedController.update();
         } else if (gameOver) {
@@ -88,9 +94,10 @@ public class GameProcessController extends State implements Statemethods {
         gameProcessView.draw(g, xLvlOffset);
     }
 
-    private void loadStartLevel() {
+    public void loadStartLevel() {
         enemyController.loadEnemies(levelController.getCurrentLevel());
         objectController.loadObjects(levelController.getCurrentLevel());
+        System.out.println("Start level");
     }
 
     public void loadNextLevel() {
@@ -162,6 +169,8 @@ public class GameProcessController extends State implements Statemethods {
         if (!gameOver) {
             if (paused) {
                 pauseController.mousePressed(e);
+            } else if (isWin()) {
+                gameWinController.mousePressed(e);
             } else if (lvlCompleted) {
                 levelCompletedController.mousePressed(e);
             }
@@ -175,6 +184,8 @@ public class GameProcessController extends State implements Statemethods {
         if (!gameOver) {
             if (paused) {
                 pauseController.mouseReleased(e);
+            } else if (isWin()) {
+                gameWinController.mouseReleased(e);
             } else if (lvlCompleted) {
                 levelCompletedController.mouseReleased(e);
             }
@@ -188,6 +199,8 @@ public class GameProcessController extends State implements Statemethods {
         if (!gameOver) {
             if (paused) {
                 pauseController.mouseMoved(e);
+            } else if (isWin()) {
+                gameWinController.mouseMoved(e);
             } else if (lvlCompleted) {
                 levelCompletedController.mouseMoved(e);
             }
@@ -200,24 +213,26 @@ public class GameProcessController extends State implements Statemethods {
     public void keyPressed(KeyEvent e) {
         if (gameOver) {
             gameOverController.keyPressed(e);
+        } else if (isWin()) {
+            gameWinController.keyPressed(e);
         } else {
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_A:
-                    player.setLeft(true);
-                    break;
-                case KeyEvent.VK_D:
-                    player.setRight(true);
-                    break;
-                case KeyEvent.VK_SPACE:
-                    player.setJump(true);
-                    break;
-                case KeyEvent.VK_DOWN:
-                    player.setAttacking(true);
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    paused = !paused;
-                    break;
-            }
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_A:
+                        player.setLeft(true);
+                        break;
+                    case KeyEvent.VK_D:
+                        player.setRight(true);
+                        break;
+                    case KeyEvent.VK_SPACE:
+                        player.setJump(true);
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        player.setAttacking(true);
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        paused = !paused;
+                        break;
+                }
         }
     }
 
@@ -282,6 +297,10 @@ public class GameProcessController extends State implements Statemethods {
         return levelCompletedController;
     }
 
+    public GameWinController getGameWinController() {
+        return gameWinController;
+    }
+
     public boolean isPaused() {
         return paused;
     }
@@ -303,5 +322,13 @@ public class GameProcessController extends State implements Statemethods {
         player.resetAll();
         enemyController.resetAllEnemies();
         objectController.resetAllObjects();
+    }
+
+    public void setWin(boolean value) {
+        this.value = value;
+    }
+
+    public boolean isWin() {
+        return value;
     }
 }
