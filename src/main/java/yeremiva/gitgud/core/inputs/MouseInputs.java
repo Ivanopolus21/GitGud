@@ -1,6 +1,5 @@
 package yeremiva.gitgud.core.inputs;
 
-import yeremiva.gitgud.Game;
 import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.GamePanel;
 
@@ -9,8 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class MouseInputs implements MouseListener, MouseMotionListener {
-
-    private GamePanel gamePanel;
+    private final GamePanel gamePanel;
 
     public MouseInputs(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -79,5 +77,4 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
     public void mouseExited(MouseEvent e) {
 
     }
-
 }
