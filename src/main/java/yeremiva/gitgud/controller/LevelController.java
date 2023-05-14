@@ -10,34 +10,46 @@ import java.util.ArrayList;
 
 import static yeremiva.gitgud.controller.GameController.*;
 
-//LEVEL MANAGER
 public class LevelController {
-    private GameController gameController;
+    private final GameController gameController;
+
     private BufferedImage[] levelSprite;
-    private ArrayList<LevelView> levels;
+    private final ArrayList<LevelView> levels;
     private int lvlIndex = 0;
 
-    public LevelController(GameController gameController){
+    public LevelController(GameController gameController) {
         this.gameController = gameController;
-        importOutsideSprites();
+
         levels = new ArrayList<>();
+
+        importOutsideSprites();
         buildAllLevels();
+    }
+
+    public void draw(Graphics g, int lvlOffset) {
+        for (int j = 0; j < TILES_IN_HEIGHT; j++) {
+            for (int i = 0; i < levels.get(lvlIndex).getLvlData()[0].length; i++) {
+                int index = levels.get(lvlIndex).getSpriteIndex(i, j);
+                g.drawImage(levelSprite[index], TILES_SIZE * i - lvlOffset, TILES_SIZE * j, TILES_SIZE, TILES_SIZE, null);
+            }
+        }
     }
 
     public void loadNextLevel() {
         lvlIndex++;
         if (lvlIndex >= levels.size()) {
             lvlIndex = 0;
-            System.out.println("no more levels! Game completed!");
+            System.out.println("No more levels! Game completed!");
             Gamestate.state = Gamestate.MENU;
         }
 
         LevelView newLevel = levels.get(lvlIndex);
-        gameController.getGameProcessController().getEnemyController().loadEnemies(newLevel);
         gameController.getGameProcessController().getPlayer().loadLvlData(newLevel.getLvlData());
         gameController.getGameProcessController().setMaxLvlOffsetX(newLevel.getMaxLvlOffsetX());
+        gameController.getGameProcessController().getEnemyController().loadEnemies(newLevel);
         gameController.getGameProcessController().getObjectController().loadObjects(newLevel);
     }
+
     private void buildAllLevels() {
         BufferedImage[] allLevels = LoadSave.GetAllLevels();
         for (BufferedImage img : allLevels) {
@@ -56,24 +68,10 @@ public class LevelController {
         }
     }
 
-    public void draw(Graphics g, int lvlOffset){
-        for (int j = 0; j < TILES_IN_HEIGHT; j++){
-            for (int i = 0; i < levels.get(lvlIndex).getLvlData()[0].length; i++){
-                int index = levels.get(lvlIndex).getSpriteIndex(i, j);
-                g.drawImage(levelSprite[index], TILES_SIZE * i - lvlOffset, TILES_SIZE * j, TILES_SIZE, TILES_SIZE, null);
-            }
-        }
-    }
-
     public void update() {
-
     }
 
     public LevelView getCurrentLevel() {
         return levels.get(lvlIndex);
-    }
-
-    public int getAmountOfLevels() {
-        return levels.size();
     }
 }
