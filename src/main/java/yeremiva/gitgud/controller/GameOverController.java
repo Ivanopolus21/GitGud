@@ -9,10 +9,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public class GameOverController {
-    private GameProcessController gameProcessController;
-    private GameOverView gameOverView;
-    private UrmButtonView menu;
-    private UrmButtonView play;
+    private final GameProcessController gameProcessController;
+    private final GameOverView gameOverView;
+    private final UrmButtonView menu;
+    private final UrmButtonView play;
 
     public GameOverController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
