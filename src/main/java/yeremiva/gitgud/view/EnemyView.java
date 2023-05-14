@@ -11,7 +11,6 @@ import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.SKELETON_HEIGHT;
 
 public class EnemyView {
-
     private BufferedImage[][] skeletonArr;
 
     public EnemyView() {
@@ -42,7 +41,7 @@ public class EnemyView {
     private void loadEnemyImgs() {
         skeletonArr = new BufferedImage[5][6];
         BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.SKELETON_SPRITE);
-        for (int j = 0; j < skeletonArr.length; j++){
+        for (int j = 0; j < skeletonArr.length; j++) {
             for (int i = 0; i < skeletonArr[j].length; i++) {
                 skeletonArr[j][i] = temp.getSubimage(i * SKELETON_WIDTH_DEFAULT, j * SKELETON_HEIGHT_DEFAULT, SKELETON_WIDTH_DEFAULT, SKELETON_HEIGHT_DEFAULT);
             }

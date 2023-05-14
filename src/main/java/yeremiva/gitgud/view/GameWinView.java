@@ -1,7 +1,6 @@
 package yeremiva.gitgud.view;
 
 import yeremiva.gitgud.controller.GameController;
-import yeremiva.gitgud.controller.GameOverController;
 import yeremiva.gitgud.controller.GameWinController;
 import yeremiva.gitgud.core.settings.LoadSave;
 
@@ -11,10 +10,12 @@ import java.awt.image.BufferedImage;
 import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.URM_SIZE;
 
 public class GameWinView {
+    private final GameWinController gameWinController;
+
     private BufferedImage img;
-    private int imgX, imgY, imgWidth, imgHeight;
     private UrmButtonView menu;
-    private GameWinController gameWinController;
+
+    private int imgX, imgY, imgWidth, imgHeight;
 
     public GameWinView(GameWinController gameWinController) {
         this.gameWinController = gameWinController;
@@ -22,11 +23,13 @@ public class GameWinView {
         createButton();
     }
 
-    private void createButton() {
-        int menuX = (int) (335 * GameController.SCALE);
-        int y = (int) (195 * GameController.SCALE);
+    public void draw (Graphics g) {
+        g.setColor(new Color(0, 0, 0));
+        g.fillRect(0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
 
-        menu = new UrmButtonView(menuX, y, URM_SIZE, URM_SIZE, 2);
+        g.drawImage(img, imgX, imgY, imgWidth, imgHeight, null);
+
+        menu.draw(g);
     }
 
     private void createImg() {
@@ -37,13 +40,11 @@ public class GameWinView {
         imgY = (int) (100 * GameController.SCALE);
     }
 
-    public void draw (Graphics g) {
-        g.setColor(new Color(0, 0, 0));
-        g.fillRect(0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
+    private void createButton() {
+        int x = (int) (385 * GameController.SCALE);
+        int y = (int) (195 * GameController.SCALE);
 
-        g.drawImage(img, imgX, imgY, imgWidth, imgHeight, null);
-
-        menu.draw(g);
+        menu = new UrmButtonView(x, y, URM_SIZE, URM_SIZE, 2);
     }
 
     public UrmButtonView getMenu() {

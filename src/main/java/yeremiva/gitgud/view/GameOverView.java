@@ -10,11 +10,12 @@ import java.awt.image.BufferedImage;
 import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.URM_SIZE;
 
 public class GameOverView {
+    private final GameOverController gameOverController;
 
+    private UrmButtonView menu, play;
     private BufferedImage img;
+
     private int imgX, imgY, imgWidth, imgHeight;
-    private UrmButton menu, play;
-    private GameOverController gameOverController;
 
     public GameOverView(GameOverController gameOverController) {
         this.gameOverController = gameOverController;
@@ -26,8 +27,8 @@ public class GameOverView {
         int menuX = (int) (335 * GameController.SCALE);
         int playX = (int) (440 * GameController.SCALE);
         int y = (int) (195 * GameController.SCALE);
-        play = new UrmButton(playX, y, URM_SIZE, URM_SIZE, 0);
-        menu = new UrmButton(menuX, y, URM_SIZE, URM_SIZE, 2);
+        play = new UrmButtonView(playX, y, URM_SIZE, URM_SIZE, 0);
+        menu = new UrmButtonView(menuX, y, URM_SIZE, URM_SIZE, 2);
     }
 
     private void createImg() {
@@ -46,16 +47,13 @@ public class GameOverView {
 
         menu.draw(g);
         play.draw(g);
-//        g.setColor(Color.white);
-//        g.drawString("Game Over", GameController.GAME_WIDTH / 2, 150);
-//        g.drawString("Press ESCAPE button to enther Main Menu!", GameController.GAME_WIDTH / 2, 300);
     }
 
-    public UrmButton getMenu() {
+    public UrmButtonView getMenu() {
         return menu;
     }
 
-    public UrmButton getPlay() {
+    public UrmButtonView getPlay() {
         return play;
     }
 }

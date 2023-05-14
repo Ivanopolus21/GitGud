@@ -6,7 +6,7 @@ import java.awt.event.WindowFocusListener;
 
 //GAME WINDOW
 public class GameWindowView {
-    private JFrame jframe;
+    private final JFrame jframe;
 
     public GameWindowView(GamePanel gamePanel) {
         jframe = new JFrame();
@@ -20,7 +20,6 @@ public class GameWindowView {
         jframe.addWindowFocusListener(new WindowFocusListener() {
             @Override
             public void windowGainedFocus(WindowEvent e) {
-
             }
 
             @Override
@@ -29,5 +28,4 @@ public class GameWindowView {
             }
         });
     }
-
 }

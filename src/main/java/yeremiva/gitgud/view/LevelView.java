@@ -1,16 +1,11 @@
 package yeremiva.gitgud.view;
 
 import org.json.JSONObject;
-import sun.rmi.runtime.Log;
-import yeremiva.gitgud.controller.EnemyController;
+
 import yeremiva.gitgud.controller.GameController;
 import yeremiva.gitgud.core.settings.EnemyConfig;
-import yeremiva.gitgud.core.settings.HelpMethods;
-import yeremiva.gitgud.core.settings.PlayerConfig;
 import yeremiva.gitgud.model.characters.Skeleton;
-import yeremiva.gitgud.model.objects.GameContainer;
-import yeremiva.gitgud.model.objects.Potion;
-import yeremiva.gitgud.model.objects.Spike;
+import yeremiva.gitgud.model.objects.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,26 +14,22 @@ import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
-import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
-//LEVEL
 public class LevelView {
+    private static final Logger log = Logger.getLogger(LevelView.class.getName());
 
-    private static Logger log = Logger.getLogger(LevelView.class.getName());
-
-    private BufferedImage img;
-    private int[][] lvlData;
-    private ArrayList<Skeleton> skeletons = new ArrayList<>();
-    private ArrayList<Potion> potions = new ArrayList<>();
-    private ArrayList<Spike> spikes = new ArrayList<>();
-    private ArrayList<GameContainer> containers = new ArrayList<>();
-    private int lvlTilesWide;
-    private int maxTilesOffset;
-    private int maxLvlOffsetX;
+    private final BufferedImage img;
+    private final ArrayList<Skeleton> skeletons = new ArrayList<>();
+    private final ArrayList<Potion> potions = new ArrayList<>();
+    private final ArrayList<Spike> spikes = new ArrayList<>();
+    private final ArrayList<GameContainer> containers = new ArrayList<>();
     private Point playerSpawn;
-    private EnemyConfig enemyConfig;
 
-    public LevelView(BufferedImage img){
+    private final int[][] lvlData;
+    private int lvlTilesWide, maxTilesOffset;
+    private int maxLvlOffsetX;
+
+    public LevelView(BufferedImage img) {
         this.img = img;
         lvlData = new int[img.getHeight()][img.getWidth()];
 
@@ -47,13 +38,12 @@ public class LevelView {
     }
 
     private void loadLevel() {
-
         // Looping through the image colors just once. Instead of one per
         // object/enemy/etc..
-
         for (int y = 0; y < img.getHeight(); y++)
             for (int x = 0; x < img.getWidth(); x++) {
                 Color c = new Color(img.getRGB(x, y));
+
                 int red = c.getRed();
                 int green = c.getGreen();
                 int blue = c.getBlue();
@@ -65,10 +55,11 @@ public class LevelView {
     }
 
     private void loadLevelData(int redValue, int x, int y) {
-        if (redValue >= 50)
+        if (redValue >= 50) {
             lvlData[y][x] = 0;
-        else
+        } else {
             lvlData[y][x] = redValue;
+        }
     }
 
     private void loadObjects(int blueValue, int x, int y) {
@@ -112,24 +103,12 @@ public class LevelView {
         maxLvlOffsetX = GameController.TILES_SIZE * maxTilesOffset;
     }
 
-    public int getSpriteIndex(int x, int y){
-        return lvlData[y][x];
-    }
-
-    public int[][] getLvlData() {
-        return lvlData;
-    }
-
-    public int getMaxLvlOffsetX() {
-        return maxLvlOffsetX;
+    public Point getPlayerSpawn() {
+        return playerSpawn;
     }
 
     public ArrayList<Skeleton> getSkeletons() {
         return skeletons;
-    }
-
-    public Point getPlayerSpawn() {
-        return playerSpawn;
     }
 
     public ArrayList<Potion> getPotions() {
@@ -142,5 +121,17 @@ public class LevelView {
 
     public ArrayList<Spike> getSpikes() {
         return spikes;
+    }
+
+    public int getSpriteIndex(int x, int y) {
+        return lvlData[y][x];
+    }
+
+    public int[][] getLvlData() {
+        return lvlData;
+    }
+
+    public int getMaxLvlOffsetX() {
+        return maxLvlOffsetX;
     }
 }

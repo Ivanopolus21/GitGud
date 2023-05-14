@@ -1,7 +1,5 @@
 package yeremiva.gitgud.view;
 
-
-import yeremiva.gitgud.Game;
 import yeremiva.gitgud.controller.GameController;
 import yeremiva.gitgud.controller.GameProcessController;
 import yeremiva.gitgud.core.settings.LoadSave;
@@ -13,11 +11,12 @@ import java.util.Random;
 import static yeremiva.gitgud.core.settings.Constants.Enviroment.*;
 
 public class GameProcessView {
-    private GameProcessController gameProcessController;
+    private final GameProcessController gameProcessController;
 
-    private BufferedImage backgroundImg, bigCloud, smallCloud;
-    private int[] smallCloudsPos;
-    private Random rnd = new Random();
+    private final BufferedImage backgroundImg, bigCloud, smallCloud;
+    private final Random rnd = new Random();
+
+    private final int[] smallCloudsPos;
 
     public GameProcessView(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
@@ -26,8 +25,9 @@ public class GameProcessView {
         bigCloud = LoadSave.GetSpriteAtlas(LoadSave.BIG_CLOUDS);
         smallCloud = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
         smallCloudsPos = new int[8];
-        for (int i = 0; i < smallCloudsPos.length; i++)
+        for (int i = 0; i < smallCloudsPos.length; i++) {
             smallCloudsPos[i] = (int) (90 * GameController.SCALE) + rnd.nextInt((int) (100 * GameController.SCALE));
+        }
     }
 
     public void draw(Graphics g, int xLvlOffset) {
@@ -43,7 +43,7 @@ public class GameProcessView {
         if (gameProcessController.isPaused()) {
             gameProcessController.getPauseController().draw(g);
         } else if (gameProcessController.isGameOver()) {
-            gameProcessController.getGameOverController().getGameOverView().draw(g);
+            gameProcessController.getGameOverController().draw(g);
         } else if (gameProcessController.isWin()) {
             gameProcessController.getGameWinController().draw(g);
         } else if (gameProcessController.isLvlCompleted()) {

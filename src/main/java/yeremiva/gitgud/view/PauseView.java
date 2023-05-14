@@ -1,7 +1,6 @@
 package yeremiva.gitgud.view;
 
 import yeremiva.gitgud.controller.GameController;
-import yeremiva.gitgud.controller.GameProcessController;
 import yeremiva.gitgud.controller.PauseController;
 import yeremiva.gitgud.core.settings.LoadSave;
 
@@ -14,12 +13,14 @@ import static yeremiva.gitgud.core.settings.Constants.View.VolumeButtons.SLIDER_
 import static yeremiva.gitgud.core.settings.Constants.View.VolumeButtons.VOLUME_HEIGHT;
 
 public class PauseView {
-    private PauseController pauseController;
-    private BufferedImage backgroundImg;
-    private int bgX, bgY, bgWidth, bgHeight;
-    private SoundButton musicButton, sfxButton;
-    private UrmButton menuB, replayB, unpauseB;
+    private final PauseController pauseController;
+
+    private SoundButtonView musicButton, sfxButton;
+    private UrmButtonView menuB, replayB, unpauseB;
     private VolumeButton volumeButton;
+    private BufferedImage backgroundImg;
+
+    private int bgX, bgY, bgWidth, bgHeight;
 
     public PauseView(PauseController pauseController) {
         this.pauseController = pauseController;
@@ -33,6 +34,7 @@ public class PauseView {
     private void createVolumeButton() {
         int volumeX = (int) (309 * GameController.SCALE);
         int volumeY = (int) (258 * GameController.SCALE);
+
         volumeButton = new VolumeButton(volumeX, volumeY, SLIDER_WIDTH, VOLUME_HEIGHT);
     }
 
@@ -43,17 +45,17 @@ public class PauseView {
         int unpauseX = (int) (462 * GameController.SCALE);
         int buttonY = (int) (305 * GameController.SCALE);
 
-        menuB = new UrmButton(menuX, buttonY, URM_SIZE, URM_SIZE, 2);
-        replayB = new UrmButton(replayX, buttonY, URM_SIZE, URM_SIZE, 1);
-        unpauseB = new UrmButton(unpauseX, buttonY, URM_SIZE, URM_SIZE, 0);
+        menuB = new UrmButtonView(menuX, buttonY, URM_SIZE, URM_SIZE, 2);
+        replayB = new UrmButtonView(replayX, buttonY, URM_SIZE, URM_SIZE, 1);
+        unpauseB = new UrmButtonView(unpauseX, buttonY, URM_SIZE, URM_SIZE, 0);
     }
 
     private void createSoundButtons() {
         int soundX = (int) (450 * GameController.SCALE);
         int musicY = (int) (115 * GameController.SCALE);
         int sfxY = (int) (161 * GameController.SCALE);
-        musicButton = new SoundButton(soundX, musicY, SOUND_SIZE, SOUND_SIZE);
-        sfxButton = new SoundButton(soundX, sfxY, SOUND_SIZE, SOUND_SIZE);
+        musicButton = new SoundButtonView(soundX, musicY, SOUND_SIZE, SOUND_SIZE);
+        sfxButton = new SoundButtonView(soundX, sfxY, SOUND_SIZE, SOUND_SIZE);
     }
 
     //Function that loads background of the pause menu
@@ -85,23 +87,23 @@ public class PauseView {
         volumeButton.draw(g);
     }
 
-    public SoundButton getMusicButton() {
+    public SoundButtonView getMusicButton() {
         return musicButton;
     }
 
-    public SoundButton getSfxButton() {
+    public SoundButtonView getSfxButton() {
         return sfxButton;
     }
 
-    public UrmButton getMenuB() {
+    public UrmButtonView getMenuB() {
         return menuB;
     }
 
-    public UrmButton getReplayB() {
+    public UrmButtonView getReplayB() {
         return replayB;
     }
 
-    public UrmButton getUnpauseB() {
+    public UrmButtonView getUnpauseB() {
         return unpauseB;
     }
 
