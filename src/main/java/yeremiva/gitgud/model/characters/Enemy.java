@@ -1,9 +1,7 @@
 package yeremiva.gitgud.model.characters;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import yeremiva.gitgud.controller.GameController;
 
-import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.logging.Logger;
 
@@ -14,8 +12,7 @@ import static yeremiva.gitgud.core.settings.Constants.GRAVITY;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
 public abstract class Enemy extends Character{
-
-    private static Logger log = Logger.getLogger(Enemy.class.getName());
+    private final static Logger log = Logger.getLogger(Enemy.class.getName());
 
     protected int enemyType;
     protected boolean firstUpdate = true;
@@ -25,6 +22,7 @@ public abstract class Enemy extends Character{
     protected boolean alive = true;
     protected boolean attackChecked;
     protected int enemyDamage;
+
     public Enemy(float x, float y, int width, int height, int maxHealth, int currentHealth, float walkSpeed, int enemyDamage, int enemyType) {
         super(x, y, width, height);
         this.maxHealth = maxHealth;
@@ -39,6 +37,25 @@ public abstract class Enemy extends Character{
             inAir = true;
         }
         firstUpdate = false;
+    }
+
+    protected void updateAnimationTick() {
+        aniTick++;
+        if (aniTick >= ANI_SPEED){
+            aniTick = 0;
+            aniIndex++;
+            if (aniIndex >= GetSpriteAmount(enemyType, state)) {
+                aniIndex = 0;
+                switch(state) {
+                    case ATTACK:
+                    case HIT:
+                        state = IDLE;
+                        break;
+                    case DEAD:
+                        alive = false;
+                }
+            }
+        }
     }
 
     protected void updateInAir(int[][] lvlData) {
@@ -129,25 +146,6 @@ public abstract class Enemy extends Character{
             player.changeHealth(-enemyDamage);
         }
         attackChecked = true;
-    }
-
-    protected void updateAnimationTick() {
-        aniTick++;
-        if (aniTick >= ANI_SPEED){
-            aniTick = 0;
-            aniIndex++;
-            if (aniIndex >= GetSpriteAmount(enemyType, state)) {
-                aniIndex = 0;
-                switch(state) {
-                    case ATTACK:
-                    case HIT:
-                        state = IDLE;
-                        break;
-                    case DEAD:
-                        alive = false;
-                }
-            }
-        }
     }
 
     protected void changeWalkDir() {

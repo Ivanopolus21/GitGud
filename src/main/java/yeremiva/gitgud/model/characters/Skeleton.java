@@ -2,16 +2,13 @@ package yeremiva.gitgud.model.characters;
 
 import yeremiva.gitgud.controller.GameController;
 
-import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 import static yeremiva.gitgud.core.settings.Constants.Directions.LEFT;
 import static yeremiva.gitgud.core.settings.Constants.Directions.RIGHT;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 
-public class Skeleton extends Enemy{
-
-    //Attackbox
+public class Skeleton extends Enemy {
     private int attackBoxOffsetX;
 
     public Skeleton(float x, float y, int maxHealth, int currentHealth, float walkSpeed, int enemyDamage) {
@@ -21,17 +18,10 @@ public class Skeleton extends Enemy{
         initAttackBox();
     }
 
-    private void initAttackBox() {
-        attackBox = new Rectangle2D.Float(x, y, (int) (15 * GameController.SCALE), (int) (25 * GameController.SCALE));
-        attackBoxOffsetX = (int) (GameController.SCALE * 15);
-    }
-
-
     public void update(int[][] lvlData, Player player) {
         updateBehavior(lvlData, player);
         updateAnimationTick();
         updateAttackBox();
-
     }
 
     private void updateAttackBox() {
@@ -55,6 +45,7 @@ public class Skeleton extends Enemy{
                 case IDLE:
                     newState(RUNNING);
                     break;
+
                 case RUNNING:
                     if (canSeePlayer(lvlData, player)) {
                         turnTowardsPlayer(player);
@@ -64,6 +55,7 @@ public class Skeleton extends Enemy{
                     }
                     move(lvlData);
                     break;
+
                 case ATTACK:
                     if (aniIndex == 0) {
                         attackChecked = false;
@@ -73,10 +65,16 @@ public class Skeleton extends Enemy{
                         checkIfEnemyHitsPlayer(attackBox, player);
                     }
                     break;
+
                 case HIT:
                     break;
             }
         }
+    }
+
+    private void initAttackBox() {
+        attackBox = new Rectangle2D.Float(x, y, (int) (15 * GameController.SCALE), (int) (25 * GameController.SCALE));
+        attackBoxOffsetX = (int) (GameController.SCALE * 15);
     }
 
     public int flipX() {
@@ -95,13 +93,13 @@ public class Skeleton extends Enemy{
         }
     }
 
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
     @Override
     public int getCurrentHealth() {
         return currentHealth;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
     public int getEnemyDamage() {

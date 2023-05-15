@@ -1,65 +1,59 @@
 package yeremiva.gitgud.model.characters;
 
-import com.sun.imageio.spi.RAFImageInputStreamSpi;
-import yeremiva.gitgud.Game;
 import yeremiva.gitgud.controller.GameController;
 import yeremiva.gitgud.controller.GameProcessController;
-import yeremiva.gitgud.core.settings.HelpMethods;
 import yeremiva.gitgud.core.settings.LoadSave;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 
 import static yeremiva.gitgud.core.settings.Constants.ANI_SPEED;
 import static yeremiva.gitgud.core.settings.Constants.GRAVITY;
 import static yeremiva.gitgud.core.settings.Constants.PlayerConstants.*;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
-public class Player extends Character{
+public class Player extends Character {
     //30 height, 18 width 00 -- 6, 3
     //43 height, 25 width 00 -- 10, 5
 
+    private final GameProcessController gameProcessController;
+
     private BufferedImage[][] animations;
+    private BufferedImage statusBarImg;
+
     private boolean moving = false, attacking = false;
     private boolean left, right, jump;
     private int[][] lvlData;
-    private float xDrawOffset = 6 * GameController.SCALE;
-    private float yDrawOffset = 4 * GameController.SCALE;
+    private final float xDrawOffset = 6 * GameController.SCALE;
+    private final float yDrawOffset = 4 * GameController.SCALE;
 
     // Jumping/Gravity
-    private float jumpSpeed = -2.25f * GameController.SCALE;
-    private float fallSpeedAfterCollision = 0.5f * GameController.SCALE;
+    private final float jumpSpeed = -2.25f * GameController.SCALE;
+    private final float fallSpeedAfterCollision = 0.5f * GameController.SCALE;
 
     //StatusBar View
-    private BufferedImage statusBarImg;
+    private final int statusBarWidth = (int) (192 * GameController.SCALE);
+    private final int statusBarHeight = (int) (58 * GameController.SCALE);
+    private final int statusBarX = (int) (10 * GameController.SCALE);
+    private final int statusBarY = (int) (10 * GameController.SCALE);
 
-    private int statusBarWidth = (int) (192 * GameController.SCALE);
-    private int statusBarHeight = (int) (58 * GameController.SCALE);
-    private int statusBarX = (int) (10 * GameController.SCALE);
-    private int statusBarY = (int) (10 * GameController.SCALE);
-
-    private int healthBarWidth = (int) (150 * GameController.SCALE);
-    private int healthBarHeight = (int) (4 * GameController.SCALE);
-    private int healthBarXStart = (int) (34 * GameController.SCALE);
-    private int healthBarYStart = (int) (14 * GameController.SCALE);
+    private final int healthBarWidth = (int) (150 * GameController.SCALE);
+    private final int healthBarHeight = (int) (4 * GameController.SCALE);
+    private final int healthBarXStart = (int) (34 * GameController.SCALE);
+    private final int healthBarYStart = (int) (14 * GameController.SCALE);
     private int healthWidth = healthBarWidth;
 
     //constants
-    private int playerDamage;
-    private int maxHealth;
+    private final int playerDamage;
+    private final int maxHealth;
     private int currentHealth;
-    private float walkSpeed;
+    private final float walkSpeed;
 
     //Attackbox
     private int flipX = 0;
     private int flipW = 1;
-
     private boolean attackChecked = false;
-    private GameProcessController gameProcessController;
 
     public Player(float x, float y, int width, int height, int maxHealth, int currentHealth, float walkSpeed, int playerDamage, GameProcessController gameProcessController) {
         super(x, y, width, height);
@@ -69,27 +63,14 @@ public class Player extends Character{
         this.currentHealth = currentHealth;
         this.walkSpeed = walkSpeed * GameController.SCALE;
         this.playerDamage = playerDamage;
+
         loadAnimations();
         initHitbox(17, 27);
         initAttackBox();
     }
 
-    public void setSpawn(Point spawn) {
-        this.x = spawn.x;
-        this.y = spawn.y;
-        hitbox.x = x;
-        hitbox.y = y;
-    }
-
-    private void initAttackBox() {
-        attackBox = new Rectangle2D.Float(x, y, (int) (25 * GameController.SCALE), (int) (35 * GameController.SCALE));
-//        resetAttackBox();
-
-    }
-
-    public void update(){
+    public void update() {
         updateHealthBar();
-
         if (currentHealth <= 0) {
             if (state != DEAD) {
                 state = DEAD;
@@ -103,17 +84,18 @@ public class Player extends Character{
             }
             return;
         }
-
         updateAttackBox();
-
         updatePosition();
+
         if (moving) {
             checkPotionTouched();
             checkSpikesTouched();
         }
+
         if (attacking) {
             checkAttack();
         }
+
         updateAnimationTick();
         setAnimation();
     }
@@ -157,6 +139,7 @@ public class Player extends Character{
             flipX = width;
             flipW = -1;
         }
+
         if (right) {
             xSpeed += walkSpeed;
             flipX = 0;
@@ -191,6 +174,7 @@ public class Player extends Character{
 
     private void updateAnimationTick() {
         aniTick++;
+
         if (aniTick >= ANI_SPEED) {
             aniTick = 0;
             aniIndex++;
@@ -202,7 +186,7 @@ public class Player extends Character{
         }
     }
 
-    public void render(Graphics g, int lvlOffset){
+    public void render(Graphics g, int lvlOffset) {
         g.drawImage(animations[state][aniIndex],
                 (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
                 (int) (hitbox.y - yDrawOffset),
@@ -216,6 +200,31 @@ public class Player extends Character{
         g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
         g.setColor(Color.red);
         g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
+    }
+
+    private void loadAnimations() {
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
+
+        animations = new BufferedImage[7][8];
+        for (int j = 0; j < animations.length; j++) {
+            for (int i = 0; i < animations[j].length; i++) {
+                animations[j][i] = img.getSubimage(i * 32, j*32, 32, 32);
+            }
+        }
+
+        statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
+    }
+
+    public void loadLvlData(int[][] lvlData) {
+        this.lvlData = lvlData;
+        if (!IsCharacterOnFloor(hitbox, lvlData)) {
+            inAir = true;
+        }
+    }
+
+    private void initAttackBox() {
+        attackBox = new Rectangle2D.Float(x, y, (int) (25 * GameController.SCALE), (int) (35 * GameController.SCALE));
+//        resetAttackBox();
     }
 
     private void checkSpikesTouched() {
@@ -233,6 +242,14 @@ public class Player extends Character{
         attackChecked = true;
         gameProcessController.checkIfPlayerHitsEnemy(attackBox, playerDamage);
         gameProcessController.checkObjectHit(attackBox);
+    }
+
+    public void setSpawn(Point spawn) {
+        this.x = spawn.x;
+        this.y = spawn.y;
+
+        hitbox.x = x;
+        hitbox.y = y;
     }
 
     public void setAnimation(){
@@ -266,23 +283,12 @@ public class Player extends Character{
         }
     }
 
-    private void resetAniTick(){
-        aniTick = 0;
-        aniIndex = 0;
-    }
-
-
-    private void jump(){
+    private void jump() {
         if (inAir){
             return;
         }
         inAir = true;
         airSpeed = jumpSpeed;
-    }
-
-    private void resetInAir(){
-        inAir = false;
-        airSpeed = 0;
     }
 
     private void updateXPos(float xSpeed) {
@@ -304,41 +310,11 @@ public class Player extends Character{
         }
     }
 
-
     public void kill() {
         currentHealth = 0;
     }
 
-    public void changePower(int value) {
-        System.out.println("Changed power!");
-    }
-
-    private void loadAnimations() {
-        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
-
-        animations = new BufferedImage[7][8];
-        for (int j = 0; j < animations.length; j++) {
-            for (int i = 0; i < animations[j].length; i++) {
-                animations[j][i] = img.getSubimage(i * 32, j*32, 32, 32);
-            }
-        }
-
-        statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
-    }
-
-    public void loadLvlData(int[][] lvlData){
-        this.lvlData = lvlData;
-        if (!IsCharacterOnFloor(hitbox, lvlData)) {
-            inAir = true;
-        }
-    }
-
-    public void resetDirBooleans(){
-        left = false;
-        right = false;
-    }
-
-    public void setAttacking(boolean attacking){
+    public void setAttacking(boolean attacking) {
         this.attacking = attacking;
     }
 
@@ -350,7 +326,7 @@ public class Player extends Character{
         this.right = right;
     }
 
-    public void setJump(boolean jump){
+    public void setJump(boolean jump) {
         this.jump = jump;
     }
 
@@ -395,5 +371,20 @@ public class Player extends Character{
         } else {
             attackBox.x = hitbox.x - hitbox.width - (int) (10 * GameController.SCALE);
         }
+    }
+
+    private void resetAniTick() {
+        aniTick = 0;
+        aniIndex = 0;
+    }
+
+    public void resetDirBooleans() {
+        left = false;
+        right = false;
+    }
+
+    private void resetInAir() {
+        inAir = false;
+        airSpeed = 0;
     }
 }
