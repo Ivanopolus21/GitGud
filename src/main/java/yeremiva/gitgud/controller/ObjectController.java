@@ -72,8 +72,6 @@ public class ObjectController {
     public void applyEffectToPlayer(Potion p) {
         if (p.getObjType() == RED_POTION) {
             gameProcessController.getPlayer().changeHealth(RED_POTION_VALUE);
-        } else {
-            gameProcessController.getPlayer().changePower(BLUE_POTION_VALUE);
         }
     }
 

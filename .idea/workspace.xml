@@ -4,11 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Added death screen to the game (updated)">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Final refactoring of the characters">
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameMenuButtonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/SoundButtonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/UrmButtonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/VolumeButtonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/ObjectView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PlayerView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameWinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameWinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/InventoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/EnemyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/EnemyConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/PlayerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/PlayerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/ArcherSkeleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Wraith.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/items/AcidBoots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/items/Boots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/items/JumpBoots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PauseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PauseButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/VolumeButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/VolumeButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/background_menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/background_menu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/background_menu_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/button_atlas.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/button_atlas.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/completed_sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/completed_sprite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/health_power_bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levels/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levels/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mini_skeleton_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mini_skeleton_fixed_for_real_this_time (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/outside_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/outside_sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/outside_sprites_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pause_menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pause_menu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pause_menu_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player_sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/playing_bg_img.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/playing_bg_img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/potions_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/potions_sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/small_clouds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/small_clouds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sound_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sound_button.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sound_button_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/trap_atlas.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/trap_atlas.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/urm_buttons.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/urm_buttons.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/urm_buttons_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/volume_buttons.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/volume_buttons.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/volume_buttons_fixed.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +85,29 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ivan/Documents/KAIJI SEMESTER/JavaLin/GitGud&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ivan/Documents/KAIJI SEMESTER/bunkovik&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ivan\Documents\KAIJI SEMESTER\JavaLin\GitGud" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ivan\Documents\KAIJI SEMESTER\JavaLin\GitGud" />
       <recent name="C:\Users\Ivan\Documents\KAIJI SEMESTER\JavaLin\GitGud\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="yeremiva.gitgud.core.settings" />
     </key>
   </component>
   <component name="RunManager">
@@ -61,7 +116,7 @@
       <module name="GitGud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="yeremiva.gitgud.*" />
+          <option name="PATTERN" value="yeremiva.gitgud.Game" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,189 +193,12 @@
       <workItem from="1683152512037" duration="2520000" />
       <workItem from="1683198550566" duration="6263000" />
       <workItem from="1683290042439" duration="15950000" />
-      <workItem from="1683372965573" duration="2173000" />
-    </task>
-    <task id="LOCAL-00032" summary="Added jump animation and changed the walking animation to the running (with a bug)">
-      <created>1681346564334</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1681346564334</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Added Menu game state and Playing game state using Enum, also refactored some code and moved the key inputs and mouse inputs for actual game into new class">
-      <created>1681505753669</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1681505753669</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Added configuration for menu buttons">
-      <created>1681859805511</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1681859805511</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Added game menu buttons view, but without binding to the keyinputs">
-      <created>1681904769329</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1681904769329</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Added game menu buttons binded to its' mouse keys">
-      <created>1681905163916</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1681905163916</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Added background to game menu">
-      <created>1681910312030</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1681910312030</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Fixing a bug with an animation">
-      <created>1681910532247</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1681910532247</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Changing player speed to scalable">
-      <created>1681910663268</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1681910663268</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Added pause menu position and view, removed unnecessary images, added new">
-      <created>1681914118143</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1681914118143</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Added pause menu sound buttons, their logic and view">
-      <created>1681982552363</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1681982552363</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Added a slider for volume button in pause menu">
-      <created>1682028995734</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1682028995734</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Changed some sprites to fit more for my game">
-      <created>1682029033696</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1682029033696</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Changed some button sprites to fit more for my game">
-      <created>1682029044619</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1682029044619</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Added longer level and added camera movement when a player is passing through the end of the window">
-      <created>1682071660295</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1682071660295</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Update of menu buttons view">
-      <created>1682071681016</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1682071681016</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Changed the background of menu overlay">
-      <created>1682091041861</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1682091041861</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Added background image for main menu">
-      <created>1682091098453</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1682091098453</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Upgrading some background images">
-      <created>1682239342336</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1682239342336</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Adding a moving background to the game">
-      <created>1682240545793</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1682240545793</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Added some logic for upcoming enemy">
-      <created>1682243582751</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1682243582751</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Added enemy Skeleton view and animations">
-      <created>1682248034672</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1682248034672</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Updated view of pause menu and buttons">
-      <created>1682368087997</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1682368087997</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Added an enemy that can patrol">
-      <created>1682371030053</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1682371030053</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Some refactoring of the Skeleton code">
-      <created>1682421248741</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1682421248742</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Added attack animation view for Skeleton and his sight for a player">
-      <created>1682428863072</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1682428863072</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Updated design of the buttons">
-      <created>1682429332783</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1682429332783</updated>
+      <workItem from="1683372965573" duration="4417000" />
+      <workItem from="1683711133325" duration="21561000" />
+      <workItem from="1683831416465" duration="6000" />
+      <workItem from="1683883966971" duration="11979000" />
+      <workItem from="1683996695306" duration="7874000" />
+      <workItem from="1684063995712" duration="33835000" />
     </task>
     <task id="LOCAL-00058" summary="Added view for status bar">
       <created>1682598342806</created>
@@ -483,7 +361,189 @@
       <option name="project" value="LOCAL" />
       <updated>1683315212970</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Fixing the bugs">
+      <created>1683375206174</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1683375206174</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Code refactoring">
+      <created>1683714761190</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1683714761190</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Added some JSON files to configure the entities">
+      <created>1683735134623</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1683735134623</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Separation of Enemy Controller and Enemy View">
+      <created>1683737703581</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1683737703581</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Separation of Game Over Controller and Game Over View">
+      <created>1683739673334</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1683739673334</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Separation of Game Over Controller and Game Over View">
+      <created>1683888641497</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1683888641497</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Separation of Level Completed Controller and Level Completed View">
+      <created>1683888682121</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1683888682121</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Separation of Pause Controller and Pause View">
+      <created>1683888717329</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1683888717329</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Separation of Main Menu Controller and Main Menu View">
+      <created>1683890480564</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1683890480564</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Final refactoring of the file">
+      <created>1684064379176</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1684064379176</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Final refactoring of the file">
+      <created>1684064914096</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1684064914096</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Final refactoring of the file">
+      <created>1684065878287</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1684065878288</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Final refactoring of the file">
+      <created>1684066668629</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1684066668629</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Final refactoring of the file">
+      <created>1684067594444</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1684067594444</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Final refactoring of the file">
+      <created>1684068055375</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1684068055375</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Final refactoring of the file">
+      <created>1684068578328</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1684068578328</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Added Game Win">
+      <created>1684095214525</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1684095214525</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Refactoring of the controllers">
+      <created>1684096101898</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1684096101898</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Refactoring of the views">
+      <created>1684108096623</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1684108096623</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Final refactoring of the input classes">
+      <created>1684108399305</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1684108399305</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Final refactoring of the main class">
+      <created>1684108445113</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1684108445113</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Final refactoring of the objects">
+      <created>1684108755106</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1684108755106</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Final refactoring of the states">
+      <created>1684108843018</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1684108843018</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Final refactoring of the states">
+      <created>1684108925561</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1684108925561</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Final refactoring of the characters">
+      <created>1684109918480</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1684109918480</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Final refactoring of the characters">
+      <created>1684110048782</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1684110048782</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,23 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Some refactoring of the Skeleton code" />
-    <MESSAGE value="Added attack animation view for Skeleton and his sight for a player" />
-    <MESSAGE value="Updated design of the buttons" />
-    <MESSAGE value="Added view for status bar" />
-    <MESSAGE value="Added health for a health bar and an opportunity to change it manually" />
-    <MESSAGE value="Added view of the attack box for the player weapon" />
-    <MESSAGE value="Skeleton now can turn around in view" />
-    <MESSAGE value="Minor bug fixes (hitbox and attack box)" />
-    <MESSAGE value="Just added combat system (beta)" />
-    <MESSAGE value="Fixes for the combat system" />
-    <MESSAGE value="Bug fixes with enemy animations" />
-    <MESSAGE value="Fixed replay button" />
-    <MESSAGE value="Fixed bug with unfocusable window in some cases" />
-    <MESSAGE value="Added view for level completed" />
-    <MESSAGE value="Added more levels and an option to beat them all" />
-    <MESSAGE value="Added player spawn" />
-    <MESSAGE value="Clean up the code" />
     <MESSAGE value="Added some &quot;blueprints&quot; for the objects in the game" />
     <MESSAGE value="Added view for objects" />
     <MESSAGE value="Added objects spawn on the levels and updated their appearance" />
@@ -526,7 +569,24 @@
     <MESSAGE value="Added traps to the game (currently only spikes)" />
     <MESSAGE value="Fixed bugs with dealing damage to enemies" />
     <MESSAGE value="Added death screen to the game (updated)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added death screen to the game (updated)" />
+    <MESSAGE value="Fixing the bugs" />
+    <MESSAGE value="Code refactoring" />
+    <MESSAGE value="Added some JSON files to configure the entities" />
+    <MESSAGE value="Separation of Enemy Controller and Enemy View" />
+    <MESSAGE value="Separation of Game Over Controller and Game Over View" />
+    <MESSAGE value="Separation of Level Completed Controller and Level Completed View" />
+    <MESSAGE value="Separation of Pause Controller and Pause View" />
+    <MESSAGE value="Separation of Main Menu Controller and Main Menu View" />
+    <MESSAGE value="Final refactoring of the file" />
+    <MESSAGE value="Added Game Win" />
+    <MESSAGE value="Refactoring of the controllers" />
+    <MESSAGE value="Refactoring of the views" />
+    <MESSAGE value="Final refactoring of the input classes" />
+    <MESSAGE value="Final refactoring of the main class" />
+    <MESSAGE value="Final refactoring of the objects" />
+    <MESSAGE value="Final refactoring of the states" />
+    <MESSAGE value="Final refactoring of the characters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final refactoring of the characters" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

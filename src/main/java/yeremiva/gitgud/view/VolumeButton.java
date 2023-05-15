@@ -10,29 +10,23 @@ import static yeremiva.gitgud.core.settings.Constants.View.VolumeButtons.*;
 public class VolumeButton extends PauseButton{
     private BufferedImage[] imgs;
     private BufferedImage slider;
+
     private int index = 0;
     private boolean mouseOver, mousePressed;
-    private int buttonX, minX, maxX;
-
+    private final int minX, maxX;
+    private int buttonX;
 
     public VolumeButton(int x, int y, int width, int height) {
         super(x + width / 2, y, VOLUME_WIDTH, height);
-        bounds.x -= VOLUME_WIDTH / 2;
-        buttonX = x + width / 2;
         this.x = x;
         this.width = width;
+
+        bounds.x -= VOLUME_WIDTH / 2;
+        buttonX = x + width / 2;
         minX = x + VOLUME_WIDTH / 2;
         maxX = width + x - VOLUME_WIDTH / 2;
-        loadImgs();
-    }
 
-    private void loadImgs() {
-        BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.VOLUME_BUTTONS);
-        imgs = new BufferedImage[3];
-        for (int i = 0; i < imgs.length; i++) {
-            imgs[i] = temp.getSubimage(i * VOLUME_DEFAULT_WIDTH, 0, VOLUME_DEFAULT_WIDTH, VOLUME_DEFAULT_HEIGHT);
-        }
-        slider = temp.getSubimage(3 * VOLUME_DEFAULT_WIDTH, 0, SLIDER_DEFAULT_WIDTH, VOLUME_DEFAULT_HEIGHT);
+        loadImgs();
     }
 
     public void update() {
@@ -50,6 +44,15 @@ public class VolumeButton extends PauseButton{
         g.drawImage(imgs[index], buttonX - VOLUME_WIDTH / 2, y, VOLUME_WIDTH, height, null);
     }
 
+    private void loadImgs() {
+        BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.VOLUME_BUTTONS);
+        imgs = new BufferedImage[3];
+        for (int i = 0; i < imgs.length; i++) {
+            imgs[i] = temp.getSubimage(i * VOLUME_DEFAULT_WIDTH, 0, VOLUME_DEFAULT_WIDTH, VOLUME_DEFAULT_HEIGHT);
+        }
+        slider = temp.getSubimage(3 * VOLUME_DEFAULT_WIDTH, 0, SLIDER_DEFAULT_WIDTH, VOLUME_DEFAULT_HEIGHT);
+    }
+
     public void changeX(int x) {
         if (x < minX) {
             buttonX = minX;
@@ -62,24 +65,24 @@ public class VolumeButton extends PauseButton{
         bounds.x = buttonX - VOLUME_WIDTH / 2;
     }
 
-    public void resetBools(){
-        mouseOver = false;
-        mousePressed = false;
+    public void setMouseOver(boolean mouseOver) {
+        this.mouseOver = mouseOver;
+    }
+
+    public void setMousePressed(boolean mousePressed) {
+        this.mousePressed = mousePressed;
     }
 
     public boolean isMouseOver() {
         return mouseOver;
     }
 
-    public void setMouseOver(boolean mouseOver) {
-        this.mouseOver = mouseOver;
-    }
-
     public boolean isMousePressed() {
         return mousePressed;
     }
 
-    public void setMousePressed(boolean mousePressed) {
-        this.mousePressed = mousePressed;
+    public void resetBools() {
+        mouseOver = false;
+        mousePressed = false;
     }
 }

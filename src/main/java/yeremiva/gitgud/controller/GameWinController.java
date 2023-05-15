@@ -16,6 +16,7 @@ public class GameWinController {
 
     public GameWinController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
+
         this.gameWinView = new GameWinView(this);
         this.menu = gameWinView.getMenu();
     }
