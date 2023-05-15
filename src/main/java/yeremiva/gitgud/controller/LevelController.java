@@ -59,7 +59,6 @@ public class LevelController {
         gameController.getGameProcessController().getObjectController().loadObjects(newLevel);
 
         System.out.println("Level index is : " + lvlIndex + ". And it comes to the func");
-
     }
 
     private void buildAllLevels() {
