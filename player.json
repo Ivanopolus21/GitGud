@@ -1,6 +1,4 @@
 {
-  "x": 0,
-  "y": 0,
   "maxHealth": 100,
   "currentHealth": 100,
   "walkSpeed": 1.0,
