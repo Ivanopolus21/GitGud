@@ -3,7 +3,6 @@ package yeremiva.gitgud.core.settings;
 import yeremiva.gitgud.controller.GameController;
 
 public class Constants {
-
     public static final float GRAVITY = 0.04f * GameController.SCALE;
     public static final int ANI_SPEED = 25;
 
@@ -32,7 +31,6 @@ public class Constants {
         public static final int SPIKE_WIDTH = (int) (SPIKE_WIDTH_DEFAULT * GameController.SCALE);
         public static final int SPIKE_HEIGHT = (int) (SPIKE_HEIGHT_DEFAULT * GameController.SCALE);
 
-
         public static int GetSpriteAmount(int object_type) {
             switch (object_type) {
                 case RED_POTION:
@@ -55,9 +53,7 @@ public class Constants {
         public static final int HIT = 3;
         public static final int DEAD = 4;
 
-//        public static final int SKELETON_WIDTH_DEFAULT = 72;
         public static final int SKELETON_WIDTH_DEFAULT = 64;
-//        public static final int SKELETON_HEIGHT_DEFAULT = 32;
         public static final int SKELETON_HEIGHT_DEFAULT = 64;
 
         public static final int SKELETON_WIDTH = (int) (SKELETON_WIDTH_DEFAULT *  GameController.SCALE);
@@ -140,8 +136,8 @@ public class Constants {
             public static final int VOLUME_HEIGHT =  (int) (VOLUME_DEFAULT_HEIGHT * GameController.SCALE);
             public static final int SLIDER_WIDTH = (int) (SLIDER_DEFAULT_WIDTH * GameController.SCALE);
         }
-
     }
+
     public static class Directions{
         public static final int LEFT = 0;
         public static final int UP = 1;
@@ -159,7 +155,6 @@ public class Constants {
         public static final int DEAD = 6;
 
         public static int GetSpriteAmount(int player_action){
-
             switch(player_action){
                 case IDLE:
                     return 2;
@@ -174,8 +169,6 @@ public class Constants {
                 default:
                     return 1;
             }
-
         }
-
     }
 }

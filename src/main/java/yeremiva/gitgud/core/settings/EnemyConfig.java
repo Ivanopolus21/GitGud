@@ -1,6 +1,7 @@
 package yeremiva.gitgud.core.settings;
 
 import org.json.JSONObject;
+
 import yeremiva.gitgud.controller.GameProcessController;
 import yeremiva.gitgud.model.characters.Player;
 import yeremiva.gitgud.model.characters.Skeleton;
@@ -9,12 +10,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class EnemyConfig {
-    // Logger
-    private static Logger log = Logger.getLogger(Player.class.getName());
+
+    private static final Logger log = Logger.getLogger(Player.class.getName());
+
     private static GameProcessController gameProcessController;
 
     public static JSONObject getEnemyConfig(boolean fromSave) {
@@ -36,8 +37,6 @@ public class EnemyConfig {
         JSONObject enemyConfig = new JSONObject();
         Skeleton skeleton = gameProcessController.getEnemyController().getSkeleton();
 
-//        playerConfig.put("x", player.getX());
-//        playerConfig.put("y", player.getY());
         enemyConfig.put("maxHealth", skeleton.getMaxHealth());
         enemyConfig.put("currentHealth", skeleton.getCurrentHealth());
         enemyConfig.put("walkSpeed", skeleton.getWalkSpeed());

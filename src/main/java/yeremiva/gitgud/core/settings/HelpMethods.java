@@ -2,18 +2,11 @@ package yeremiva.gitgud.core.settings;
 
 import yeremiva.gitgud.controller.GameController;
 
-import java.awt.*;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-
-import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.SKELETON;
-import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 
 public class HelpMethods {
 
     public static boolean CanMoveHere(float x, float y, float width, float height, int[][] lvlData) {
-
         if (!IsSolid(x, y, lvlData)) {
             if (!IsSolid(x + width, y + height, lvlData)){
                 if (!IsSolid(x + width, y, lvlData)){
@@ -62,7 +55,7 @@ public class HelpMethods {
         }
     }
 
-    public static float GetCharacterYPosUnderRoofOrAboveFloor(Rectangle2D.Float hitbox, float airSpeed){
+    public static float GetCharacterYPosUnderRoofOrAboveFloor(Rectangle2D.Float hitbox, float airSpeed) {
         int currentTile = (int) (hitbox.y / GameController.TILES_SIZE);
         if (airSpeed > 0) {
             //Falling - touching floor

@@ -11,8 +11,9 @@ import java.nio.file.Paths;
 import java.util.logging.Logger;
 
 public class PlayerConfig {
-    // Logger
-    private static Logger log = Logger.getLogger(Player.class.getName());
+
+    private static final Logger log = Logger.getLogger(Player.class.getName())
+            ;
     private static GameProcessController gameProcessController;
 
     public static JSONObject getPlayerConfig(boolean fromSave) {
@@ -34,8 +35,6 @@ public class PlayerConfig {
         JSONObject playerConfig = new JSONObject();
         Player player = gameProcessController.getPlayer();
 
-//        playerConfig.put("x", player.getX());
-//        playerConfig.put("y", player.getY());
         playerConfig.put("maxHealth", player.getMaxHealth());
         playerConfig.put("currentHealth", player.getCurrentHealth());
         playerConfig.put("walkSpeed", player.getWalkSpeed());
