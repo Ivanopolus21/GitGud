@@ -42,7 +42,7 @@ public class GameWinView {
 
     private void createButton() {
         int x = (int) (385 * GameController.SCALE);
-        int y = (int) (195 * GameController.SCALE);
+        int y = (int) (220 * GameController.SCALE);
 
         menu = new UrmButtonView(x, y, URM_SIZE, URM_SIZE, 2);
     }

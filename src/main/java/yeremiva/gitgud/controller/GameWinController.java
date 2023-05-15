@@ -1,15 +1,17 @@
 package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.core.states.Gamestate;
-import yeremiva.gitgud.view.GameOverView;
 import yeremiva.gitgud.view.GameWinView;
 import yeremiva.gitgud.view.UrmButtonView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 
 public class GameWinController {
+    private final static Logger log = Logger.getLogger(GameWinController.class.getName());
+
     private final GameProcessController gameProcessController;
     private final GameWinView gameWinView;
     private final UrmButtonView menu;
@@ -55,6 +57,8 @@ public class GameWinController {
                 gameProcessController.setWin(false);
                 gameProcessController.resetAll();
                 Gamestate.state = Gamestate.MENU;
+
+                log.info(Gamestate.MENU + " state was set");
             }
         }
         menu.resetBools();

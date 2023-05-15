@@ -8,14 +8,17 @@ import yeremiva.gitgud.view.ObjectView;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 
 public class ObjectController {
+    private final static Logger log = Logger.getLogger(ObjectController.class.getName());
+
     private GameProcessController gameProcessController;
     private ObjectView objectView;
 
-    private ArrayList<Potion> potions;
+    private ArrayList<Gem> gems;
     private ArrayList<GameContainer> containers;
     private ArrayList<Spike> spikes;
 
@@ -25,9 +28,9 @@ public class ObjectController {
     }
 
     public void update() {
-        for (Potion p: potions) {
-            if (p.isActive()) {
-                p.update();
+        for (Gem g: gems) {
+            if (g.isActive()) {
+                g.update();
             }
         }
 
@@ -43,35 +46,41 @@ public class ObjectController {
     }
 
     public void loadObjects(LevelView newLevel) {
-        potions = new ArrayList<>(newLevel.getPotions());
+        gems = new ArrayList<>(newLevel.getGems());
         containers = new ArrayList<>(newLevel.getContainers());
         spikes = newLevel.getSpikes();
 
-        objectView.init(potions, containers, spikes);
+        objectView.init(gems, containers, spikes);
     }
 
     public void checkSpikesTouched(Player player) {
         for (Spike s : spikes) {
             if (s.getHitbox().intersects(player.getHitbox())) {
                 player.kill();
+
+                log.info("Player touched the spikes");
             }
         }
     }
 
     public void checkObjectTouched(Rectangle2D.Float hitbox) {
-        for (Potion p: potions) {
-            if (p.isActive()) {
-                if (hitbox.intersects(p.getHitbox())) {
-                    p.setActive(false);
-                    applyEffectToPlayer(p);
+        for (Gem g: gems) {
+            if (g.isActive()) {
+                if (hitbox.intersects(g.getHitbox())) {
+                    g.setActive(false);
+                    applyEffectToPlayer(g);
+
+                    log.info("Player has touched the gem");
                 }
             }
         }
     }
 
-    public void applyEffectToPlayer(Potion p) {
-        if (p.getObjType() == RED_POTION) {
-            gameProcessController.getPlayer().changeHealth(RED_POTION_VALUE);
+    public void applyEffectToPlayer(Gem p) {
+        if (p.getObjType() == RED_GEM) {
+            gameProcessController.getPlayer().changeHealth(RED_GEM_VALUE);
+
+            log.info("Player was healed by " + RED_GEM_VALUE + " points");
         }
     }
 
@@ -80,11 +89,14 @@ public class ObjectController {
             if (gc.isActive() && !gc.isDoAnimation()) {
                 if (gc.getHitbox().intersects(attackbox)) {
                     gc.setAnimation(true);
+
+                    log.info("Player broke a container");
+
                     int type = 0;
-                    if (gc.getObjType() == BARREL) {
+                    if (gc.getObjType() == BLUE_GEMSTONE) {
                         type = 1;
                     }
-                    potions.add(new Potion((int) (gc.getHitbox().x + gc.getHitbox().width / 2),
+                    gems.add(new Gem((int) (gc.getHitbox().x + gc.getHitbox().width / 2),
                             (int)(gc.getHitbox().y - gc.getHitbox().height / 4),
                             type));
                     return;
@@ -96,8 +108,8 @@ public class ObjectController {
     public void resetAllObjects() {
         loadObjects(gameProcessController.getLevelController().getCurrentLevel());
 
-        for (Potion p: potions) {
-            p.reset();
+        for (Gem g: gems) {
+            g.reset();
         }
         for (GameContainer gc : containers) {
             gc.reset();

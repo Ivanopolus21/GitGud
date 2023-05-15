@@ -5,10 +5,13 @@ import yeremiva.gitgud.core.states.Gamestate;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.View.Buttons.*;
 
-public class GameMenuButtonView {
+public class MainMenuButtonView {
+    private final static Logger log = Logger.getLogger(MainMenuButtonView.class.getName());
+
     private final Gamestate state;
 
     private Rectangle bounds;
@@ -20,7 +23,7 @@ public class GameMenuButtonView {
     private boolean mouseOver, mousePressed;
 
     //Function to get menu buttons position
-    public GameMenuButtonView(int xPos, int yPos, int rowIndex, Gamestate state) {
+    public MainMenuButtonView(int xPos, int yPos, int rowIndex, Gamestate state) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.rowIndex = rowIndex;

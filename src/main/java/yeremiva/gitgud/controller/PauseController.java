@@ -5,8 +5,11 @@ import yeremiva.gitgud.view.*;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 
 public class PauseController {
+    private final static Logger log = Logger.getLogger(PauseController.class.getName());
+
     private GameProcessController gameProcessController;
     private PauseView pauseView;
 
@@ -81,11 +84,15 @@ public class PauseController {
                 gameProcessController.resetAll();
                 Gamestate.state = Gamestate.MENU;
                 gameProcessController.unpauseGame();
+
+                log.info(Gamestate.MENU + " state was setted");
             }
         } else if (isIn(e, replayB)) {
             if (replayB.isMousePressed()) {
                 gameProcessController.resetAll();
                 gameProcessController.unpauseGame();
+
+                log.info("Level replay");
             }
         } else if (isIn(e, unpauseB)) {
             if (unpauseB.isMousePressed()) {

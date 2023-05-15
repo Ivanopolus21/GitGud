@@ -6,8 +6,11 @@ import yeremiva.gitgud.view.UrmButtonView;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 
 public class LevelCompletedController {
+    private final static Logger log = Logger.getLogger(LevelCompletedController.class.getName());
+
     private final GameProcessController gameProcessController;
     private final LevelCompletedView levelCompletedView;
 
@@ -50,10 +53,16 @@ public class LevelCompletedController {
             if (menu.isMousePressed()) {
                 gameProcessController.resetAll();
                 Gamestate.state = Gamestate.MENU;
+
+                log.info(Gamestate.MENU + " state was set");
             }
         } else if (isIn(nextLvl, e)) {
             if (nextLvl.isMousePressed()) {
                 gameProcessController.loadNextLevel();
+
+                if (gameProcessController.getLevelController().getLvlIndex() >= 1) {
+                    log.info("Next level was set");
+                }
             }
         }
         menu.resetBools();

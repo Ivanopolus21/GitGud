@@ -1,15 +1,18 @@
 package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.core.states.*;
-import yeremiva.gitgud.view.GameMenuButtonView;
+import yeremiva.gitgud.view.MainMenuButtonView;
 import yeremiva.gitgud.view.MainMenuView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 
 public class MainMenuController extends State implements Statemethods {
-    private GameMenuButtonView[] buttons;
+    private final static Logger log = Logger.getLogger(MainMenuController.class.getName());
+
+    private MainMenuButtonView[] buttons;
     private MainMenuView mainMenuView;
 
     public MainMenuController(GameController gameController) {
@@ -20,7 +23,7 @@ public class MainMenuController extends State implements Statemethods {
 
     @Override
     public void update() {
-        for (GameMenuButtonView gmb : buttons) {
+        for (MainMenuButtonView gmb : buttons) {
             gmb.update();
         }
     }
@@ -32,7 +35,7 @@ public class MainMenuController extends State implements Statemethods {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        for (GameMenuButtonView gmb : buttons) {
+        for (MainMenuButtonView gmb : buttons) {
             if(isIn(e, gmb)){
                 gmb.setMousePressed(true);
                 break;
@@ -42,10 +45,12 @@ public class MainMenuController extends State implements Statemethods {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        for (GameMenuButtonView gmb : buttons) {
+        for (MainMenuButtonView gmb : buttons) {
             if (isIn(e, gmb)){
                 if (gmb.isMousePressed()){
                     gmb.applyGamestate();
+
+                    log.info(gmb.getState() + " state was setted");
                 }
                 break;
             }
@@ -55,12 +60,12 @@ public class MainMenuController extends State implements Statemethods {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        //reset after clickong on button
-        for (GameMenuButtonView gmb: buttons){
+        //reset after clicking on button
+        for (MainMenuButtonView gmb: buttons){
             gmb.setMouseOver(false);
         }
         //check if we are hovering the button
-        for (GameMenuButtonView gmb: buttons){
+        for (MainMenuButtonView gmb: buttons){
             if (isIn(e, gmb)){
                 gmb.setMouseOver(true);
                 break;
@@ -85,7 +90,7 @@ public class MainMenuController extends State implements Statemethods {
     }
 
     private void resetButtons() {
-        for (GameMenuButtonView gmb : buttons) {
+        for (MainMenuButtonView gmb : buttons) {
             gmb.resetBools();
         }
     }

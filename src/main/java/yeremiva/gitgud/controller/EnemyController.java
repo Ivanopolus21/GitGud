@@ -34,6 +34,8 @@ public class EnemyController {
         }
         if (!isAnyAlive) {
             gameProcessController.setLevelCompleted(true);
+
+            log.info("Every single enemy are dead!");
         }
     }
 

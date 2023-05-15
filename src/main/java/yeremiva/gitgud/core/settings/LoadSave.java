@@ -21,16 +21,16 @@ public class LoadSave {
     public static final String VOLUME_BUTTONS = "volume_buttons.png";
     public static final String SOUND_BUTTONS = "sound_button.png";
     public static final String PLAYING_BACKGROUND_IMAGE = "playing_bg_img.png";
-    public static final String BIG_CLOUDS = "big_clouds.png";
-    public static final String SMALL_CLOUDS = "small_clouds.png";
+    public static final String BIG_CLOUDS = "big_background_object.png";
+    public static final String SMALL_CLOUDS = "small_background_objects.png";
     public static final String SKELETON_SPRITE = "mini_skeleton.png";
     public static final String STATUS_BAR = "health_bar.png";
     public static final String COMPLETED_IMAGE = "completed_sprite.png";
-    public static final String POTION_ATLAS = "potions_sprites.png";
+    public static final String GEM_ATLAS = "gems_sprites.png";
     public static final String CONTAINER_ATLAS = "objects_sprites.png";
     public static final String TRAP_ATLAS = "trap_atlas.png";
     public static final String DEATH_SCREEN = "death_screen.png";
-    public static final String WIN_SCREEN = "death_screen.png";
+    public static final String WIN_SCREEN = "win_screen.png";
 
     public static BufferedImage GetSpriteAtlas(String atlas){
         BufferedImage img = null;

@@ -5,8 +5,11 @@ import yeremiva.gitgud.view.GamePanel;
 import yeremiva.gitgud.view.GameWindowView;
 
 import java.awt.*;
+import java.util.logging.Logger;
 
 public class GameController implements Runnable{
+    private final static Logger log = Logger.getLogger(GameController.class.getName());
+
     private GameProcessController gameProcessController;
     private MainMenuController mainMenuController;
 
@@ -34,6 +37,8 @@ public class GameController implements Runnable{
         gamePanel.requestFocus();
 
         startGameLoop();
+
+        log.info("Game loop was started");
     }
 
     private void initClasses() {

@@ -20,7 +20,7 @@ public class LevelView {
 
     private final BufferedImage img;
     private final ArrayList<Skeleton> skeletons = new ArrayList<>();
-    private final ArrayList<Potion> potions = new ArrayList<>();
+    private final ArrayList<Gem> gems = new ArrayList<>();
     private final ArrayList<Spike> spikes = new ArrayList<>();
     private final ArrayList<GameContainer> containers = new ArrayList<>();
     private Point playerSpawn;
@@ -52,6 +52,8 @@ public class LevelView {
                 loadEntities(green, x, y);
                 loadObjects(blue, x, y);
             }
+
+        log.info("Level was loaded");
     }
 
     private void loadLevelData(int redValue, int x, int y) {
@@ -64,12 +66,12 @@ public class LevelView {
 
     private void loadObjects(int blueValue, int x, int y) {
         switch (blueValue) {
-            case RED_POTION:
-            case BLUE_POTION:
-                potions.add(new Potion(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE, blueValue));
+            case RED_GEM:
+            case BLUE_GEM:
+                gems.add(new Gem(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE, blueValue));
                 break;
-            case BARREL:
-            case BOX:
+            case BLUE_GEMSTONE:
+            case RED_GAMESTONE:
                 containers.add(new GameContainer(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE, blueValue));
                 break;
             case SPIKE:
@@ -89,7 +91,6 @@ public class LevelView {
                         enemyConfig.getInt("damage")
                 ));
 
-                log.info("Enemies were loaded");
                 break;
             case 100:
                 playerSpawn = new Point(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE);
@@ -111,8 +112,8 @@ public class LevelView {
         return skeletons;
     }
 
-    public ArrayList<Potion> getPotions() {
-        return potions;
+    public ArrayList<Gem> getGems() {
+        return gems;
     }
 
     public ArrayList<GameContainer> getContainers() {

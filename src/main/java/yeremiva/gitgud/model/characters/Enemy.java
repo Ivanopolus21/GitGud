@@ -1,6 +1,7 @@
 package yeremiva.gitgud.model.characters;
 
 import yeremiva.gitgud.controller.GameController;
+import yeremiva.gitgud.core.settings.Constants;
 
 import java.awt.geom.Rectangle2D;
 import java.util.logging.Logger;
@@ -53,6 +54,7 @@ public abstract class Enemy extends Character{
                         break;
                     case DEAD:
                         alive = false;
+                        log.info("Enemy " + GetEnemyName(enemyType) + " was killed");
                 }
             }
         }
@@ -133,17 +135,21 @@ public abstract class Enemy extends Character{
         if (currentHealth <= 0) {
             newState(DEAD);
 
-            log.info("Enemy " + enemyType + " died!");
+            log.info("Enemy " + GetEnemyName(enemyType) + " died!");
         } else {
             newState(HIT);
         }
 
-        log.info("Enemy " + enemyType + " was hurt by " + amount + "!");
+        log.info("Enemy " + GetEnemyName(enemyType) + " was hurt by " + amount + "!");
     }
 
     protected void checkIfEnemyHitsPlayer(Rectangle2D.Float attackBox, Player player) {
         if (attackBox.intersects(player.hitbox)) {
             player.changeHealth(-enemyDamage);
+
+            if (player.getCurrentHealth() > 0) {
+                log.info(GetEnemyName(enemyType) + " damaged player by " + enemyDamage + "!");
+            }
         }
         attackChecked = true;
     }
@@ -172,6 +178,8 @@ public abstract class Enemy extends Character{
         newState(IDLE);
         alive = true;
         airSpeed = 0;
+
+        log.info("Enemy was reseted");
     }
 }
 

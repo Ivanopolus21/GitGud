@@ -4,56 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Final refactoring of the characters">
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Minor fixes and design changes">
       <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameMenuButtonController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/SoundButtonController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/UrmButtonController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/VolumeButtonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/ObjectView.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PlayerView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/big_background_object.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameWinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameWinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/InventoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelCompletedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelCompletedController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/EnemyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/EnemyConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/HelpMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/PlayerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/PlayerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/ArcherSkeleton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Wraith.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/items/AcidBoots.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/items/Boots.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/items/JumpBoots.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/Gem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButtonView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuButtonView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameProcessView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameProcessView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PauseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PauseButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/VolumeButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/VolumeButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/background_menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/background_menu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/background_menu_fixed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/button_atlas.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/button_atlas.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/button_atlas_fixed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/completed_sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/completed_sprite.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/health_power_bar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levels/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levels/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mini_skeleton_fixed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mini_skeleton_fixed_for_real_this_time (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/outside_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/outside_sprites.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/outside_sprites_fixed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pause_menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pause_menu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pause_menu_fixed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player_sprites.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/playing_bg_img.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/playing_bg_img.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/potions_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/potions_sprites.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/small_clouds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/small_clouds.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sound_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sound_button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sound_button_fixed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/ObjectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/ObjectView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/big_clouds.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/death_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/death_screen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/objects_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/objects_sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/potions_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gems_sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/small_clouds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/small_background_objects.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/trap_atlas.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/trap_atlas.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/urm_buttons.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/urm_buttons.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/urm_buttons_fixed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/volume_buttons.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/volume_buttons.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/volume_buttons_fixed.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,35 +185,10 @@
       <workItem from="1683831416465" duration="6000" />
       <workItem from="1683883966971" duration="11979000" />
       <workItem from="1683996695306" duration="7874000" />
-      <workItem from="1684063995712" duration="33835000" />
-    </task>
-    <task id="LOCAL-00058" summary="Added view for status bar">
-      <created>1682598342806</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1682598342807</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Added health for a health bar and an opportunity to change it manually">
-      <created>1682599011707</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1682599011707</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Added view of the attack box for the player weapon">
-      <created>1682635451557</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1682635451558</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Skeleton now can turn around in view">
-      <created>1682635721442</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1682635721442</updated>
+      <workItem from="1684063995712" duration="34157000" />
+      <workItem from="1684133763787" duration="5664000" />
+      <workItem from="1684175009796" duration="709000" />
+      <workItem from="1684188197917" duration="2367000" />
     </task>
     <task id="LOCAL-00062" summary="Minor bug fixes (hitbox and attack box)">
       <created>1682637015303</created>
@@ -543,7 +505,35 @@
       <option name="project" value="LOCAL" />
       <updated>1684110048782</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Final refactoring of the settings">
+      <created>1684110897387</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1684110897387</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Removing unnecessary staff">
+      <created>1684110940707</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1684110940708</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Minor fixes and design changes">
+      <created>1684111016765</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1684111016765</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Minor fixes and design changes">
+      <created>1684111046251</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1684111046251</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,9 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some &quot;blueprints&quot; for the objects in the game" />
-    <MESSAGE value="Added view for objects" />
-    <MESSAGE value="Added objects spawn on the levels and updated their appearance" />
     <MESSAGE value="Added objects logic" />
     <MESSAGE value="Bug fixes" />
     <MESSAGE value="Added traps to the game (currently only spikes)" />
@@ -586,7 +573,10 @@
     <MESSAGE value="Final refactoring of the objects" />
     <MESSAGE value="Final refactoring of the states" />
     <MESSAGE value="Final refactoring of the characters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final refactoring of the characters" />
+    <MESSAGE value="Final refactoring of the settings" />
+    <MESSAGE value="Removing unnecessary staff" />
+    <MESSAGE value="Minor fixes and design changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes and design changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

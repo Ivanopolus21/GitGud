@@ -9,14 +9,14 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
-import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.POTION_HEIGHT;
+import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.GEM_HEIGHT;
 
 public class ObjectView {
     private final ObjectController objectController;
 
-    private BufferedImage[][] potionImgs, containerImgs;
+    private BufferedImage[][] gemImgs, containerImgs;
     private BufferedImage spikeImg;
-    private ArrayList<Potion> potions;
+    private ArrayList<Gem> gems;
     private ArrayList<GameContainer> containers;
     private ArrayList<Spike> spikes;
 
@@ -26,14 +26,14 @@ public class ObjectView {
         loadImgs();
     }
 
-    public void init(ArrayList<Potion> potionsA, ArrayList<GameContainer> containersA, ArrayList<Spike> spikesA) {
-        potions = potionsA;
-        containers = containersA;
-        spikes = spikesA;
+    public void init(ArrayList<Gem> givenGems, ArrayList<GameContainer> givenContainers, ArrayList<Spike> givenSpikes) {
+        gems = givenGems;
+        containers = givenContainers;
+        spikes = givenSpikes;
     }
 
     public void draw(Graphics g, int xLvlOffset) {
-        drawPotions(g, xLvlOffset);
+        drawGems(g, xLvlOffset);
         drawContainers(g, xLvlOffset);
         drawTraps(g, xLvlOffset);
     }
@@ -50,7 +50,7 @@ public class ObjectView {
         for (GameContainer gc : containers) {
             if (gc.isActive()) {
                 int type = 0;
-                if(gc.getObjType() == BARREL) {
+                if(gc.getObjType() == BLUE_GEMSTONE) {
                     type = 1;
                 }
                 g.drawImage(containerImgs[type][gc.getAniIndex()],
@@ -63,30 +63,30 @@ public class ObjectView {
         }
     }
 
-    private void drawPotions(Graphics g, int xLvlOffset) {
-        for (Potion p: potions) {
-            if (p.isActive()) {
+    private void drawGems(Graphics g, int xLvlOffset) {
+        for (Gem gem: gems) {
+            if (gem.isActive()) {
                 int type = 0;
-                if (p.getObjType() == RED_POTION) {
+                if (gem.getObjType() == RED_GEM) {
                     type = 1;
                 }
-                g.drawImage(potionImgs[type][p.getAniIndex()],
-                        (int) (p.getHitbox().x - p.getxDrawOffset() - xLvlOffset),
-                        (int) (p.getHitbox().y - p.getyDrawOffset()),
-                        POTION_WIDTH,
-                        POTION_HEIGHT,
+                g.drawImage(gemImgs[type][gem.getAniIndex()],
+                        (int) (gem.getHitbox().x - gem.getxDrawOffset() - xLvlOffset),
+                        (int) (gem.getHitbox().y - gem.getyDrawOffset()),
+                        GEM_WIDTH,
+                        GEM_HEIGHT,
                         null);
             }
         }
     }
 
     private void loadImgs() {
-        BufferedImage potionSprite = LoadSave.GetSpriteAtlas(LoadSave.POTION_ATLAS);
-        potionImgs = new BufferedImage[2][7];
+        BufferedImage potionSprite = LoadSave.GetSpriteAtlas(LoadSave.GEM_ATLAS);
+        gemImgs = new BufferedImage[2][7];
 
-        for (int j = 0; j < potionImgs.length; j++) {
-            for (int i = 0; i < potionImgs[j].length; i++) {
-                potionImgs[j][i] = potionSprite.getSubimage(12 * i, 16 * j, 12, 16);
+        for (int j = 0; j < gemImgs.length; j++) {
+            for (int i = 0; i < gemImgs[j].length; i++) {
+                gemImgs[j][i] = potionSprite.getSubimage(12 * i, 16 * j, 12, 16);
             }
         }
 

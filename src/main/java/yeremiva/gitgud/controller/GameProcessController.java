@@ -11,8 +11,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
+import java.util.logging.Logger;
 
 public class GameProcessController extends State implements Statemethods {
+    private final static Logger log = Logger.getLogger(GameProcessController.class.getName());
+
     private Player player;
     private LevelController levelController;
     private EnemyController enemyController;
@@ -96,7 +99,6 @@ public class GameProcessController extends State implements Statemethods {
     public void loadStartLevel() {
         enemyController.loadEnemies(levelController.getCurrentLevel());
         objectController.loadObjects(levelController.getCurrentLevel());
-        System.out.println("Start level");
     }
 
     public void loadNextLevel() {
@@ -107,6 +109,7 @@ public class GameProcessController extends State implements Statemethods {
 
     public void unpauseGame() {
         paused = false;
+        log.info("Unpaused");
     }
 
     private void checkCloseToBorder() {
@@ -134,7 +137,7 @@ public class GameProcessController extends State implements Statemethods {
         objectController.checkObjectHit(attackBox);
     }
 
-    public void checkPotionTouched(Rectangle2D.Float hitbox) {
+    public void checkGemTouched(Rectangle2D.Float hitbox) {
         objectController.checkObjectTouched(hitbox);
     }
 
@@ -230,6 +233,13 @@ public class GameProcessController extends State implements Statemethods {
                         break;
                     case KeyEvent.VK_ESCAPE:
                         paused = !paused;
+
+                        if (paused) {
+                            log.info("Paused");
+                        } else {
+                            log.info("Unpaused");
+                        }
+
                         break;
                 }
         }
@@ -329,5 +339,9 @@ public class GameProcessController extends State implements Statemethods {
         player.resetAll();
         enemyController.resetAllEnemies();
         objectController.resetAllObjects();
+
+        if (levelController.getLvlIndex() >= 1) {
+            log.info("Level was reseted");
+        }
     }
 }

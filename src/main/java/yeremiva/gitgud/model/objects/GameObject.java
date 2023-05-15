@@ -29,7 +29,7 @@ public class GameObject {
             aniIndex++;
             if (aniIndex >= GetSpriteAmount(objType)) {
                 aniIndex = 0;
-                if (objType == BARREL || objType == BOX) {
+                if (objType == BLUE_GEMSTONE || objType == RED_GAMESTONE) {
                     doAnimation = false;
                     active = false;
                 }
@@ -88,7 +88,7 @@ public class GameObject {
         aniTick = 0;
         active = true;
 
-        if (objType == BARREL || objType == BOX) {
+        if (objType == BLUE_GEMSTONE || objType == RED_GAMESTONE) {
             doAnimation = false;
         } else {
             doAnimation = true;

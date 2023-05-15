@@ -13,27 +13,27 @@ import static yeremiva.gitgud.core.settings.Constants.Enviroment.*;
 public class GameProcessView {
     private final GameProcessController gameProcessController;
 
-    private final BufferedImage backgroundImg, bigCloud, smallCloud;
+    private final BufferedImage backgroundImg, bigBgObject, smallBgObject;
     private final Random rnd = new Random();
 
-    private final int[] smallCloudsPos;
+    private final int[] smallBgObjectsPos;
 
     public GameProcessView(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
 
         backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.PLAYING_BACKGROUND_IMAGE);
-        bigCloud = LoadSave.GetSpriteAtlas(LoadSave.BIG_CLOUDS);
-        smallCloud = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
-        smallCloudsPos = new int[8];
-        for (int i = 0; i < smallCloudsPos.length; i++) {
-            smallCloudsPos[i] = (int) (90 * GameController.SCALE) + rnd.nextInt((int) (100 * GameController.SCALE));
+        bigBgObject = LoadSave.GetSpriteAtlas(LoadSave.BIG_CLOUDS);
+        smallBgObject = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
+        smallBgObjectsPos = new int[8];
+        for (int i = 0; i < smallBgObjectsPos.length; i++) {
+            smallBgObjectsPos[i] = (int) (90 * GameController.SCALE) + rnd.nextInt((int) (100 * GameController.SCALE));
         }
     }
 
     public void draw(Graphics g, int xLvlOffset) {
         g.drawImage(backgroundImg, 0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT, null);
 
-        drawClouds(g, xLvlOffset);
+        drawBgObjects(g, xLvlOffset);
 
         gameProcessController.getLevelController().draw(g, xLvlOffset);
         gameProcessController.getPlayer().render(g, xLvlOffset);
@@ -51,11 +51,11 @@ public class GameProcessView {
         }
     }
 
-    private void drawClouds(Graphics g, int xLvlOffset) {
+    private void drawBgObjects(Graphics g, int xLvlOffset) {
         for (int i = 0; i < 3; i++)
-            g.drawImage(bigCloud, i * BIG_CLOUD_WIDTH - (int) (xLvlOffset * 0.3), (int) (204 * GameController.SCALE), BIG_CLOUD_WIDTH, BIG_CLOUD_HEIGHT, null);
+            g.drawImage(bigBgObject, i * BIG_BG_OBJECT_WIDTH - (int) (xLvlOffset * 0.3), (int) (204 * GameController.SCALE), BIG_BG_OBJECT_WIDTH, BIG_BG_OBJECT_HEIGHT, null);
 
-        for (int i = 0; i < smallCloudsPos.length; i++)
-            g.drawImage(smallCloud, SMALL_CLOUD_WIDTH * 4 * i - (int) (xLvlOffset * 0.7), smallCloudsPos[i], SMALL_CLOUD_WIDTH, SMALl_CLOUD_HEIGHT, null);
+        for (int i = 0; i < smallBgObjectsPos.length; i++)
+            g.drawImage(smallBgObject, SMALL_BG_OBJECT_WIDTH * 4 * i - (int) (xLvlOffset * 0.7), smallBgObjectsPos[i], SMALL_BG_OBJECT_WIDTH, SMALl_BG_OBJECT_HEIGHT, null);
     }
 }

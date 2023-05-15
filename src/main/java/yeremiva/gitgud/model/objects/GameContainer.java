@@ -19,7 +19,7 @@ public class GameContainer extends GameObject{
     }
 
     private void createHitbox() {
-        if (objType == BOX) {
+        if (objType == RED_GAMESTONE) {
             initHitbox(25, 18);
 
             xDrawOffset = (int) (7 * GameController.SCALE);

@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 public class MainMenuView {
     private final MainMenuController mainMenuController;
-    private final GameMenuButtonView[] buttons = new GameMenuButtonView[3];
+    private final MainMenuButtonView[] buttons = new MainMenuButtonView[3];
 
     private BufferedImage backgroundImgOfMenuOverlay;
     private final BufferedImage backgroundImg;
@@ -31,7 +31,7 @@ public class MainMenuView {
 
         g.drawImage(backgroundImgOfMenuOverlay, menuX, menuY, menuWidth, menuHeight, null);
 
-        for (GameMenuButtonView gmb : buttons) {
+        for (MainMenuButtonView gmb : buttons) {
             gmb.draw(g);
         }
 
@@ -47,12 +47,14 @@ public class MainMenuView {
 
     //Function to load all game menu buttons
     private void loadButtons() {
-        buttons[0] = new GameMenuButtonView(GameController.GAME_WIDTH / 2, (int) (150 * GameController.SCALE), 0, Gamestate.PLAYING);
-        buttons[1] = new GameMenuButtonView(GameController.GAME_WIDTH / 2, (int) (220 * GameController.SCALE), 1, Gamestate.OPTIONS);
-        buttons[2] = new GameMenuButtonView(GameController.GAME_WIDTH / 2, (int) (290 * GameController.SCALE), 2, Gamestate.QUIT);
+        buttons[0] = new MainMenuButtonView(GameController.GAME_WIDTH / 2, (int) (150 * GameController.SCALE), 0, Gamestate.PLAYING);
+        buttons[1] = new MainMenuButtonView(GameController.GAME_WIDTH / 2, (int) (220 * GameController.SCALE), 1, Gamestate.OPTIONS);
+        buttons[2] = new MainMenuButtonView(GameController.GAME_WIDTH / 2, (int) (290 * GameController.SCALE), 2, Gamestate.QUIT);
     }
 
-    public GameMenuButtonView[] getButtons() {
+    public MainMenuButtonView[] getButtons() {
         return buttons;
     }
+
+
 }

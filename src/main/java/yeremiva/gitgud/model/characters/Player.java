@@ -7,6 +7,7 @@ import yeremiva.gitgud.core.settings.LoadSave;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.ANI_SPEED;
 import static yeremiva.gitgud.core.settings.Constants.GRAVITY;
@@ -16,6 +17,8 @@ import static yeremiva.gitgud.core.settings.HelpMethods.*;
 public class Player extends Character {
     //30 height, 18 width 00 -- 6, 3
     //43 height, 25 width 00 -- 10, 5
+
+    private final static Logger log = Logger.getLogger(Player.class.getName());
 
     private final GameProcessController gameProcessController;
 
@@ -88,7 +91,7 @@ public class Player extends Character {
         updatePosition();
 
         if (moving) {
-            checkPotionTouched();
+            checkGemTouched();
             checkSpikesTouched();
         }
 
@@ -231,8 +234,8 @@ public class Player extends Character {
         gameProcessController.checkSpikesTouched(this);
     }
 
-    private void checkPotionTouched() {
-        gameProcessController.checkPotionTouched(hitbox);
+    private void checkGemTouched() {
+        gameProcessController.checkGemTouched(hitbox);
     }
 
     private void checkAttack() {
@@ -303,15 +306,19 @@ public class Player extends Character {
         currentHealth += value;
 
         if (currentHealth <= 0) {
-            currentHealth = 0;
-            //gameOver();
+            kill();
         } else if (currentHealth >= maxHealth) {
             currentHealth = maxHealth;
+        }
+        if (currentHealth > 0) {
+            log.info("Health of the player was changed by " + value + " points!");
         }
     }
 
     public void kill() {
         currentHealth = 0;
+
+        log.info("Player has died!");
     }
 
     public void setAttacking(boolean attacking) {
@@ -363,6 +370,8 @@ public class Player extends Character {
         if (!IsCharacterOnFloor(hitbox, lvlData)) {
             inAir = true;
         }
+
+        log.info("Player was reseted");
     }
 
     private void resetAttackBox() {

@@ -7,19 +7,19 @@ public class Constants {
     public static final int ANI_SPEED = 25;
 
     public static class ObjectConstants {
-        public static final int RED_POTION = 0;
-        public static final int BLUE_POTION = 1;
-        public static final int BARREL = 2;
-        public static final int BOX = 3;
+        public static final int RED_GEM = 0;
+        public static final int BLUE_GEM = 1;
+        public static final int BLUE_GEMSTONE = 2;
+        public static final int RED_GAMESTONE = 3;
         public static final int SPIKE = 4;
 
-        public static final int RED_POTION_VALUE = 15;
-        public static final int BLUE_POTION_VALUE = 10;
+        public static final int RED_GEM_VALUE = 15;
+        public static final int BLUE_GEM_VALUE = 10;
 
-        public static final int POTION_WIDTH_DEFAULT = 12;
-        public static final int POTION_HEIGHT_DEFAULT = 16;
-        public static final int POTION_WIDTH = (int) (POTION_WIDTH_DEFAULT * GameController.SCALE);
-        public static final int POTION_HEIGHT = (int) (POTION_HEIGHT_DEFAULT * GameController.SCALE);
+        public static final int GEM_WIDTH_DEFAULT = 12;
+        public static final int GEM_HEIGHT_DEFAULT = 16;
+        public static final int GEM_WIDTH = (int) (GEM_WIDTH_DEFAULT * GameController.SCALE);
+        public static final int GEM_HEIGHT = (int) (GEM_HEIGHT_DEFAULT * GameController.SCALE);
 
         public static final int CONTAINER_WIDTH_DEFAULT = 40;
         public static final int CONTAINER_HEIGHT_DEFAULT = 30;
@@ -33,14 +33,25 @@ public class Constants {
 
         public static int GetSpriteAmount(int object_type) {
             switch (object_type) {
-                case RED_POTION:
-                case BLUE_POTION:
+                case RED_GEM:
+                case BLUE_GEM:
                     return 7;
-                case BARREL:
-                case BOX:
+                case BLUE_GEMSTONE:
+                case RED_GAMESTONE:
                     return 8;
             }
             return 1;
+        }
+
+        public static String GetGemName(int gem_type) {
+            switch (gem_type) {
+                case RED_GEM:
+                    return "RED_GEM";
+                case BLUE_GEM:
+                    return "BLUE_GEM";
+                default:
+                    return "null";
+            }
         }
     }
 
@@ -79,6 +90,15 @@ public class Constants {
             return 0;
         }
 
+        public static String GetEnemyName(int enemy_type) {
+            switch (enemy_type) {
+                case SKELETON:
+                    return "SKELETON";
+                default:
+                    return "null";
+            }
+        }
+
         public static int GetMaxHealth(int enemy_type) {
             switch (enemy_type) {
                 case SKELETON:
@@ -99,15 +119,15 @@ public class Constants {
     }
 
     public static class Enviroment{
-        public static final int BIG_CLOUD_WIDTH_DEFAULT = 448;
-        public static final int BIG_CLOUD_HEIGHT_DEFAULT = 101;
-        public static final int SMALL_CLOUD_WIDTH_DEFAULT = 74;
-        public static final int SMALL_CLOUD_HEIGHT_DEFAULT = 24;
+        public static final int BIG_BG_OBJECT_WIDTH_DEFAULT = 448;
+        public static final int BIG_BG_OBJECT_HEIGHT_DEFAULT = 101;
+        public static final int SMALL_BG_OBJECT_WIDTH_DEFAULT = 74;
+        public static final int SMALL_BG_OBJECT_HEIGHT_DEFAULT = 24;
 
-        public static final int BIG_CLOUD_WIDTH = (int) (BIG_CLOUD_WIDTH_DEFAULT * GameController.SCALE);
-        public static final int BIG_CLOUD_HEIGHT = (int) (BIG_CLOUD_HEIGHT_DEFAULT * GameController.SCALE);
-        public static final int SMALL_CLOUD_WIDTH = (int) (SMALL_CLOUD_WIDTH_DEFAULT * GameController.SCALE);
-        public static final int SMALl_CLOUD_HEIGHT = (int) (SMALL_CLOUD_HEIGHT_DEFAULT * GameController.SCALE);
+        public static final int BIG_BG_OBJECT_WIDTH = (int) (BIG_BG_OBJECT_WIDTH_DEFAULT * GameController.SCALE);
+        public static final int BIG_BG_OBJECT_HEIGHT = (int) (BIG_BG_OBJECT_HEIGHT_DEFAULT * GameController.SCALE);
+        public static final int SMALL_BG_OBJECT_WIDTH = (int) (SMALL_BG_OBJECT_WIDTH_DEFAULT * GameController.SCALE);
+        public static final int SMALl_BG_OBJECT_HEIGHT = (int) (SMALL_BG_OBJECT_HEIGHT_DEFAULT * GameController.SCALE);
     }
 
     public static class View{

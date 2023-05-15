@@ -24,8 +24,8 @@ public class GameOverView {
     }
 
     private void createButtons() {
-        int menuX = (int) (335 * GameController.SCALE);
-        int playX = (int) (440 * GameController.SCALE);
+        int menuX = (int) (330 * GameController.SCALE);
+        int playX = (int) (435 * GameController.SCALE);
         int y = (int) (195 * GameController.SCALE);
         play = new UrmButtonView(playX, y, URM_SIZE, URM_SIZE, 0);
         menu = new UrmButtonView(menuX, y, URM_SIZE, URM_SIZE, 2);

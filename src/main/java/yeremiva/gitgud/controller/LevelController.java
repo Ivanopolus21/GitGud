@@ -1,16 +1,18 @@
 package yeremiva.gitgud.controller;
 
 import yeremiva.gitgud.core.settings.LoadSave;
-import yeremiva.gitgud.core.states.Gamestate;
 import yeremiva.gitgud.view.LevelView;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static yeremiva.gitgud.controller.GameController.*;
 
 public class LevelController {
+    private final static Logger log = Logger.getLogger(LevelController.class.getName());
+
     private final GameController gameController;
 
     private BufferedImage[] levelSprite;
@@ -50,6 +52,8 @@ public class LevelController {
         if (lvlIndex >= levels.size()) {
             lvlIndex = 0;
             gameController.getGameProcessController().setWin(true);
+
+            log.info("Game was completed! Congrats!");
         }
 
         LevelView newLevel = levels.get(lvlIndex);
@@ -58,7 +62,9 @@ public class LevelController {
         gameController.getGameProcessController().getEnemyController().loadEnemies(newLevel);
         gameController.getGameProcessController().getObjectController().loadObjects(newLevel);
 
-        System.out.println("Level index is : " + lvlIndex + ". And it comes to the func");
+        if (lvlIndex >= 1) {
+            log.info( "Level " + (lvlIndex + 1) + " was created");
+        }
     }
 
     private void buildAllLevels() {

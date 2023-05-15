@@ -1,7 +1,7 @@
 package yeremiva.gitgud.core.states;
 
 import yeremiva.gitgud.controller.GameController;
-import yeremiva.gitgud.view.GameMenuButtonView;
+import yeremiva.gitgud.view.MainMenuButtonView;
 
 import java.awt.event.MouseEvent;
 
@@ -13,7 +13,7 @@ public class State {
     }
 
     //Function that says if player pressing inside the button
-    public boolean isIn(MouseEvent e, GameMenuButtonView gmb) {
+    public boolean isIn(MouseEvent e, MainMenuButtonView gmb) {
         return gmb.getBounds().contains(e.getX(), e.getY());
     }
 

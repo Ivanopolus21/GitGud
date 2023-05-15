@@ -2,12 +2,12 @@ package yeremiva.gitgud.model.objects;
 
 import yeremiva.gitgud.controller.GameController;
 
-public class Potion extends GameObject{
+public class Gem extends GameObject{
     private float hoverOffset;
     private final int maxHoverOffset;
     private int hoverDir = 1;
 
-    public Potion(int x, int y, int objType) {
+    public Gem(int x, int y, int objType) {
         super(x, y, objType);
 
         initHitbox(7, 14);
