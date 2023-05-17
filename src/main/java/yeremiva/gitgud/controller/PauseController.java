@@ -10,25 +10,32 @@ import java.util.logging.Logger;
 public class PauseController {
     private final static Logger log = Logger.getLogger(PauseController.class.getName());
 
-    private GameProcessController gameProcessController;
-    private PauseView pauseView;
+    private final GameProcessController gameProcessController;
+    private final PauseView pauseView;
 
-    private SoundButtonView musicButton, sfxButton;
-    private UrmButtonView menuB, replayB, unpauseB;
-    private VolumeButton volumeButton;
+    private final SoundButtonView musicButton, sfxButton;
+    private final UrmButtonView menuB, replayB, unpauseB;
+    private final VolumeButton volumeButton;
 
     public PauseController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
 
-        this.pauseView = new PauseView(this);
-        this.musicButton = pauseView.getMusicButton();
-        this.sfxButton = pauseView.getSfxButton();
-        this.menuB = pauseView.getMenuB();
-        this.replayB = pauseView.getReplayB();
-        this.unpauseB = pauseView.getUnpauseB();
-        this.volumeButton = pauseView.getVolumeButton();
+        pauseView = new PauseView();
+
+        musicButton = pauseView.getMusicButton();
+        sfxButton = pauseView.getSfxButton();
+        menuB = pauseView.getMenuB();
+        replayB = pauseView.getReplayB();
+        unpauseB = pauseView.getUnpauseB();
+        volumeButton = pauseView.getVolumeButton();
     }
 
+    /**
+     * Update.
+     * <p>
+     *     Update of the pause menu buttons.
+     * </p>
+     */
     public void update() {
         musicButton.update();
         sfxButton.update();
@@ -40,20 +47,53 @@ public class PauseController {
         volumeButton.update();
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draw method that calls Pause View draw.
+     * </p>
+     *
+     * @param g draw system
+     */
     public void draw(Graphics g) {
         pauseView.draw(g);
     }
 
+    /**
+     * Is in a button.
+     * <p>
+     * Check if players' cursor is "in" a button bounds.
+     *
+     * @param b the button
+     * @param e the e
+     * @return the boolean
+     */
     public boolean isIn(MouseEvent e, PauseButton b) {
         return (b.getBounds().contains(e.getX(), e.getY()));
     }
 
+    /**
+     * Mouse Dragged.
+     * <p>
+     *     Checks if mouse has been dragged to change the state of the volume button.
+     * </p>
+     *
+     * @param e the e
+     */
     public void mouseDragged(MouseEvent e) {
         if (volumeButton.isMousePressed()) {
             volumeButton.changeX(e.getX());
         }
     }
 
+    /**
+     * Mouse Pressed.
+     * <p>
+     *     Checks if mouse has been pressed.
+     * </p>
+     *
+     * @param e the e
+     */
     public void mousePressed(MouseEvent e) {
         if (isIn(e, musicButton)) {
             musicButton.setMousePressed(true);
@@ -70,6 +110,14 @@ public class PauseController {
         }
     }
 
+    /**
+     * Mouse Released.
+     * <p>
+     *     Checks if mouse has been released to apply states for the buttons or to the game.
+     * </p>
+     *
+     * @param e the e
+     */
     public void mouseReleased(MouseEvent e) {
         if (isIn(e, musicButton)) {
             if (musicButton.isMousePressed()) {
@@ -108,6 +156,14 @@ public class PauseController {
         volumeButton.resetBools();
     }
 
+    /**
+     * Mouse Moved.
+     * <p>
+     *     Checks if mouse has been moved.
+     * </p>
+     *
+     * @param e the e
+     */
     public void mouseMoved(MouseEvent e) {
         musicButton.setMouseOver(false);
         sfxButton.setMouseOver(false);

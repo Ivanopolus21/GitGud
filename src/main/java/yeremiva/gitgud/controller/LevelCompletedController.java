@@ -19,24 +19,55 @@ public class LevelCompletedController {
     public LevelCompletedController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
 
-        this.levelCompletedView = new LevelCompletedView(this);
-        this.menu = levelCompletedView.getMenu();
-        this.nextLvl = levelCompletedView.getNextLvl();
+        levelCompletedView = new LevelCompletedView();
+        menu = levelCompletedView.getMenu();
+        nextLvl = levelCompletedView.getNextLvl();
     }
 
+    /**
+     * Update.
+     * <p>
+     *     Update of the menu and next level buttons.
+     * </p>
+     */
     public void update() {
         nextLvl.update();
         menu.update();
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draw of the level completed screen.
+     * </p>
+     *
+     * @param g
+     */
     public void draw(Graphics g) {
         levelCompletedView.draw(g);
     }
 
+    /**
+     * Is in a button.
+     * <p>
+     *     Check if players' cursor is "in" a button bounds.
+     * </p>
+     *
+     * @param b the button
+     * @param e the e
+     * @return the boolean
+     */
     private boolean isIn(UrmButtonView b, MouseEvent e) {
         return b.getBounds().contains(e.getX(), e.getY());
     }
 
+    /**
+     * Mouse Moved.
+     * <p>
+     * Method that checks for hovering on buttons.
+     *
+     * @param e the e
+     */
     public void mouseMoved(MouseEvent e) {
         nextLvl.setMouseOver(false);
         menu.setMouseOver(false);
@@ -48,6 +79,13 @@ public class LevelCompletedController {
         }
     }
 
+    /**
+     * Mouse Released.
+     * <p>
+     * Method that call the other methods depending on which button mouse released the press.
+     *
+     * @param e the e
+     */
     public void mouseReleased(MouseEvent e) {
         if (isIn(menu, e)) {
             if (menu.isMousePressed()) {
@@ -69,6 +107,13 @@ public class LevelCompletedController {
         nextLvl.resetBools();
     }
 
+    /**
+     * Mouse Pressed.
+     * <p>
+     * Method that checks for pressing the buttons.
+     *
+     * @param e the e
+     */
     public void mousePressed(MouseEvent e) {
         if (isIn(menu, e)) {
             menu.setMousePressed(true);

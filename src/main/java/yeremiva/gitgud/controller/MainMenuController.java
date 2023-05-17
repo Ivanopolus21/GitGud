@@ -12,15 +12,22 @@ import java.util.logging.Logger;
 public class MainMenuController extends State implements Statemethods {
     private final static Logger log = Logger.getLogger(MainMenuController.class.getName());
 
-    private MainMenuButtonView[] buttons;
-    private MainMenuView mainMenuView;
+    private final MainMenuButtonView[] buttons;
+    private final MainMenuView mainMenuView;
 
     public MainMenuController(GameController gameController) {
         super(gameController);
-        this.mainMenuView = new MainMenuView(this);
-        this.buttons = mainMenuView.getButtons();
+
+        mainMenuView = new MainMenuView();
+        buttons = mainMenuView.getButtons();
     }
 
+    /**
+     * Update.
+     * <p>
+     *     Method that updates main menu buttons.
+     * </p>
+     */
     @Override
     public void update() {
         for (MainMenuButtonView gmb : buttons) {
@@ -28,11 +35,24 @@ public class MainMenuController extends State implements Statemethods {
         }
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draw method that calls Main Menu View draw method.
+     * </p>
+     */
     @Override
     public void draw(Graphics g) {
         mainMenuView.draw(g);
     }
 
+    /**
+     * Mouse Pressed.
+     * <p>
+     * Method that checks for pressing the buttons.
+     *
+     * @param e the e
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         for (MainMenuButtonView gmb : buttons) {
@@ -43,6 +63,13 @@ public class MainMenuController extends State implements Statemethods {
         }
     }
 
+    /**
+     * Mouse Released.
+     * <p>
+     * Method that call the other methods depending on which button mouse released the press.
+     *
+     * @param e the e
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         for (MainMenuButtonView gmb : buttons) {
@@ -58,6 +85,13 @@ public class MainMenuController extends State implements Statemethods {
         resetButtons();
     }
 
+    /**
+     * Mouse Moved.
+     * <p>
+     * Method that checks for hovering on buttons.
+     *
+     * @param e the e
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         //reset after clicking on button
@@ -73,6 +107,13 @@ public class MainMenuController extends State implements Statemethods {
         }
     }
 
+    /**
+     * Key Pressed.
+     * <p>
+     * Sets the PLAYING state when a player clicks on ENTER.
+     *
+     * @param e the e
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -89,6 +130,12 @@ public class MainMenuController extends State implements Statemethods {
     public void mouseClicked(MouseEvent e) {
     }
 
+    /**
+     * Reset.
+     * <p>
+     *     Reset of all the main menu buttons.
+     * </p>
+     */
     private void resetButtons() {
         for (MainMenuButtonView gmb : buttons) {
             gmb.resetBools();

@@ -19,22 +19,53 @@ public class GameWinController {
     public GameWinController(GameProcessController gameProcessController) {
         this.gameProcessController = gameProcessController;
 
-        this.gameWinView = new GameWinView(this);
-        this.menu = gameWinView.getMenu();
+        gameWinView = new GameWinView();
+        menu = gameWinView.getMenu();
     }
 
+    /**
+     * Update.
+     * <p>
+     *     Update of the menu button.
+     * </p>
+     */
     public void update() {
         menu.update();
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draw of the game win screen.
+     * </p>
+     *
+     * @param g draw system
+     */
     public void draw(Graphics g) {
         gameWinView.draw(g);
     }
 
+    /**
+     * Is in a button.
+     * <p>
+     *     Check if players' cursor is "in" a button bounds.
+     * </p>
+     *
+     * @param b the button
+     * @param e the e
+     * @return the boolean
+     */
     private boolean isIn(UrmButtonView b, MouseEvent e) {
         return b.getBounds().contains(e.getX(), e.getY());
     }
 
+    /**
+     * Key Press.
+     * <p>
+     * Method that pass the player to the main menu in case he clicked "Escape" button after game win.
+     *
+     * @param e the e
+     */
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             gameProcessController.setWin(false);
@@ -43,6 +74,13 @@ public class GameWinController {
         }
     }
 
+    /**
+     * Mouse Moved.
+     * <p>
+     * Method that checks for hovering on button.
+     *
+     * @param e the e
+     */
     public void mouseMoved(MouseEvent e) {
         menu.setMouseOver(false);
 
@@ -51,6 +89,14 @@ public class GameWinController {
         }
     }
 
+    /**
+     * Mouse Released.
+     * <p>
+     *     Method that call the other methods depending on which button mouse released the press.
+     * </p>
+     *
+     * @param e the e
+     */
     public void mouseReleased(MouseEvent e) {
         if (isIn(menu, e)) {
             if (menu.isMousePressed()) {
@@ -64,13 +110,16 @@ public class GameWinController {
         menu.resetBools();
     }
 
+    /**
+     * Mouse Pressed.
+     * <p>
+     * Method that checks for pressing the button.
+     *
+     * @param e the e
+     */
     public void mousePressed(MouseEvent e) {
         if (isIn(menu, e)) {
             menu.setMousePressed(true);
         }
-    }
-
-    public GameWinView getGameWinView() {
-        return gameWinView;
     }
 }

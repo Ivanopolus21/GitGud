@@ -13,12 +13,7 @@ public class GameController implements Runnable{
     private GameProcessController gameProcessController;
     private MainMenuController mainMenuController;
 
-    private final GameWindowView gameWindowView;
     private final GamePanel gamePanel;
-    private Thread gameThread;
-
-    private final int FPS_SET = 120;
-    private final int UPS_SET = 200;
 
     public final static float SCALE = 1.5f;
     public final static int TILES_DEFAULT_SIZE = 32;
@@ -32,7 +27,7 @@ public class GameController implements Runnable{
         initClasses();
 
         gamePanel = new GamePanel(this);
-        gameWindowView = new GameWindowView(gamePanel);
+        GameWindowView gameWindowView = new GameWindowView(gamePanel);
         gamePanel.setFocusable(true);
         gamePanel.requestFocus();
 
@@ -41,11 +36,21 @@ public class GameController implements Runnable{
         log.info("Game loop was started");
     }
 
+    /**
+     * Init.
+     * <p>
+     * Initializing of the mainMenuController and gameProcessController classes.
+     */
     private void initClasses() {
         mainMenuController = new MainMenuController(this);
         gameProcessController = new GameProcessController(this);
     }
 
+    /**
+     * Update.
+     * <p>
+     * Update of game states.
+     */
     public void update() {
         switch (Gamestate.state) {
             case MENU:
@@ -62,6 +67,12 @@ public class GameController implements Runnable{
         }
     }
 
+    /**
+     * Draw.
+     * <p>
+     * Render (draw) method of the game states
+     * @param g draw system
+     */
     public void render(Graphics g) {
         switch (Gamestate.state) {
             case MENU:
@@ -73,14 +84,48 @@ public class GameController implements Runnable{
         }
     }
 
+    /**
+     * Game loop.
+     * <p>
+     * This method starts the game loop, which runs continuously and updates the game state and renders the graphics
+     * at a desired frame rate and update rate.
+     * </p>
+     * The game loop uses two variables, FPS_SET and UPS_SET, to determine the time interval between frames and updates.
+     * The game loop measures the elapsed time between iterations to ensure that the frame rate and update rate are consistent.
+     * The loop also keeps track of the number of frames and updates that occur within a specific time interval (1 second),
+     * which can be used for monitoring performance.
+     * </p>
+     * The game loop consists of the following steps:
+     * Calculate the time interval per frame (timePerFrame) and per update (timePerUpdate) based on the desired frame rate (FPS_SET) and update rate (UPS_SET).
+     * Initialize variables for tracking elapsed time (previousTime), frame and update counts (frames, updates), and the last check time (lastCheck).
+     * Initialize variables for measuring time differences (deltaU, deltaF).
+     * Enter an infinite loop that runs continuously until the game is exited.
+     * Get the current time (currentTime) using the System.nanoTime() method.
+     * Calculate the elapsed time since the previous iteration and add it to the deltaU and deltaF variables.
+     * If deltaU reaches or exceeds 1, call the update() method to update the game state, increment the update count (updates),
+     * and subtract 1 from deltaU.
+     * If deltaF reaches or exceeds 1, call the gamePanel.repaint() method to render the graphics, increment the frame count (frames),
+     * and subtract 1 from deltaF.
+     * Check if the specified time interval (1 second) has passed since the last performance check.
+     * If it has, update the lastCheck time, reset the frame and update counts, and optionally print the frame rate (FPS) and update rate (UPS) to the console.
+     * </p>
+     * Note: The FPS and UPS calculations assume that the timePerFrame and timePerUpdate values are accurate and represent the desired frame rate and update rate respectively.
+     */
     private void startGameLoop() {
-        gameThread = new Thread(this);
+        Thread gameThread = new Thread(this);
         gameThread.start();
     }
 
+    /**
+     * The run method for the game loop thread.
+     * It contains the main logic for the game loop, including updating the game state and rendering the graphics.
+     * The loop runs continuously until the game is exited.
+     */
     @Override
     public void run() {
+        int FPS_SET = 120;
         double timePerFrame = 1_000_000_000.0 / FPS_SET;
+        int UPS_SET = 200;
         double timePerUpdate = 1_000_000_000.0 / UPS_SET;
 
         long previousTime = System.nanoTime();
@@ -120,16 +165,31 @@ public class GameController implements Runnable{
         }
     }
 
+    /**
+     * Window focus lost.
+     * <p>
+     * Method stops a player from moving if focus on the game window was lost.
+     */
     public void windowFocusLost() {
         if (Gamestate.state == Gamestate.PLAYING) {
             gameProcessController.getPlayer().resetDirBooleans();
         }
     }
 
+    /**
+     * Gets main menu controller.
+     *
+     * @return the main menu controller
+     */
     public MainMenuController getMainMenuController() {
         return mainMenuController;
     }
 
+    /**
+     * Gets game process controller.
+     *
+     * @return the game process controller
+     */
     public GameProcessController getGameProcessController() {
         return gameProcessController;
     }
