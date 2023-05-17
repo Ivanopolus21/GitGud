@@ -14,6 +14,12 @@ import static yeremiva.gitgud.core.settings.Constants.GRAVITY;
 import static yeremiva.gitgud.core.settings.Constants.PlayerConstants.*;
 import static yeremiva.gitgud.core.settings.HelpMethods.*;
 
+/**
+ * Player class.
+ * <p>
+ *     The class that represents the player of the game.
+ * </p>
+ */
 public class Player extends Character {
     //30 height, 18 width 00 -- 6, 3
     //43 height, 25 width 00 -- 10, 5
@@ -28,23 +34,8 @@ public class Player extends Character {
     private boolean moving = false, attacking = false;
     private boolean left, right, jump;
     private int[][] lvlData;
-    private final float xDrawOffset = 6 * GameController.SCALE;
-    private final float yDrawOffset = 4 * GameController.SCALE;
-
-    // Jumping/Gravity
-    private final float jumpSpeed = -2.25f * GameController.SCALE;
-    private final float fallSpeedAfterCollision = 0.5f * GameController.SCALE;
-
-    //StatusBar View
-    private final int statusBarWidth = (int) (192 * GameController.SCALE);
-    private final int statusBarHeight = (int) (58 * GameController.SCALE);
-    private final int statusBarX = (int) (10 * GameController.SCALE);
-    private final int statusBarY = (int) (10 * GameController.SCALE);
 
     private final int healthBarWidth = (int) (150 * GameController.SCALE);
-    private final int healthBarHeight = (int) (4 * GameController.SCALE);
-    private final int healthBarXStart = (int) (34 * GameController.SCALE);
-    private final int healthBarYStart = (int) (14 * GameController.SCALE);
     private int healthWidth = healthBarWidth;
 
     //constants
@@ -72,6 +63,12 @@ public class Player extends Character {
         initAttackBox();
     }
 
+    /**
+     * Update.
+     * <p>
+     *     Update of the player, his health bar, state, attack box and animations.
+     * </p>
+     */
     public void update() {
         updateHealthBar();
         if (currentHealth <= 0) {
@@ -103,10 +100,16 @@ public class Player extends Character {
         setAnimation();
     }
 
+    /**
+     * Update of the player health bar.
+     */
     private void updateHealthBar() {
         healthWidth = (int) ((currentHealth / (float)(maxHealth)) * healthBarWidth);
     }
 
+    /**
+     * Update of the player attack box.
+     */
     private void updateAttackBox() {
         if (right && left) {
             if (flipW == 1) {
@@ -122,6 +125,9 @@ public class Player extends Character {
         attackBox.y = hitbox.y - (4 * GameController.SCALE);
     }
 
+    /**
+     * Update of the player position.
+     */
     public void updatePosition() {
         moving = false;
 
@@ -150,7 +156,7 @@ public class Player extends Character {
         }
 
         if (!inAir) {
-            if (!IsCharacterOnFloor(hitbox, lvlData)) {
+            if (IsCharacterOnFloor(hitbox, lvlData)) {
                 inAir = true;
             }
         }
@@ -165,6 +171,7 @@ public class Player extends Character {
                 if (airSpeed > 0) {
                     resetInAir();
                 } else {
+                    float fallSpeedAfterCollision = 0.5f * GameController.SCALE;
                     airSpeed = fallSpeedAfterCollision;
                 }
                 updateXPos(xSpeed);
@@ -175,6 +182,9 @@ public class Player extends Character {
         moving = true;
     }
 
+    /**
+     * Update of the player animation tick.
+     */
     private void updateAnimationTick() {
         aniTick++;
 
@@ -189,7 +199,18 @@ public class Player extends Character {
         }
     }
 
+    /**
+     * Render.
+     * <p>
+     *     Render of the player sprites and health bar.
+     * </p>
+     *
+     * @param g draw system
+     * @param lvlOffset the level offset
+     */
     public void render(Graphics g, int lvlOffset) {
+        float xDrawOffset = 6 * GameController.SCALE;
+        float yDrawOffset = 4 * GameController.SCALE;
         g.drawImage(animations[state][aniIndex],
                 (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX,
                 (int) (hitbox.y - yDrawOffset),
@@ -199,12 +220,31 @@ public class Player extends Character {
         drawUI(g);
     }
 
+    /**
+     * Draw of the health bar.
+     *
+     * @param g draw system
+     */
     private void drawUI(Graphics g) {
+        //StatusBar View
+        int statusBarWidth = (int) (192 * GameController.SCALE);
+        int statusBarHeight = (int) (58 * GameController.SCALE);
+        int statusBarX = (int) (10 * GameController.SCALE);
+        int statusBarY = (int) (10 * GameController.SCALE);
+
         g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
         g.setColor(Color.red);
+
+        int healthBarHeight = (int) (4 * GameController.SCALE);
+        int healthBarXStart = (int) (34 * GameController.SCALE);
+        int healthBarYStart = (int) (14 * GameController.SCALE);
+
         g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
     }
 
+    /**
+     * Load Player Animations.
+     */
     private void loadAnimations() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 
@@ -218,26 +258,43 @@ public class Player extends Character {
         statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
     }
 
+    /**
+     * Load level data.
+     *
+     * @param lvlData the data of the level
+     */
     public void loadLvlData(int[][] lvlData) {
         this.lvlData = lvlData;
-        if (!IsCharacterOnFloor(hitbox, lvlData)) {
+        if (IsCharacterOnFloor(hitbox, lvlData)) {
             inAir = true;
         }
     }
 
+    /**
+     * Initialize of the player attack box.
+     */
     private void initAttackBox() {
         attackBox = new Rectangle2D.Float(x, y, (int) (25 * GameController.SCALE), (int) (35 * GameController.SCALE));
 //        resetAttackBox();
     }
 
+    /**
+     * Check if spike was touched by the player.
+     */
     private void checkSpikesTouched() {
         gameProcessController.checkSpikesTouched(this);
     }
 
+    /**
+     * Check if gem was touched by the player.
+     */
     private void checkGemTouched() {
         gameProcessController.checkGemTouched(hitbox);
     }
 
+    /**
+     * Check attack functions.
+     */
     private void checkAttack() {
         if (attackChecked || aniIndex != 4) {
             return;
@@ -247,6 +304,11 @@ public class Player extends Character {
         gameProcessController.checkObjectHit(attackBox);
     }
 
+    /**
+     * Set player spawn point.
+     *
+     * @param spawn the spawn point
+     */
     public void setSpawn(Point spawn) {
         this.x = spawn.x;
         this.y = spawn.y;
@@ -255,6 +317,12 @@ public class Player extends Character {
         hitbox.y = y;
     }
 
+    /**
+     * Set Animations.
+     * <p>
+     *     Set an animations if the player based on his state.
+     * </p>
+     */
     public void setAnimation(){
         int startAni = state;
 
@@ -286,14 +354,25 @@ public class Player extends Character {
         }
     }
 
+    /**
+     * Player jump.
+     */
     private void jump() {
         if (inAir){
             return;
         }
         inAir = true;
+
+        // Jumping/Gravity
+        float jumpSpeed = -2.25f * GameController.SCALE;
         airSpeed = jumpSpeed;
     }
 
+    /**
+     * Uodate of the X player position.
+     *
+     * @param xSpeed the x speed
+     */
     private void updateXPos(float xSpeed) {
         if (CanMoveHere(hitbox.x + xSpeed, hitbox.y , hitbox.width, hitbox.height, lvlData)) {
             hitbox.x += xSpeed;
@@ -302,6 +381,11 @@ public class Player extends Character {
         }
     }
 
+    /**
+     * Change of the player health.
+     *
+     * @param value the value
+     */
     public void changeHealth(int value) {
         currentHealth += value;
 
@@ -315,44 +399,66 @@ public class Player extends Character {
         }
     }
 
+    /**
+     * Kills the player.
+     */
     public void kill() {
         currentHealth = 0;
 
         log.info("Player has died!");
     }
 
+    /**
+     * Sets an attacking boolean.
+     *
+     * @param attacking the attacking
+     */
     public void setAttacking(boolean attacking) {
         this.attacking = attacking;
     }
 
+    /**
+     * Sets left direction of the player view.
+     *
+     * @param left the left direction
+     */
     public void setLeft(boolean left) {
         this.left = left;
     }
 
+    /**
+     * Sets right direction of the player view.
+     *
+     * @param right the right direction
+     */
     public void setRight(boolean right) {
         this.right = right;
     }
 
+    /**
+     * Sets jumping state to the player.
+     *
+     * @param jump the jump state
+     */
     public void setJump(boolean jump) {
         this.jump = jump;
     }
 
-    public int getPlayerDamage() {
-        return playerDamage;
-    }
-
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
+    /**
+     * Gets current player health.
+     *
+     * @return the currentHealth
+     */
     public int getCurrentHealth() {
         return currentHealth;
     }
 
-    public float getWalkSpeed() {
-        return walkSpeed;
-    }
-
+    /**
+     * Reset.
+     * <p>
+     *     Resets all the player variables.
+     * </p>
+     */
     public void resetAll() {
         resetDirBooleans();
         inAir = false;
@@ -367,13 +473,16 @@ public class Player extends Character {
 
         resetAttackBox();
 
-        if (!IsCharacterOnFloor(hitbox, lvlData)) {
+        if (IsCharacterOnFloor(hitbox, lvlData)) {
             inAir = true;
         }
 
         log.info("Player was reseted");
     }
 
+    /**
+     * Resets player attack box.
+     */
     private void resetAttackBox() {
         if (flipW == 1) {
             attackBox.x = hitbox.x + hitbox.width + (int) (1 * GameController.SCALE);
@@ -382,16 +491,25 @@ public class Player extends Character {
         }
     }
 
+    /**
+     * Resets player animation tick.
+     */
     private void resetAniTick() {
         aniTick = 0;
         aniIndex = 0;
     }
 
+    /**
+     * Resets direction booleans.
+     */
     public void resetDirBooleans() {
         left = false;
         right = false;
     }
 
+    /**
+     * Resets player in air state and airSpeed.
+     */
     private void resetInAir() {
         inAir = false;
         airSpeed = 0;
