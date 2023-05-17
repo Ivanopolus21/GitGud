@@ -12,6 +12,12 @@ import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 
+/**
+ * Object Controller.
+ * <p>
+ *     Class that represents controller that control the game objects.
+ * </p>
+ */
 public class ObjectController {
     private final static Logger log = Logger.getLogger(ObjectController.class.getName());
 

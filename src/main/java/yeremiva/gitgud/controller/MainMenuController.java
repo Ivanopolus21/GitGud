@@ -9,6 +9,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
+/**
+ * Main Menu Controller.
+ * <p>
+ *     Class that represents controller that control the main menu of the game.
+ * </p>
+ */
 public class MainMenuController extends State implements Statemethods {
     private final static Logger log = Logger.getLogger(MainMenuController.class.getName());
 
