@@ -2,6 +2,12 @@ package yeremiva.gitgud.model.objects;
 
 import yeremiva.gitgud.controller.GameController;
 
+/**
+ * Gem class.
+ * <p>
+ *     Class that represents the gems objects in the game.
+ * </p>
+ */
 public class Gem extends GameObject{
     private float hoverOffset;
     private final int maxHoverOffset;
@@ -18,11 +24,20 @@ public class Gem extends GameObject{
         maxHoverOffset = (int) (10 * GameController.SCALE);
     }
 
+    /**
+     * Update.
+     * <p>
+     *     Update of the gem animations.
+     * </p>
+     */
     public void update() {
         updateAnimationTick();
         updateHover();
     }
 
+    /**
+     * Update of the gem hover animation.
+     */
     private void updateHover() {
         hoverOffset += (0.05f * GameController.SCALE * hoverDir);
         if (hoverOffset >= maxHoverOffset) {

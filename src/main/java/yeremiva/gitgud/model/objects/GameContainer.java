@@ -4,6 +4,12 @@ import yeremiva.gitgud.controller.GameController;
 
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 
+/**
+ * Game Container Class.
+ * <p>
+ *     Class that represents the game containers, such as gemstones.
+ * </p>
+ */
 public class GameContainer extends GameObject{
 
     public GameContainer(int x, int y, int objType) {
@@ -12,12 +18,21 @@ public class GameContainer extends GameObject{
         createHitbox();
     }
 
+    /**
+     * Update.
+     * <p>
+     *     Update of the animations of the game containers.
+     * </p>
+     */
     public void update() {
         if (doAnimation) {
             updateAnimationTick();
         }
     }
 
+    /**
+     * Creation of the hitbox of the game containers.
+     */
     private void createHitbox() {
         if (objType == RED_GAMESTONE) {
             initHitbox(25, 18);
