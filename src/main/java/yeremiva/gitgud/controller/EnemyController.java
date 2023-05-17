@@ -10,6 +10,12 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+/**
+ * Enemy Controller.
+ * <p>
+ *     Class that represents controller that control the enemies behaviour, load etc.
+ * </p>
+ */
 public class EnemyController {
     private static final Logger log = Logger.getLogger(EnemyController.class.getName());
 

@@ -7,6 +7,12 @@ import yeremiva.gitgud.view.GameWindowView;
 import java.awt.*;
 import java.util.logging.Logger;
 
+/**
+ * Game Controller.
+ * <p>
+ *     Class that represents controller that run the game.
+ * </p>
+ */
 public class GameController implements Runnable{
     private final static Logger log = Logger.getLogger(GameController.class.getName());
 

@@ -10,13 +10,19 @@ import java.util.logging.Logger;
 
 import static yeremiva.gitgud.controller.GameController.*;
 
+/**
+ * Level Controller.
+ * <p>
+ *     Class that represents controller that control the levels.
+ * </p>
+ */
 public class LevelController {
     private final static Logger log = Logger.getLogger(LevelController.class.getName());
 
     private final GameController gameController;
 
     private BufferedImage[] levelSprite;
-    private ArrayList<LevelView> levels;
+    private final ArrayList<LevelView> levels;
     private int lvlIndex = 0;
 
     public LevelController(GameController gameController) {
@@ -28,6 +34,15 @@ public class LevelController {
         buildAllLevels();
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draws the level image depending on the sprite index of the image of tiles.
+     * </p>
+     *
+     * @param g draw system
+     * @param lvlOffset level offset
+     */
     public void draw(Graphics g, int lvlOffset) {
         for (int j = 0; j < TILES_IN_HEIGHT; j++) {
             for (int i = 0; i < levels.get(lvlIndex).getLvlData()[0].length; i++) {
@@ -37,14 +52,9 @@ public class LevelController {
         }
     }
 
-    public void resetAllLevels() {
-        levels = new ArrayList<>();
-        lvlIndex = 0;
-
-        importOutsideSprites();
-        buildAllLevels();
-    }
-
+    /**
+     * Loads next level data.
+     */
     public void loadNextLevel() {
 
         lvlIndex++;
@@ -67,6 +77,12 @@ public class LevelController {
         }
     }
 
+    /**
+     * Build levels.
+     * <p>
+     *     The method builds all available levels.
+     * </p>
+     */
     private void buildAllLevels() {
         BufferedImage[] allLevels = LoadSave.GetAllLevels();
         for (BufferedImage img : allLevels) {
@@ -74,6 +90,12 @@ public class LevelController {
         }
     }
 
+    /**
+     * Sprite import.
+     * <p>
+     *     Method that imports the level tiles.
+     * </p>
+     */
     private void importOutsideSprites() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.LEVEL_ATLAS);
         levelSprite = new BufferedImage[48];
@@ -88,22 +110,21 @@ public class LevelController {
     public void update() {
     }
 
-    public void setLvlIndex(int lvlIndex) {
-        this.lvlIndex = lvlIndex;
-        if (lvlIndex == 0) {
-            System.out.println("Index was set to 0");
-        }
-    }
-
+    /**
+     * Gets Current Level.
+     *
+     * @return the LevelView
+     */
     public LevelView getCurrentLevel() {
         return levels.get(lvlIndex);
     }
 
+    /**
+     * Gets Level Index.
+     *
+     * @return the lvlIndex
+     */
     public int getLvlIndex() {
         return lvlIndex;
-    }
-
-    public int getAmountOfLevels() {
-        return levels.size();
     }
 }

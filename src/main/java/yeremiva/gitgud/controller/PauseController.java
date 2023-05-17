@@ -7,6 +7,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
+/**
+ * Pause Controller.
+ * <p>
+ *     Class that represents controller that control the pause overlay.
+ * </p>
+ */
 public class PauseController {
     private final static Logger log = Logger.getLogger(PauseController.class.getName());
 

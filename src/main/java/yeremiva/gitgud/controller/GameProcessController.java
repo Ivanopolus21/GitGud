@@ -13,6 +13,12 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.util.logging.Logger;
 
+/**
+ * Game Process Controller.
+ * <p>
+ *     Class that represents controller that control the actual gameplay of the game and the PLAYING state.
+ * </p>
+ */
 public class GameProcessController extends State implements Statemethods {
     private final static Logger log = Logger.getLogger(GameProcessController.class.getName());
 

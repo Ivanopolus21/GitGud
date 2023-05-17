@@ -8,6 +8,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
+/**
+ * Level Completed Controller.
+ * <p>
+ *     Class that represents controller that control the level completion.
+ * </p>
+ */
 public class LevelCompletedController {
     private final static Logger log = Logger.getLogger(LevelCompletedController.class.getName());
 

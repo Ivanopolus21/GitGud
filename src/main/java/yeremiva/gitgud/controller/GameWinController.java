@@ -9,6 +9,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
+/**
+ * Game Win Controller.
+ * <p>
+ *     Class that represents controller that control the game win overlay.
+ * </p>
+ */
 public class GameWinController {
     private final static Logger log = Logger.getLogger(GameWinController.class.getName());
 

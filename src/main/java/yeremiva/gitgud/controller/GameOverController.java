@@ -8,6 +8,12 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+/**
+ * Game Over Controller.
+ * <p>
+ *     Class that represents controller that control the game over overlay.
+ * </p>
+ */
 public class GameOverController {
     private final GameProcessController gameProcessController;
     private final GameOverView gameOverView;
