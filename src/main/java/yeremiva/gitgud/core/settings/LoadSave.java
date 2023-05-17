@@ -9,12 +9,17 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+/**
+ * Load Save.
+ * <p>
+ *     The class that loads all the images that the game needs.
+ * </p>
+ */
 public class LoadSave {
     public static final String PLAYER_ATLAS = "player_sprites.png";
     public static final String LEVEL_ATLAS = "outside_sprites.png";
     public static final String MENU_BUTTONS = "button_atlas.png";
-//    public static final String MENU_BACKGROUND = "menu_background.png";
-    public static final String MENU_BACKGROUND = "menu_background_fixed.png";
+    public static final String MENU_BACKGROUND = "menu_background.png";
     public static final String MENU_BACKGROUND_IMAGE = "background_menu.png";
     public static final String PAUSE_BACKGROUND = "pause_menu.png";
     public static final String URM_BUTTONS = "urm_buttons.png";
@@ -32,6 +37,15 @@ public class LoadSave {
     public static final String DEATH_SCREEN = "death_screen.png";
     public static final String WIN_SCREEN = "win_screen.png";
 
+    /**
+     * Gets Sprite Atlas.
+     * <p>
+     *     The method gets sprites of an atlas that was provided as an argument.
+     * </p>
+     *
+     * @param atlas the atlas
+     * @return sprites of the atlas
+     */
     public static BufferedImage GetSpriteAtlas(String atlas){
         BufferedImage img = null;
         InputStream is = LoadSave.class.getResourceAsStream("/" + atlas);
@@ -49,6 +63,14 @@ public class LoadSave {
         return img;
     }
 
+    /**
+     * Gets All Levels.
+     * <p>
+     *     Gets images of all levels that projects has in directory "levels".
+     * </p>
+     *
+     * @return levels images
+     */
     public static BufferedImage[] GetAllLevels() {
         URL url = LoadSave.class.getResource("/levels");
         File file = null;

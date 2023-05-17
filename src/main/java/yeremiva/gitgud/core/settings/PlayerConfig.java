@@ -1,23 +1,29 @@
 package yeremiva.gitgud.core.settings;
 
 import org.json.JSONObject;
-import yeremiva.gitgud.controller.GameProcessController;
-import yeremiva.gitgud.model.characters.Player;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.logging.Logger;
 
+/**
+ * Player Configuration.
+ * <p>
+ *     Class that have a configuration of the player JSON file.
+ * </p>
+ */
 public class PlayerConfig {
-
-    private static final Logger log = Logger.getLogger(Player.class.getName())
-            ;
-    private static GameProcessController gameProcessController;
-
-    public static JSONObject getPlayerConfig(boolean fromSave) {
-        String path = fromSave ? "save/savedLevel.json" : "player.json";
+    /**
+     * Player Configuration.
+     * <p>
+     *     Configuration of the player JSON file.
+     * </p>
+     *
+     * @return the player JSON file
+     */
+    public static JSONObject getPlayerConfig() {
+        String path = "player.json";
 
         try {
             File file = new File(path);
@@ -29,23 +35,5 @@ public class PlayerConfig {
         }
 
         return null;
-    }
-
-    public static void savePlayerConfig() {
-        JSONObject playerConfig = new JSONObject();
-        Player player = gameProcessController.getPlayer();
-
-        playerConfig.put("maxHealth", player.getMaxHealth());
-        playerConfig.put("currentHealth", player.getCurrentHealth());
-        playerConfig.put("walkSpeed", player.getWalkSpeed());
-        playerConfig.put("damage", player.getPlayerDamage());
-
-//        try (
-//                BufferedWriter writer = new BufferedWriter(new FileWriter("save/savedLevel.json"))
-//        ) {
-//            writer.write(playerConfig.toString());
-//        } catch (IOException e) {
-//            log.log(Level.WARNING, e.getMessage(), e);
-//        }
     }
 }
