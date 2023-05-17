@@ -15,6 +15,12 @@ import java.util.logging.Logger;
 import static yeremiva.gitgud.core.settings.Constants.ObjectConstants.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 
+/**
+ * Level View class.
+ * <p>
+ *     Class that represents the Level View.
+ * </p>
+ */
 public class LevelView {
     private static final Logger log = Logger.getLogger(LevelView.class.getName());
 
@@ -26,7 +32,6 @@ public class LevelView {
     private Point playerSpawn;
 
     private final int[][] lvlData;
-    private int lvlTilesWide, maxTilesOffset;
     private int maxLvlOffsetX;
 
     public LevelView(BufferedImage img) {
@@ -37,6 +42,12 @@ public class LevelView {
         calculateLevelOffsets();
     }
 
+    /**
+     * Load Level.
+     * <p>
+     *     Load of the level based on the image color values (RGB).
+     * </p>
+     */
     private void loadLevel() {
         // Looping through the image colors just once. Instead of one per
         // object/enemy/etc..
@@ -56,6 +67,13 @@ public class LevelView {
         log.info("Level was loaded");
     }
 
+    /**
+     * Load of Level Data.
+     *
+     * @param redValue the red value of the RGB color
+     * @param x the x
+     * @param y the y
+     */
     private void loadLevelData(int redValue, int x, int y) {
         if (redValue >= 50) {
             lvlData[y][x] = 0;
@@ -64,6 +82,13 @@ public class LevelView {
         }
     }
 
+    /**
+     * Load of the level objects.
+     *
+     * @param blueValue the blue value of the RGB color
+     * @param x the x
+     * @param y the y
+     */
     private void loadObjects(int blueValue, int x, int y) {
         switch (blueValue) {
             case RED_GEM:
@@ -80,10 +105,17 @@ public class LevelView {
         }
     }
 
+    /**
+     * Load of the game entities.
+     *
+     * @param greenValue the green value of the RGB color
+     * @param x the x
+     * @param y the y
+     */
     private void loadEntities(int greenValue, int x, int y) {
         switch (greenValue) {
             case SKELETON:
-                JSONObject enemyConfig = EnemyConfig.getEnemyConfig(false);
+                JSONObject enemyConfig = EnemyConfig.getEnemyConfig();
                 skeletons.add(new Skeleton(x * GameController.TILES_SIZE, y * GameController.TILES_SIZE,
                         enemyConfig.getInt("maxHealth"),
                         enemyConfig.getInt("currentHealth"),
@@ -98,40 +130,85 @@ public class LevelView {
         }
     }
 
+    /**
+     * Calculation of the level offsets.
+     */
     private void calculateLevelOffsets() {
-        lvlTilesWide = img.getWidth();
-        maxTilesOffset = lvlTilesWide - GameController.TILES_IN_WIDTH;
+        int lvlTilesWide = img.getWidth();
+        int maxTilesOffset = lvlTilesWide - GameController.TILES_IN_WIDTH;
         maxLvlOffsetX = GameController.TILES_SIZE * maxTilesOffset;
     }
 
+    /**
+     * Gets player spawn point.
+     *
+     * @return the spawn point
+     */
     public Point getPlayerSpawn() {
         return playerSpawn;
     }
 
+    /**
+     * Gets Skeletons.
+     *
+     * @return the skeletons
+     */
     public ArrayList<Skeleton> getSkeletons() {
         return skeletons;
     }
 
+    /**
+     * Gets Gems.
+     *
+     * @return the gems
+     */
     public ArrayList<Gem> getGems() {
         return gems;
     }
 
+    /**
+     * Gets Game Containers.
+     *
+     * @return the game containers
+     */
     public ArrayList<GameContainer> getContainers() {
         return containers;
     }
 
+    /**
+     * Gets Spikes.
+     *
+     * @return spikes
+     */
     public ArrayList<Spike> getSpikes() {
         return spikes;
     }
 
+    /**
+     * Gets Sprite Index.
+     *
+     * @param x the x
+     * @param y the y
+     * @return the sprite index
+     */
     public int getSpriteIndex(int x, int y) {
         return lvlData[y][x];
     }
 
+    /**
+     * Gets Level Data.
+     *
+     * @return lvlData
+     */
     public int[][] getLvlData() {
         return lvlData;
     }
 
+    /**
+     * Gets Max Level Offset.
+     *
+     * @return the max level offset
+     */
     public int getMaxLvlOffsetX() {
         return maxLvlOffsetX;
     }

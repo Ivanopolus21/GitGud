@@ -9,20 +9,31 @@ import java.awt.image.BufferedImage;
 
 import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.URM_SIZE;
 
+/**
+ * Game Win View class.
+ * <p>
+ *     Class that represents the Game Win View.
+ * </p>
+ */
 public class GameWinView {
-    private final GameWinController gameWinController;
-
     private BufferedImage img;
     private UrmButtonView menu;
 
     private int imgX, imgY, imgWidth, imgHeight;
 
-    public GameWinView(GameWinController gameWinController) {
-        this.gameWinController = gameWinController;
+    public GameWinView() {
         createImg();
         createButton();
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     The method draws game win view, menu button and black background.
+     * </p>
+     *
+     * @param g draw system
+     */
     public void draw (Graphics g) {
         g.setColor(new Color(0, 0, 0));
         g.fillRect(0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
@@ -32,6 +43,9 @@ public class GameWinView {
         menu.draw(g);
     }
 
+    /**
+     * Creation of the game win image.
+     */
     private void createImg() {
         img = LoadSave.GetSpriteAtlas(LoadSave.WIN_SCREEN);
         imgWidth = (int) (img.getWidth() * GameController.SCALE);
@@ -40,6 +54,9 @@ public class GameWinView {
         imgY = (int) (100 * GameController.SCALE);
     }
 
+    /**
+     * Creation of the game win buttons.
+     */
     private void createButton() {
         int x = (int) (385 * GameController.SCALE);
         int y = (int) (220 * GameController.SCALE);
@@ -47,6 +64,11 @@ public class GameWinView {
         menu = new UrmButtonView(x, y, URM_SIZE, URM_SIZE, 2);
     }
 
+    /**
+     * Gets Menu Button.
+     *
+     * @return the menu button
+     */
     public UrmButtonView getMenu() {
         return menu;
     }

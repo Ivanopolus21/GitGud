@@ -10,6 +10,12 @@ import java.util.ArrayList;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.*;
 import static yeremiva.gitgud.core.settings.Constants.EnemyConstants.SKELETON_HEIGHT;
 
+/**
+ * Enemy View class.
+ * <p>
+ *     Class that represents the Enemy View.
+ * </p>
+ */
 public class EnemyView {
     private BufferedImage[][] skeletonArr;
 
@@ -17,10 +23,30 @@ public class EnemyView {
         loadEnemyImgs();
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draws the enemies on the level.
+     * </p>
+     *
+     * @param g draw system
+     * @param skeletons the array of Skeletons
+     * @param xLvlOffset the level offset
+     */
     public void draw(Graphics g, ArrayList<Skeleton> skeletons, int xLvlOffset) {
         drawSkeletons(g, skeletons, xLvlOffset);
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draw the Skeletons on the level if they are alive.
+     * </p>
+     *
+     * @param g draw system
+     * @param skeletons the array of Skeletons
+     * @param xLvlOffset the level offset
+     */
     private void drawSkeletons(Graphics g, ArrayList<Skeleton> skeletons, int xLvlOffset) {
         int fixSkeletonHitboxHeight = 11;
         for(Skeleton s: skeletons) {
@@ -38,6 +64,9 @@ public class EnemyView {
         }
     }
 
+    /**
+     * Load Enemy Images.
+     */
     private void loadEnemyImgs() {
         skeletonArr = new BufferedImage[5][6];
         BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.SKELETON_SPRITE);

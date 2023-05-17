@@ -7,6 +7,12 @@ import java.awt.image.BufferedImage;
 
 import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.*;
 
+/**
+ * View class.
+ * <p>
+ *     Class that represents the URM Button View.
+ * </p>
+ */
 public class UrmButtonView extends PauseButton{
     private BufferedImage[] imgs;
 
@@ -21,6 +27,9 @@ public class UrmButtonView extends PauseButton{
         loadImgs();
     }
 
+    /**
+     * Update of the URM buttons.
+     */
     public void update() {
         index = 0;
         if (mouseOver){
@@ -31,10 +40,18 @@ public class UrmButtonView extends PauseButton{
         }
     }
 
+    /**
+     * Draw of the URM buttons.
+     *
+     * @param g draw system
+     */
     public void draw(Graphics g) {
         g.drawImage(imgs[index], x, y, URM_SIZE, URM_SIZE, null);
     }
 
+    /**
+     * Load of URM Buttons Images.
+     */
     private void loadImgs() {
         BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.URM_BUTTONS);
         imgs = new BufferedImage[3];
@@ -43,10 +60,20 @@ public class UrmButtonView extends PauseButton{
         }
     }
 
+    /**
+     * Sets Mouse Over.
+     *
+     * @param mouseOver the mouse over
+     */
     public void setMouseOver(boolean mouseOver) {
         this.mouseOver = mouseOver;
     }
 
+    /**
+     * Sets Mouse Pressed.
+     *
+     * @param mousePressed the mouse pressed
+     */
     public void setMousePressed(boolean mousePressed) {
         this.mousePressed = mousePressed;
     }
@@ -55,10 +82,18 @@ public class UrmButtonView extends PauseButton{
         return mouseOver;
     }
 
+    /**
+     * Gets Mouse Pressed.
+     *
+     * @return the mousePressed
+     */
     public boolean isMousePressed() {
         return mousePressed;
     }
 
+    /**
+     * Resets booleans.
+     */
     public void resetBools() {
         mouseOver = false;
         mousePressed = false;

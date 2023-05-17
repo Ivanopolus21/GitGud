@@ -8,13 +8,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-import static yeremiva.gitgud.core.settings.Constants.Enviroment.*;
+import static yeremiva.gitgud.core.settings.Constants.Environment.*;
 
+/**
+ * Game Process View class.
+ * <p>
+ *     Class that represents the Game Process View.
+ * </p>
+ */
 public class GameProcessView {
     private final GameProcessController gameProcessController;
 
     private final BufferedImage backgroundImg, bigBgObject, smallBgObject;
-    private final Random rnd = new Random();
 
     private final int[] smallBgObjectsPos;
 
@@ -26,10 +31,20 @@ public class GameProcessView {
         smallBgObject = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
         smallBgObjectsPos = new int[8];
         for (int i = 0; i < smallBgObjectsPos.length; i++) {
+            Random rnd = new Random();
             smallBgObjectsPos[i] = (int) (90 * GameController.SCALE) + rnd.nextInt((int) (100 * GameController.SCALE));
         }
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Draws all states in the game, all models and views.
+     * </p>
+     *
+     * @param g draw system
+     * @param xLvlOffset the level offset
+     */
     public void draw(Graphics g, int xLvlOffset) {
         g.drawImage(backgroundImg, 0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT, null);
 
@@ -51,6 +66,11 @@ public class GameProcessView {
         }
     }
 
+    /**
+     * Draws background noninteractive objects.
+     * @param g draw system
+     * @param xLvlOffset the level offset
+     */
     private void drawBgObjects(Graphics g, int xLvlOffset) {
         for (int i = 0; i < 3; i++)
             g.drawImage(bigBgObject, i * BIG_BG_OBJECT_WIDTH - (int) (xLvlOffset * 0.3), (int) (204 * GameController.SCALE), BIG_BG_OBJECT_WIDTH, BIG_BG_OBJECT_HEIGHT, null);

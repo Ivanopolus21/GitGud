@@ -1,7 +1,6 @@
 package yeremiva.gitgud.view;
 
 import yeremiva.gitgud.controller.GameController;
-import yeremiva.gitgud.controller.LevelCompletedController;
 import yeremiva.gitgud.core.settings.LoadSave;
 
 import java.awt.*;
@@ -9,20 +8,31 @@ import java.awt.image.BufferedImage;
 
 import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.URM_SIZE;
 
+/**
+ * Level Completed View class.
+ * <p>
+ *     Class that represents the Level Completed View.
+ * </p>
+ */
 public class LevelCompletedView {
-    private final LevelCompletedController levelCompletedController;
-
     private UrmButtonView menu, nextLvl;
     private BufferedImage img;
 
     private int bgX, bgY, bgWidth, bgHeight;
 
-    public LevelCompletedView(LevelCompletedController levelCompletedController) {
-        this.levelCompletedController = levelCompletedController;
+    public LevelCompletedView() {
         initImg();
         initButtons();
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     The method draws level completed image, buttons and the background image.
+     * </p>
+     *
+     * @param g draw system
+     */
     public void draw(Graphics g) {
         g.setColor(new Color(0, 0, 0, 150));
         g.fillRect(0,0,GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
@@ -32,6 +42,9 @@ public class LevelCompletedView {
         menu.draw(g);
     }
 
+    /**
+     * Initializing of the level completed image.
+     */
     private void initImg() {
         img = LoadSave.GetSpriteAtlas(LoadSave.COMPLETED_IMAGE);
         bgWidth = (int) (img.getWidth() * GameController.SCALE);
@@ -40,6 +53,9 @@ public class LevelCompletedView {
         bgY = (int) (75 * GameController.SCALE);
     }
 
+    /**
+     * Initializing of the level completed buttons.
+     */
     private void initButtons() {
         int menuX = (int) (330 * GameController.SCALE);
         int nextLvlX = (int) (445 * GameController.SCALE);
@@ -49,10 +65,20 @@ public class LevelCompletedView {
         menu = new UrmButtonView(menuX, y, URM_SIZE, URM_SIZE, 2);
     }
 
+    /**
+     * Gets Menu Button.
+     *
+     * @return the menu button
+     */
     public UrmButtonView getMenu() {
         return menu;
     }
 
+    /**
+     * Gets Next Level Button.
+     *
+     * @return the next level button
+     */
     public UrmButtonView getNextLvl() {
         return nextLvl;
     }

@@ -1,7 +1,6 @@
 package yeremiva.gitgud.view;
 
 import yeremiva.gitgud.controller.GameController;
-import yeremiva.gitgud.controller.PauseController;
 import yeremiva.gitgud.core.settings.LoadSave;
 
 import java.awt.*;
@@ -12,9 +11,13 @@ import static yeremiva.gitgud.core.settings.Constants.View.URMButtons.URM_SIZE;
 import static yeremiva.gitgud.core.settings.Constants.View.VolumeButtons.SLIDER_WIDTH;
 import static yeremiva.gitgud.core.settings.Constants.View.VolumeButtons.VOLUME_HEIGHT;
 
+/**
+ * Pause View class.
+ * <p>
+ *     Class that represents the Pause View.
+ * </p>
+ */
 public class PauseView {
-    private final PauseController pauseController;
-
     private SoundButtonView musicButton, sfxButton;
     private UrmButtonView menuB, replayB, unpauseB;
     private VolumeButton volumeButton;
@@ -22,15 +25,16 @@ public class PauseView {
 
     private int bgX, bgY, bgWidth, bgHeight;
 
-    public PauseView(PauseController pauseController) {
-        this.pauseController = pauseController;
-
+    public PauseView() {
         loadBackground();
         createSoundButtons();
         createUrmButtons();
         createVolumeButton();
     }
 
+    /**
+     * Creation of the volume button.
+     */
     private void createVolumeButton() {
         int volumeX = (int) (309 * GameController.SCALE);
         int volumeY = (int) (258 * GameController.SCALE);
@@ -38,7 +42,9 @@ public class PauseView {
         volumeButton = new VolumeButton(volumeX, volumeY, SLIDER_WIDTH, VOLUME_HEIGHT);
     }
 
-    //The method creates URM buttons (replay, menu, unpause)
+    /**
+     * Creation of the URM buttons (replay, menu, unpause).
+     */
     private void createUrmButtons() {
         int menuX = (int) (313 * GameController.SCALE);
         int replayX = (int) (387 * GameController.SCALE);
@@ -50,6 +56,9 @@ public class PauseView {
         unpauseB = new UrmButtonView(unpauseX, buttonY, URM_SIZE, URM_SIZE, 0);
     }
 
+    /**
+     * Creation of the sound buttons.
+     */
     private void createSoundButtons() {
         int soundX = (int) (450 * GameController.SCALE);
         int musicY = (int) (115 * GameController.SCALE);
@@ -58,7 +67,9 @@ public class PauseView {
         sfxButton = new SoundButtonView(soundX, sfxY, SOUND_SIZE, SOUND_SIZE);
     }
 
-    //Function that loads background of the pause menu
+    /**
+     * Load of the pause background.
+     */
     private void loadBackground() {
         backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.PAUSE_BACKGROUND);
         bgWidth = (int) (backgroundImg.getWidth() * GameController.SCALE);
@@ -67,6 +78,14 @@ public class PauseView {
         bgY = (int) (80 * GameController.SCALE);
     }
 
+    /**
+     * Draw.
+     * <p>
+     *     Method that draws pause background and pause buttons.
+     * </p>
+     *
+     * @param g draw system
+     */
     public void draw(Graphics g){
         g.setColor(new Color(0, 0, 0, 200));
         g.fillRect(0, 0, GameController.GAME_WIDTH, GameController.GAME_HEIGHT);
@@ -87,26 +106,56 @@ public class PauseView {
         volumeButton.draw(g);
     }
 
+    /**
+     * Gets Music Button.
+     *
+     * @return the music button
+     */
     public SoundButtonView getMusicButton() {
         return musicButton;
     }
 
+    /**
+     * Gets Sound Button.
+     *
+     * @return the sound button.
+     */
     public SoundButtonView getSfxButton() {
         return sfxButton;
     }
 
+    /**
+     * Gets Menu Button.
+     *
+     * @return the menu button
+     */
     public UrmButtonView getMenuB() {
         return menuB;
     }
 
+    /**
+     * Gets Replay Button.
+     *
+     * @return the replau button
+     */
     public UrmButtonView getReplayB() {
         return replayB;
     }
 
+    /**
+     * Gets Unpause Button.
+     *
+     * @return the unpause button
+     */
     public UrmButtonView getUnpauseB() {
         return unpauseB;
     }
 
+    /**
+     * Gets Volume Button.
+     *
+     * @return the volume button
+     */
     public VolumeButton getVolumeButton() {
         return volumeButton;
     }

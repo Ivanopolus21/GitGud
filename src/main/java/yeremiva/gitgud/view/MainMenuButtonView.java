@@ -5,13 +5,16 @@ import yeremiva.gitgud.core.states.Gamestate;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.logging.Logger;
 
 import static yeremiva.gitgud.core.settings.Constants.View.Buttons.*;
 
+/**
+ * Main Menu Button View class.
+ * <p>
+ *     Class that represents the Main Menu Button View.
+ * </p>
+ */
 public class MainMenuButtonView {
-    private final static Logger log = Logger.getLogger(MainMenuButtonView.class.getName());
-
     private final Gamestate state;
 
     private Rectangle bounds;
@@ -33,7 +36,9 @@ public class MainMenuButtonView {
         loadImgs();
     }
 
-    //Function to load the menu button images
+    /**
+     * Loads the images of the buttons.
+     */
     private void loadImgs() {
         imgs = new BufferedImage[3];
         BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.MENU_BUTTONS);
@@ -42,6 +47,9 @@ public class MainMenuButtonView {
         }
     }
 
+    /**
+     * Updates the buttons.
+     */
     public void update() {
         index = 0;
         if (mouseOver)
@@ -50,23 +58,46 @@ public class MainMenuButtonView {
             index = 2;
     }
 
-    //Function that draws the buttons on the screen
+    /**
+     * Draw.
+     * <p>
+     *     Draws the main menu buttons.
+     * </p>
+     *
+     * @param g draw system
+     */
     public void draw(Graphics g) {
         g.drawImage(imgs[index], xPos - xOffsetCenter, yPos, B_WIDTH, B_HEIGHT, null);
     }
 
+    /**
+     * Initializes buttons bounds.
+     */
     public void initBounds() {
         bounds = new Rectangle(xPos - xOffsetCenter, yPos, B_WIDTH, B_HEIGHT);
     }
 
+    /**
+     * Applies game state.
+     */
     public void applyGamestate() {
         Gamestate.state = state;
     }
 
+    /**
+     * Sets Mouse Over.
+     *
+     * @param mouseOver the mouseOver
+     */
     public void setMouseOver(boolean mouseOver) {
         this.mouseOver = mouseOver;
     }
 
+    /**
+     * Sets Mouse Pressed.
+     *
+     * @param mousePressed the mousePressed
+     */
     public void setMousePressed(boolean mousePressed) {
         this.mousePressed = mousePressed;
     }
@@ -75,18 +106,36 @@ public class MainMenuButtonView {
         return mouseOver;
     }
 
+    /**
+     * Gets Mouse Pressed.
+     *
+     * @return the mousePressed
+     */
     public boolean isMousePressed() {
         return mousePressed;
     }
 
+    /**
+     * Gets Button Bounds.
+     *
+     * @return the bounds
+     */
     public Rectangle getBounds() {
         return bounds;
     }
 
+    /**
+     * Gets state.
+     *
+     * @return state
+     */
     public Gamestate getState() {
         return state;
     }
 
+    /**
+     * Resets the mouse booleans.
+     */
     public void resetBools() {
         mouseOver = false;
         mousePressed = false;
