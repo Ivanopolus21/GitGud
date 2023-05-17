@@ -6,6 +6,12 @@ import yeremiva.gitgud.view.GamePanel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Keyboard Inputs.
+ * <p>
+ *     Class that control the user keyboard inputs during the whole process.
+ * </p>
+ */
 public class KeyboardInputs implements KeyListener {
     private final GamePanel gamePanel;
 
@@ -13,6 +19,13 @@ public class KeyboardInputs implements KeyListener {
         this.gamePanel = gamePanel;
     }
 
+    /**
+     * Key Pressed.
+     * <p>
+     * Controls pressing the keys and send it to game states.
+     *
+     * @param e the e
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         switch (Gamestate.state) {
@@ -25,6 +38,13 @@ public class KeyboardInputs implements KeyListener {
         }
     }
 
+    /**
+     * Key Released.
+     * <p>
+     * Controls releasing the keys and send it to game states.
+     *
+     * @param e the e
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         switch (Gamestate.state) {

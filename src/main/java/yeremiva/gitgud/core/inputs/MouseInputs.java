@@ -7,6 +7,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+/**
+ * Mouse Inputs.
+ * <p>
+ *     Class that control the user mouse inputs.
+ * </p>
+ */
 public class MouseInputs implements MouseListener, MouseMotionListener {
     private final GamePanel gamePanel;
 
@@ -14,6 +20,13 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
         this.gamePanel = gamePanel;
     }
 
+    /**
+     * Mouse Moved.
+     * <p>
+     * Controls moving the mouse and send it to game states.
+     *
+     * @param e the e
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         switch(Gamestate.state) {
@@ -26,6 +39,13 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
         }
     }
 
+    /**
+     * Mouse Clicked.
+     * <p>
+     * Controls clicking the mouse and send it to game states.
+     *
+     * @param e the e
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         switch(Gamestate.state) {
@@ -35,6 +55,13 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
         }
     }
 
+    /**
+     * Mouse Pressed.
+     * <p>
+     * Controls pressing the mouse and send it to game states.
+     *
+     * @param e the e
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         switch(Gamestate.state) {
@@ -47,6 +74,13 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
         }
     }
 
+    /**
+     * Mouse Released.
+     * <p>
+     * Controls releasing the mouse and send it to game states.
+     *
+     * @param e the e
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         switch(Gamestate.state) {
@@ -59,6 +93,13 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
         }
     }
 
+    /**
+     * Mouse Dragged.
+     * <p>
+     * Controls dragging the mouse and send it to PLAYING state.
+     *
+     * @param e the e
+     */
     @Override
     public void mouseDragged(MouseEvent e) {
         switch(Gamestate.state) {
