@@ -2,6 +2,8 @@ package yeremiva.gitgud;
 
 import yeremiva.gitgud.controller.GameController;
 
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 /**
@@ -18,8 +20,16 @@ public class Game {
      * @param args the args
      */
     public static void main(String[] args) {
-        new GameController();
 
-        log.info("Game was started!");
+        for (String s : args) {
+            if (s.equals("LOG_OFF")) {
+                System.out.println("Logging off");
+                LogManager.getLogManager().getLogger("").setLevel(Level.OFF);
+            } else {
+                System.out.println("Logging on");
+            }
+        }
+
+        new GameController();
     }
 }
