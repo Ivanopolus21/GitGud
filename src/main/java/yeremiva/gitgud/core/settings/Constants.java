@@ -2,8 +2,6 @@ package yeremiva.gitgud.core.settings;
 
 import yeremiva.gitgud.controller.GameController;
 
-import static yeremiva.gitgud.core.settings.EnemyType.SKELETON;
-
 /**
  * Constants.
  * <p>

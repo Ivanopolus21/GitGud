@@ -527,10 +527,20 @@ public class GameProcessController extends State implements Statemethods {
     }
 
     /**
+     * Gets Player Dying.
+     *
+     * @return the boolean
+     */
+    public boolean isPlayerDying() {
+        return playerDying;
+    }
+
+    /**
      * Gets Game Over.
      *
      * @return the boolean
      */
+
     public boolean isGameOver() {
         return gameOver;
     }

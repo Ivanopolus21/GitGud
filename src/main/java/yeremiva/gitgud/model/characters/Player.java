@@ -32,6 +32,7 @@ public class Player extends Character {
     private BufferedImage statusBarImg;
 
     private boolean moving = false, attacking = false;
+    private boolean isDead;
     private boolean left, right, jump;
     private int[][] lvlData;
 
@@ -273,7 +274,7 @@ public class Player extends Character {
     /**
      * Initialize of the player attack box.
      */
-    private void initAttackBox() {
+    public void initAttackBox() {
         attackBox = new Rectangle2D.Float(x, y, (int) (25 * GameController.SCALE), (int) (35 * GameController.SCALE));
 //        resetAttackBox();
     }
@@ -404,7 +405,7 @@ public class Player extends Character {
      */
     public void kill() {
         currentHealth = 0;
-
+        isDead = true;
         log.info("Player has died!");
     }
 
@@ -451,6 +452,14 @@ public class Player extends Character {
      */
     public int getCurrentHealth() {
         return currentHealth;
+    }
+
+    public int getPlayerDamage() {
+        return playerDamage;
+    }
+
+    public boolean isDead() {
+        return isDead;
     }
 
     /**

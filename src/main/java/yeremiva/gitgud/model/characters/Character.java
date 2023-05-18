@@ -75,6 +75,15 @@ public abstract class Character {
     }
 
     /**
+     * Gets player attackbox.
+     *
+     * @return the attackbox
+     */
+    public Rectangle2D.Float getAttackBox() {
+        return attackBox;
+    }
+
+    /**
      * Gets state.
      *
      * @return the state

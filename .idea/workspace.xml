@@ -4,43 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Minor fixes and design changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameMenuButtonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/SoundButtonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/UrmButtonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/VolumeButtonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/PlayerView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/big_background_object.png" afterDir="false" />
+    <list default="true" id="d5dfc6e5-840e-4e54-b5a5-71fdea26694b" name="Changes" comment="Fixed levels">
+      <change afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/EnemyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameProcessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameWinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/GameWinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelCompletedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelCompletedController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/LevelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/ObjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/controller/PauseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/settings/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/core/states/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/characters/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/model/objects/Gem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameMenuButtonView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuButtonView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameProcessView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/GameProcessView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/LevelView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/ObjectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yeremiva/gitgud/view/ObjectView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/big_clouds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/death_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/death_screen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/objects_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/objects_sprites.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/potions_sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gems_sprites.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/small_clouds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/small_background_objects.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/trap_atlas.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/trap_atlas.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +23,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Nu2q4LHuavc6oSh5B7UiJhRhBw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -81,7 +56,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Settings.JavaScript&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -97,13 +72,13 @@
       <recent name="yeremiva.gitgud.core.settings" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.EnemyTest.inAttackToDeathTest">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="yeremiva.gitgud.Game" />
       <module name="GitGud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="yeremiva.gitgud.Game" />
+          <option name="PATTERN" value="yeremiva.gitgud.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -111,9 +86,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EnemyTest.inAttackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GitGud" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="EnemyTest" />
+      <option name="METHOD_NAME" value="inAttackTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EnemyTest.inAttackToDeathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GitGud" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="EnemyTest" />
+      <option name="METHOD_NAME" value="inAttackToDeathTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.inAttackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GitGud" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
+      <option name="METHOD_NAME" value="inAttackTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.inAttackToDeathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GitGud" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
+      <option name="METHOD_NAME" value="inAttackToDeathTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EnemyTest.inAttackToDeathTest" />
         <item itemvalue="Application.Game" />
+        <item itemvalue="JUnit.EnemyTest.inAttackTest" />
+        <item itemvalue="JUnit.PlayerTest.inAttackToDeathTest" />
+        <item itemvalue="JUnit.PlayerTest.inAttackTest" />
       </list>
     </recent_temporary>
   </component>
@@ -188,119 +207,16 @@
       <workItem from="1684063995712" duration="34157000" />
       <workItem from="1684133763787" duration="5664000" />
       <workItem from="1684175009796" duration="709000" />
-      <workItem from="1684188197917" duration="2367000" />
-    </task>
-    <task id="LOCAL-00062" summary="Minor bug fixes (hitbox and attack box)">
-      <created>1682637015303</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1682637015303</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Just added combat system (beta)">
-      <created>1682706054082</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1682706054082</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Fixes for the combat system">
-      <created>1682706321897</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1682706321898</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Fixes for the combat system">
-      <created>1682707300234</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1682707300234</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Bug fixes with enemy animations">
-      <created>1682772299109</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1682772299109</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Fixed replay button">
-      <created>1682772465870</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1682772465870</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Fixed bug with unfocusable window in some cases">
-      <created>1682772575083</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1682772575083</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Added view for level completed">
-      <created>1682775463401</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1682775463401</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Added more levels and an option to beat them all">
-      <created>1682780853631</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1682780853631</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Added player spawn">
-      <created>1682781602623</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1682781602623</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Clean up the code">
-      <created>1682890793086</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1682890793086</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Added some &quot;blueprints&quot; for the objects in the game">
-      <created>1683155005190</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1683155005190</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Added view for objects">
-      <created>1683202831031</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1683202831031</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Added objects spawn on the levels and updated their appearance">
-      <created>1683205909302</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1683205909302</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Added objects logic">
-      <created>1683292791071</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1683292791071</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Bug fixes">
-      <created>1683296404820</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1683296404820</updated>
+      <workItem from="1684188197917" duration="5661000" />
+      <workItem from="1684231081738" duration="2410000" />
+      <workItem from="1684234761208" duration="1624000" />
+      <workItem from="1684236837171" duration="115000" />
+      <workItem from="1684237163019" duration="219000" />
+      <workItem from="1684253928941" duration="67000" />
+      <workItem from="1684275715173" duration="7239000" />
+      <workItem from="1684336615897" duration="2195000" />
+      <workItem from="1684347131685" duration="22098000" />
+      <workItem from="1684397113333" duration="3227000" />
     </task>
     <task id="LOCAL-00078" summary="Added traps to the game (currently only spikes)">
       <created>1683308615266</created>
@@ -533,7 +449,119 @@
       <option name="project" value="LOCAL" />
       <updated>1684111046251</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="Minor fixes and design changes, refactoring">
+      <created>1684190858065</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1684190858065</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Added enum class for enemy types">
+      <created>1684279405056</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1684279405057</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Added logger and JAVADoc comments">
+      <created>1684283075794</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1684283075794</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Added logger and JAVADoc comments for controllers">
+      <created>1684337126412</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1684337126412</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Added JAVADoc comments for inputs">
+      <created>1684349888965</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1684349888965</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Added logger and JAVADoc comments for the settings">
+      <created>1684349988834</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1684349988834</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Added JAVADoc comments for the states">
+      <created>1684350295158</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1684350295159</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Added logger and JAVADoc comments for the characters">
+      <created>1684358782268</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1684358782268</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Added logger and JAVADoc comments for the controllers">
+      <created>1684358798863</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1684358798863</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Added logger and JAVADoc comments for the game objects">
+      <created>1684360329772</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1684360329772</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Added logger and JAVADoc comments for the game views">
+      <created>1684367135588</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1684367135588</updated>
+    </task>
+    <task id="LOCAL-00122" summary="Added logger and JAVADoc comments for the Game class">
+      <created>1684367149569</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1684367149569</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Design minor fixes">
+      <created>1684367171468</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1684367171468</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Added Logger &quot;LOG_OFF&quot; parameter">
+      <created>1684369640780</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1684369640780</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Added Logger &quot;LOG_OFF&quot; parameter">
+      <created>1684369766119</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1684369766119</updated>
+    </task>
+    <task id="LOCAL-00126" summary="Fixed levels">
+      <created>1684372316386</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1684372316386</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,21 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added objects logic" />
-    <MESSAGE value="Bug fixes" />
-    <MESSAGE value="Added traps to the game (currently only spikes)" />
-    <MESSAGE value="Fixed bugs with dealing damage to enemies" />
-    <MESSAGE value="Added death screen to the game (updated)" />
-    <MESSAGE value="Fixing the bugs" />
-    <MESSAGE value="Code refactoring" />
-    <MESSAGE value="Added some JSON files to configure the entities" />
-    <MESSAGE value="Separation of Enemy Controller and Enemy View" />
-    <MESSAGE value="Separation of Game Over Controller and Game Over View" />
-    <MESSAGE value="Separation of Level Completed Controller and Level Completed View" />
-    <MESSAGE value="Separation of Pause Controller and Pause View" />
-    <MESSAGE value="Separation of Main Menu Controller and Main Menu View" />
-    <MESSAGE value="Final refactoring of the file" />
-    <MESSAGE value="Added Game Win" />
     <MESSAGE value="Refactoring of the controllers" />
     <MESSAGE value="Refactoring of the views" />
     <MESSAGE value="Final refactoring of the input classes" />
@@ -576,7 +589,22 @@
     <MESSAGE value="Final refactoring of the settings" />
     <MESSAGE value="Removing unnecessary staff" />
     <MESSAGE value="Minor fixes and design changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes and design changes" />
+    <MESSAGE value="Minor fixes and design changes, refactoring" />
+    <MESSAGE value="Added enum class for enemy types" />
+    <MESSAGE value="Added logger and JAVADoc comments" />
+    <MESSAGE value="Added logger and JAVADoc comments for controllers" />
+    <MESSAGE value="Added JAVADoc comments for inputs" />
+    <MESSAGE value="Added logger and JAVADoc comments for the settings" />
+    <MESSAGE value="Added JAVADoc comments for the states" />
+    <MESSAGE value="Added logger and JAVADoc comments for the characters" />
+    <MESSAGE value="Added logger and JAVADoc comments for the controllers" />
+    <MESSAGE value="Added logger and JAVADoc comments for the game objects" />
+    <MESSAGE value="Added logger and JAVADoc comments for the game views" />
+    <MESSAGE value="Added logger and JAVADoc comments for the Game class" />
+    <MESSAGE value="Design minor fixes" />
+    <MESSAGE value="Added Logger &quot;LOG_OFF&quot; parameter" />
+    <MESSAGE value="Fixed levels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed levels" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

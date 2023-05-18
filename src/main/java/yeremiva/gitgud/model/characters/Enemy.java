@@ -18,7 +18,7 @@ import static yeremiva.gitgud.core.settings.HelpMethods.*;
  *     Class that represents an enemy.
  *</p>
  */
-public abstract class Enemy extends Character{
+public  class Enemy extends Character{
     private final static Logger log = Logger.getLogger(Enemy.class.getName());
 
     protected int enemyType;
@@ -37,6 +37,10 @@ public abstract class Enemy extends Character{
         this.walkSpeed = GameController.SCALE * walkSpeed;
         this.enemyDamage = enemyDamage;
         this.enemyType = enemyType;
+    }
+
+    public int getEnemyDamage() {
+        return enemyDamage;
     }
 
     /**
@@ -209,6 +213,7 @@ public abstract class Enemy extends Character{
         currentHealth -= amount;
 
         if (currentHealth <= 0) {
+            currentHealth = 0;
             newState(DEAD);
 
             log.info("Enemy " + EnemyType.SKELETON + " died!");
