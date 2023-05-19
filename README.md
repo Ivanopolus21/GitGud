@@ -37,3 +37,6 @@ When you complete all the levels (currently there are three), a window will appe
 # End Game
 When the player dies, they will be notified and have to restart the game or go to the main menu.
 ![image](https://github.com/Ivanopolus21/GitGud/assets/77054840/0ac8b23b-01e8-40ab-af16-db3cdf2d9c13)
+
+# SPECIAL THANKS
+Special thanks to **Sashakor** who did the all (almost) design of the game!
