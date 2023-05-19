@@ -21,7 +21,6 @@ public class EnemyTest {
     @Test
     public void inAttackTest() {
         int expected = 25;
-//        enemy.changeHealth(- mockedEnemy.getEnemyDamage());
         enemy.hurt(mockedPlayer.getPlayerDamage());
 
         // ASSERT
